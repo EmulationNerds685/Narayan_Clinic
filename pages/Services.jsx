@@ -11,6 +11,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChildFriendlyIcon from '@mui/icons-material/ChildFriendly';
 import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import { motion } from 'framer-motion';
 
 const services = [
   {
@@ -35,6 +36,25 @@ const services = [
   },
 ];
 
+// Animation Variants
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+};
+
 const ServicesSection = () => {
   return (
     <Box sx={{ padding: 7, backgroundColor: '#fff3f3' }}>
@@ -44,25 +64,35 @@ const ServicesSection = () => {
       >
         Our Services
       </Typography>
-      <Grid container spacing={10} justifyContent="center">
-        {services.map((service, index) => (
-          <Grid size={{xs:12,sm:6,md:4}} key={index}>
-            <Card sx={{ textAlign: 'center', p: 2, height: '100%', boxShadow: 3 }}>
-              <CardMedia>
-                {service.icon}
-              </CardMedia>
-              <CardContent>
-                <Typography variant="h6" sx={{ mt: 2 }}>
-                  {service.title}
-                </Typography>
-                <Typography variant="body2" sx={{ mt: 1 }}>
-                  {service.description}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <Grid container spacing={10} justifyContent="center">
+          {services.map((service, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <motion.div variants={cardVariants} whileHover={{ scale: 1.05 }}>
+                <Card sx={{ textAlign: 'center', p: 2, height: '100%', boxShadow: 3 }}>
+                  <CardMedia>
+                    {service.icon}
+                  </CardMedia>
+                  <CardContent>
+                    <Typography variant="h6" sx={{ mt: 2 }}>
+                      {service.title}
+                    </Typography>
+                    <Typography variant="body2" sx={{ mt: 1 }}>
+                      {service.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
+      </motion.div>
     </Box>
   );
 };

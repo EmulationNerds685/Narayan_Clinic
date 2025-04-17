@@ -10,6 +10,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import GroupsIcon from '@mui/icons-material/Groups';
 import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { motion } from 'framer-motion';
 
 const reasons = [
   {
@@ -34,6 +35,25 @@ const reasons = [
   },
 ];
 
+// Animation Variants
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+};
+
 const WhyChooseUs = () => {
   return (
     <Box sx={{ padding: 4, backgroundColor: '#fff' }}>
@@ -43,31 +63,41 @@ const WhyChooseUs = () => {
       >
         Why Choose Us?
       </Typography>
-      <Grid container spacing={10} justifyContent="center">
-        {reasons.map((item, index) => (
-          <Grid size={{xs:12,sm:6,md:4}} key={index}>
-            <Card
-              sx={{
-                textAlign: 'center',
-                p: 3,
-                height: '100%',
-                boxShadow: 2,
-                borderRadius: 3,
-              }}
-            >
-              {item.icon}
-              <CardContent>
-                <Typography variant="h6" sx={{ mt: 2 }}>
-                  {item.title}
-                </Typography>
-                <Typography variant="body2" sx={{ mt: 1 }}>
-                  {item.description}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <Grid container spacing={10} justifyContent="center">
+          {reasons.map((item, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <motion.div variants={cardVariants} whileHover={{ scale: 1.05 }}>
+                <Card
+                  sx={{
+                    textAlign: 'center',
+                    p: 3,
+                    height: '100%',
+                    boxShadow: 2,
+                    borderRadius: 3,
+                  }}
+                >
+                  {item.icon}
+                  <CardContent>
+                    <Typography variant="h6" sx={{ mt: 2 }}>
+                      {item.title}
+                    </Typography>
+                    <Typography variant="body2" sx={{ mt: 1 }}>
+                      {item.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
+      </motion.div>
     </Box>
   );
 };
