@@ -15,13 +15,21 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Link, useLocation } from 'react-router-dom';
 
-const menuItems = ['Home', 'About Us', 'Services', 'Contact','Book Appoinment'];
+const menuItems = [
+  { label: 'Home', path: '/' },
+  { label: 'About Us', path: '/about' },
+  { label: 'Services', path: '/services' },
+  { label: 'Contact', path: '/contact' },
+  { label: 'Book Appointment', path: '/book' },
+];
 
 const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const location = useLocation(); // 👈 This gives us the current path
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -33,10 +41,12 @@ const Header = () => {
     setDrawerOpen(open);
   };
 
+  const isActive = (path) => location.pathname === path;
+
   return (
     <>
       <AppBar position="static" sx={{ backgroundColor: '#d32f2f' }}>
-        <Toolbar >
+        <Toolbar>
           <FavoriteIcon sx={{ mr: 1 }} />
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             Heart & Maternity Clinic
@@ -64,9 +74,15 @@ const Header = () => {
                   onKeyDown={toggleDrawer(false)}
                 >
                   <List>
-                    {menuItems.map((text) => (
-                      <ListItem button key={text}>
-                        <ListItemText primary={text} />
+                    {menuItems.map(({ label, path }) => (
+                      <ListItem
+                        button
+                        key={label}
+                        component={Link}
+                        to={path}
+                        selected={isActive(path)} // 👈 Highlights active
+                      >
+                        <ListItemText primary={label} />
                       </ListItem>
                     ))}
                   </List>
@@ -75,12 +91,21 @@ const Header = () => {
             </>
           ) : (
             <Box>
-              {menuItems.map((item) => (
+              {menuItems.map(({ label, path }) => (
                 <Button
-                  key={item}
-                  sx={{ color: '#fff', marginLeft: 2 }}
+                  key={label}
+                  component={Link}
+                  to={path}
+                  sx={{
+                    color: isActive(path) ? '#ffebee' : '#fff',
+                    backgroundColor: isActive(path) ? '#b71c1c' : 'transparent',
+                    marginLeft: 2,
+                    '&:hover': {
+                      backgroundColor: '#c62828',
+                    },
+                  }}
                 >
-                  {item}
+                  {label}
                 </Button>
               ))}
             </Box>

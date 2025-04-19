@@ -4,7 +4,7 @@ import DoctorsSection from '../components/DoctorSection';
 import ServicesSection from './Services';
 import WhyChooseUs from '../components/ChooseUs';
 import { motion } from 'framer-motion';
-
+import { Link } from 'react-router-dom';
 // Animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -23,7 +23,7 @@ const HomePage = () => {
       animate="visible"
       variants={fadeIn}
     >
-      <Box sx={{ padding: 2 }}>
+      <Box sx={{ padding:"15px 0px 0px 0px" }}>
         {/* Hero Section */}
         <motion.div variants={fadeInUp}>
           <Box
@@ -36,8 +36,9 @@ const HomePage = () => {
               px: { xs: 3, sm: 6 },
               py: { xs: 6, sm: 8 },
               textAlign: 'center',
-              borderRadius: 2,
+              
               mb: 3,
+              ml:0,
               height: {
                 xs: '60vh',
                 sm: '60vh',
@@ -85,6 +86,7 @@ const HomePage = () => {
             </motion.div>
 
             <motion.div variants={fadeInUp}>
+              <Link to='/book'>
               <Button
                 variant="contained"
                 color="error"
@@ -104,6 +106,7 @@ const HomePage = () => {
               >
                 Book Appointment
               </Button>
+              </Link>
             </motion.div>
           </Box>
         </motion.div>
