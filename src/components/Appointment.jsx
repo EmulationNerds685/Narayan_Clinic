@@ -24,7 +24,7 @@ function Appointment() {
   const [formData, setFormData] = useState({
     name: "",
     phoneNumber: "",
-    reason: "",
+    address: "",
     appointmentDate: "",
     timeSlot: "",
   });
@@ -49,6 +49,7 @@ function Appointment() {
       setResponse(result.data.message || "Appointment booked successfully!");
       setIsError(false);
     } catch (err) {
+      console.log(err)
       setResponse("Error booking appointment. Please try again.");
       setIsError(true);
     } finally {
@@ -57,7 +58,7 @@ function Appointment() {
       setFormData({
         name: "",
         phoneNumber: "",
-        reason: "",
+        address: "",
         appointmentDate: "",
         timeSlot: "",
       });
@@ -118,10 +119,10 @@ function Appointment() {
           />
           <TextField
             fullWidth
-            label="Reason for Visit"
-            name="reason"
+            label="Address"
+            name="address"
             required
-            value={formData.reason}
+            value={formData.address}
             onChange={handleChange}
             sx={{ mb: 2 }}
           />

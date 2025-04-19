@@ -29,7 +29,7 @@ const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const location = useLocation(); // 👈 This gives us the current path
+  const location = useLocation();
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -45,20 +45,16 @@ const Header = () => {
 
   return (
     <>
-      <AppBar position="static" sx={{ backgroundColor: '#d32f2f' }}>
+      <AppBar position="static" sx={{ backgroundColor: theme.palette.primary.main }}>
         <Toolbar>
-          <FavoriteIcon sx={{ mr: 1 }} />
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          <FavoriteIcon sx={{ mr: 1, color: '#fff' }} />
+          <Typography variant="h6" sx={{ flexGrow: 1, color: '#fff' }}>
             Heart & Maternity Clinic
           </Typography>
 
           {isMobile ? (
             <>
-              <IconButton
-                color="inherit"
-                edge="end"
-                onClick={toggleDrawer(true)}
-              >
+              <IconButton color="inherit" edge="end" onClick={toggleDrawer(true)}>
                 <MenuIcon />
               </IconButton>
               <Drawer
@@ -66,6 +62,9 @@ const Header = () => {
                 open={drawerOpen}
                 onClose={toggleDrawer(false)}
                 transitionDuration={300}
+                PaperProps={{
+                  sx: { backgroundColor: theme.palette.background.default },
+                }}
               >
                 <Box
                   sx={{ width: 250 }}
@@ -80,7 +79,17 @@ const Header = () => {
                         key={label}
                         component={Link}
                         to={path}
-                        selected={isActive(path)} // 👈 Highlights active
+                        selected={isActive(path)}
+                        sx={{
+                          '&.Mui-selected': {
+                            backgroundColor: theme.palette.primary.light,
+                            color: theme.palette.primary.contrastText,
+                          },
+                          '&:hover': {
+                            backgroundColor: theme.palette.primary.main,
+                            color: '#fff',
+                          },
+                        }}
                       >
                         <ListItemText primary={label} />
                       </ListItem>
@@ -97,11 +106,16 @@ const Header = () => {
                   component={Link}
                   to={path}
                   sx={{
-                    color: isActive(path) ? '#ffebee' : '#fff',
-                    backgroundColor: isActive(path) ? '#b71c1c' : 'transparent',
+                    color: isActive(path)
+                      ? theme.palette.primary.contrastText
+                      : '#fff',
+                    backgroundColor: isActive(path)
+                      ? theme.palette.primary.dark
+                      : 'transparent',
                     marginLeft: 2,
+                    fontWeight: 500,
                     '&:hover': {
-                      backgroundColor: '#c62828',
+                      backgroundColor: theme.palette.primary.main,
                     },
                   }}
                 >

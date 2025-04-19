@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import {
   Box,
@@ -6,6 +7,7 @@ import {
   CardMedia,
   Typography,
   Grid,
+  useTheme,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 
@@ -44,11 +46,18 @@ const cardVariants = {
 };
 
 const DoctorsSection = () => {
+  const theme = useTheme();
+
   return (
-    <Box sx={{ padding: 4 }}>
+    <Box sx={{ padding: 4, backgroundColor: theme.palette.background.default }}>
       <Typography
         variant="h4"
-        sx={{ textAlign: 'center', mb: 4, color: '#d32f2f', fontWeight: 'bold' }}
+        sx={{
+          textAlign: 'center',
+          mb: 4,
+          color: theme.palette.primary.dark,
+          fontWeight: 'bold',
+        }}
       >
         Meet Our Doctors
       </Typography>
@@ -63,7 +72,14 @@ const DoctorsSection = () => {
           {doctors.map((doc, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <motion.div variants={cardVariants} whileHover={{ scale: 1.03 }}>
-                <Card sx={{ maxWidth: 345, mx: 'auto', boxShadow: 3 }}>
+                <Card
+                  sx={{
+                    maxWidth: 345,
+                    mx: 'auto',
+                    boxShadow: 3,
+                    backgroundColor: '#fff',
+                  }}
+                >
                   <CardMedia
                     component="img"
                     height="300"
@@ -75,7 +91,7 @@ const DoctorsSection = () => {
                       gutterBottom
                       variant="h6"
                       component="div"
-                      sx={{ color: '#c62828' }}
+                      sx={{ color: theme.palette.primary.main }}
                     >
                       {doc.name}
                     </Typography>

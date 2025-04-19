@@ -1,7 +1,9 @@
-import { Box, Paper, Typography, TextField, Button } from "@mui/material";
+import { Box, Paper, Typography, TextField, Button, useTheme } from "@mui/material";
 import { useState } from "react";
 
 function Contact() {
+  const theme = useTheme();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,7 +16,6 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // For now, we just log the message (you can integrate email or backend later)
     console.log("Contact Form Submitted:", formData);
     alert("Thank you for reaching out!");
     setFormData({ name: "", email: "", message: "" });
@@ -27,7 +28,7 @@ function Contact() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#f5f5f5",
+        backgroundColor: theme.palette.background.default,
         padding: 2,
       }}
     >
@@ -38,10 +39,15 @@ function Contact() {
           maxWidth: 600,
           width: "100%",
           borderRadius: "12px",
-          backgroundColor: "white",
+          backgroundColor: theme.palette.background.paper,
         }}
       >
-        <Typography variant="h4" textAlign="center" gutterBottom>
+        <Typography
+          variant="h4"
+          textAlign="center"
+          gutterBottom
+          sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}
+        >
           Contact Us
         </Typography>
 
@@ -81,9 +87,11 @@ function Contact() {
             variant="contained"
             fullWidth
             sx={{
-              backgroundColor: "#d32f2f",
-              color: "white",
-              "&:hover": { backgroundColor: "#4A6B8A" },
+              backgroundColor: theme.palette.primary.main,
+              color: theme.palette.primary.contrastText,
+              "&:hover": {
+                backgroundColor: theme.palette.primary.dark,
+              },
             }}
           >
             Send Message
