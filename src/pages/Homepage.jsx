@@ -89,7 +89,7 @@ const HomePage = () => {
                     sm: '1.2rem',
                     md: '1.25rem',
                   },
-                  maxWidth: '80%',
+                  maxWidth: '100%',
                 }}
               >
                 Compassionate care for your heart and your family.
