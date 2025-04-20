@@ -26,6 +26,13 @@ const slides = [
     image: '/EMC.webp',
     link: '/contact',
   },
+  {
+    title: 'Book an Appointment',
+    subtitle: 'Expert heart and Maternity care.',
+    buttonText: 'Book Now',
+    image: '/9802344.jpg',
+    link: '/book',
+  }
 ];
 
 const Herocarousel = () => {
