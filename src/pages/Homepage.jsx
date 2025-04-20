@@ -74,7 +74,7 @@ const HomePage = () => {
                   },
                 }}
               >
-                Narayan Heart & Maternity Clinic
+                Narayan Heart & Maternity Center
               </Typography>
             </motion.div>
 

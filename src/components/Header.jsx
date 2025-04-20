@@ -48,8 +48,8 @@ const Header = () => {
       <AppBar position="static" sx={{ backgroundColor: theme.palette.primary.main }}>
         <Toolbar>
           <FavoriteIcon sx={{ mr: 1, color: '#fff' }} />
-          <Typography variant="h6" sx={{ flexGrow: 1, color: '#fff' }}>
-            Heart & Maternity Clinic
+          <Typography variant="h6" sx={{ flexGrow: 1, color: '#fff', fontWeight: 600 }}>
+            {isMobile ? 'NHMC' : 'NARAYAN HEART AND MATERNITY CENTER'}
           </Typography>
 
           {isMobile ? (

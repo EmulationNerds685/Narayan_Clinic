@@ -9,30 +9,43 @@ import CssBaseline from '@mui/material/CssBaseline';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#166088', // Main color set to #166088
+      main: '#072AC8',
+      contrastText: '#ffffff',
     },
     secondary: {
-      main: '#4caf50', // Secondary color can be set to a complementary green or another color
+      main: '#F49D37', // complementary warm secondary (orange-gold), feel free to swap
+      contrastText: '#ffffff',
     },
     background: {
-      default: '#e0f7fa', // Light background color to balance the blue
+      default: '#F5F7FA',
+      paper: '#ffffff',
     },
     text: {
-      primary: '#333333', // Dark text for better readability
+      primary: '#1A1A1A',
+      secondary: '#4F4F4F',
     },
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif', // Primary sans-serif font
-    h1: {
-      fontFamily: '"Merriweather", serif', // Serif font for headings
-      fontWeight: 'bold',
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    button: {
+      textTransform: 'none',
+      fontWeight: 600,
     },
-    h2: {
-      fontFamily: '"Merriweather", serif',
-      fontWeight: 'bold',
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+        },
+      },
     },
-    body1: {
-      fontFamily: '"Open Sans", sans-serif', // Sans-serif font for body text
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#072AC8',
+        },
+      },
     },
   },
 });
