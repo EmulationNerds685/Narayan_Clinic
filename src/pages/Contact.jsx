@@ -1,25 +1,42 @@
 import { Box, Paper, Typography, TextField, Button, useTheme } from "@mui/material";
 import { useState } from "react";
+import axios from "axios";
+import FeedbackDialog from "../components/Feedback";
 
 function Contact() {
   const theme = useTheme();
-
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
 
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [response, setResponse] = useState("");
+  
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Contact Form Submitted:", formData);
-    alert("Thank you for reaching out!");
-    setFormData({ name: "", email: "", message: "" });
+    try {
+      const result = await axios.post(`${backendURL}/contact`, formData);
+      setResponse(result.data.message || "Message sent successfully!");
+      setIsError(false);
+    } catch (err) {
+      console.log(err);
+      setResponse("There was an error sending your message.");
+      setIsError(true);
+    } finally {
+      setDialogOpen(true);
+      setFormData({ name: "", email: "", message: "" });
+    }
   };
+  
 
   return (
     <Box
@@ -98,6 +115,13 @@ function Contact() {
           </Button>
         </Box>
       </Paper>
+      <FeedbackDialog
+  open={dialogOpen}
+  onClose={() => setDialogOpen(false)}
+  isError={isError}
+  message={response}
+/>
+
     </Box>
   );
 }
