@@ -22,10 +22,10 @@ const Footer = () => {
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" fontWeight="bold">
               <FavoriteIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
-              Heart & Maternity Clinic
+             Narayan Heart & Maternity Center
             </Typography>
             <Typography variant="body2" sx={{ mt: 1 }}>
-              Providing compassionate care with a specialized team in cardiology and gynecology.
+              Providing compassionate care with a specialized team in cardiology and gynecology in Patna.
             </Typography>
           </Grid>
 
@@ -56,8 +56,8 @@ const Footer = () => {
               Contact Us
             </Typography>
             <Typography variant="body2" sx={{ mt: 1 }}>
-              📍 123 Clinic Street, Healthy City<br />
-              📞 (123) 456-7890<br />
+              📍 MIG, 245, Lohia Nagar, kankarbagh,Patna-800020<br />
+              📞 +91 9708441467<br />
               📧 support@heartmaternityclinic.com
             </Typography>
           </Grid>
@@ -66,7 +66,7 @@ const Footer = () => {
         {/* Divider + Copyright */}
         <Divider sx={{ my: 3, borderColor: 'rgba(255,255,255,0.3)' }} />
         <Typography variant="body2" align="center">
-          © {new Date().getFullYear()} Heart & Maternity Clinic. All rights reserved.
+          © {new Date().getFullYear()} Narayan Heart & Maternity Clinic. All rights reserved.
         </Typography>
       </Container>
     </Box>

@@ -13,20 +13,22 @@ import { motion } from 'framer-motion';
 
 const doctors = [
   {
-    name: 'Dr. Sushant Pathak',
-    specialty: 'Cardiologist',
-    image: 'doctor_sample2.jpg',
-    description: 'Expert in heart care with 15+ years of experience.',
+    name: 'Dr. Sushant Kumar Pathak',
+    specialty: 'Interventional Cardiologist',
+    image: 'skp.jpg',
+    qualifications: 'MBBS (Kolkata), MD (Medicine, PMCH Patna) - Gold Medalist, DM (Cardiology, IGP, ME & R)',
+    experience: 'Senior Consultant, Ford Hospital, Patna\nAssistant Director, IGIC, PMCH',
   },
   {
     name: 'Dr. Jagriti Bhardwaj',
-    specialty: 'Gynecologist',
+    specialty: 'Gynecologist & Obstetrician',
     image: 'doctor_sample.jpg',
-    description: 'Specialist in maternity and women’s health for 10+ years.',
+    qualifications: 'MBBS (SNMC, Agra), MS (OBG, PGIMS), DNB (OBG)',
+    experience: 'SIR Ganga Ram Hospital, New Delhi\nEx. Senior, PGIMS New Delhi\nEx. Assistant Professor, HIMS, Dehradun',
+    specializations: 'Laparoscopic Surgeon, Infertility Specialist',
   },
 ];
 
-// Animation Variants
 const containerVariants = {
   hidden: {},
   visible: {
@@ -82,7 +84,7 @@ const DoctorsSection = () => {
                 >
                   <CardMedia
                     component="img"
-                    height="300"
+                    height="200"
                     image={doc.image}
                     alt={doc.name}
                   />
@@ -90,7 +92,6 @@ const DoctorsSection = () => {
                     <Typography
                       gutterBottom
                       variant="h6"
-                      component="div"
                       sx={{ color: theme.palette.primary.main }}
                     >
                       {doc.name}
@@ -99,7 +100,15 @@ const DoctorsSection = () => {
                       {doc.specialty}
                     </Typography>
                     <Typography variant="body2" sx={{ mt: 1 }}>
-                      {doc.description}
+                      <strong>Qualifications:</strong> {doc.qualifications}
+                    </Typography>
+                    {doc.specializations && (
+                      <Typography variant="body2" sx={{ mt: 1 }}>
+                        <strong>Specializations:</strong> {doc.specializations}
+                      </Typography>
+                    )}
+                    <Typography variant="body2" sx={{ mt: 1, whiteSpace: 'pre-line' }}>
+                      <strong>Experience:</strong> {doc.experience}
                     </Typography>
                   </CardContent>
                 </Card>

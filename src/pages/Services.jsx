@@ -10,8 +10,10 @@ import {
   useTheme,
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ChildFriendlyIcon from '@mui/icons-material/ChildFriendly';
 import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
+import ChildFriendlyIcon from '@mui/icons-material/ChildFriendly';
+import FemaleIcon from '@mui/icons-material/Female';
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import { motion } from 'framer-motion';
 
@@ -20,28 +22,43 @@ const ServicesSection = () => {
 
   const services = [
     {
-      title: 'Cardiac Consultation',
-      icon: <FavoriteIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
-      description: 'Expert diagnosis and treatment plans for heart conditions.',
-    },
-    {
-      title: 'Heart Monitoring & ECG',
-      icon: <MonitorHeartIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
-      description: 'Advanced heart monitoring systems and ECG tests.',
-    },
-    {
-      title: 'Maternity Care',
+      title: 'Antenatal & Postnatal Care',
       icon: <ChildFriendlyIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
-      description: 'Compassionate care for expectant mothers from start to delivery.',
+      description:
+        'Routine pregnancy checkups, ultrasound, and post-delivery care for mother and child.',
     },
     {
-      title: 'Ultrasound Scanning',
+      title: 'Gynaecological Services',
+      icon: <FemaleIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
+      description:
+        'Treatment of menstrual issues, menopause, infections, and infertility evaluations.',
+    },
+    {
+      title: 'Cardiac Consultations',
+      icon: <FavoriteIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
+      description:
+        'Hypertension, CAD, heart failure, and preventive cardiac care with follow-ups.',
+    },
+    {
+      title: 'Cardiac Diagnostics',
+      icon: <MonitorHeartIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
+      description:
+        'Tests including ECG, ECHO, TMT, Holter Monitoring and ABPM for precise heart evaluation.',
+    },
+    {
+      title: 'Family Planning',
+      icon: <AccessibilityNewIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
+      description:
+        'Contraceptive counseling, IUD insertions, oral/injectable options tailored to you.',
+    },
+    {
+      title: 'Screening & Preventive Care',
       icon: <LocalHospitalIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
-      description: 'High-quality ultrasound for pregnancy and internal scans.',
+      description:
+        'Pap smears, HPV testing, breast exams, and lifestyle guidance for better health.',
     },
   ];
 
-  // Animation Variants
   const containerVariants = {
     hidden: {},
     visible: {
@@ -61,20 +78,10 @@ const ServicesSection = () => {
   };
 
   return (
-    <Box
-      sx={{
-        padding: 7,
-        backgroundColor: theme.palette.background.default,
-      }}
-    >
+    <Box className="px-4 py-12 bg-gray-50">
       <Typography
         variant="h4"
-        sx={{
-          textAlign: 'center',
-          mb: 4,
-          color: theme.palette.primary.dark,
-          fontWeight: 'bold',
-        }}
+        className="text-center font-bold text-primary mb-10"
       >
         Our Services
       </Typography>
@@ -85,35 +92,25 @@ const ServicesSection = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <Grid container spacing={10} justifyContent="center">
+        <Grid container spacing={6} justifyContent="center">
           {services.map((service, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <motion.div
                 variants={cardVariants}
                 whileHover={{ scale: 1.05 }}
               >
-                <Card
-                  sx={{
-                    textAlign: 'center',
-                    p: 2,
-                    height: '100%',
-                    boxShadow: 3,
-                    backgroundColor: '#fff',
-                  }}
-                >
-                  <CardMedia>{service.icon}</CardMedia>
+                <Card className="text-center shadow-md hover:shadow-lg transition duration-300 h-full">
+                  <CardMedia className="pt-6">
+                    {service.icon}
+                  </CardMedia>
                   <CardContent>
                     <Typography
                       variant="h6"
-                      sx={{
-                        mt: 2,
-                        color: theme.palette.primary.main,
-                        fontWeight: 600,
-                      }}
+                      className="mt-2 font-semibold text-primary"
                     >
                       {service.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ mt: 1 }}>
+                    <Typography variant="body2" className="mt-1 text-gray-700">
                       {service.description}
                     </Typography>
                   </CardContent>

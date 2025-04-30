@@ -20,30 +20,30 @@ const WhyChooseUs = () => {
   const addresss = [
     {
       icon: <GroupsIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
-      title: 'Experienced Specialists',
+      title: 'Specialized Expertise',
       description:
-        'Highly skilled cardiologist and gynecologist with decades of combined experience.',
-    },
-    {
-      icon: <AccessTimeIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
-      title: '24/7 Emergency Care',
-      description:
-        'Round-the-clock support for emergency heart or maternity needs.',
+        'Care from top specialists — an Interventional Cardiologist and an Infertility & Laparoscopic Surgeon.',
     },
     {
       icon: <MedicalServicesIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
-      title: 'Modern Medical Equipment',
+      title: 'Advanced Diagnostic Tools',
       description:
-        'Equipped with advanced diagnostic and monitoring tools.',
+        'ECG, ECHO, TMT, Holter, ABPM, and ultrasound services available in one place.',
     },
     {
       icon: <FavoriteBorderIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
-      title: 'Compassionate Care',
+      title: 'Compassionate Women & Heart Care',
       description:
-        'We treat every patient like family with warmth and attention.',
+        'From pregnancy to post-CABG follow-up — care that’s empathetic and personalized.',
+    },
+    {
+      icon: <AccessTimeIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
+      title: 'Continuity of Care',
+      description:
+        'Long-term follow-ups, lifestyle counseling, and preventive screening built into your care.',
     },
   ];
-
+  
   // Animation Variants
   const containerVariants = {
     hidden: {},
