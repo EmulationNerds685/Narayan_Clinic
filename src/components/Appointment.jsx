@@ -46,7 +46,7 @@ function Appointment() {
     setLoading(true);
 
     try {
-      const result = await axios.post(`${backendURL}/appointments`, formData);
+      const result = await axios.post(`${backendURL}/book`, formData);
       setResponse(result.data.message || "Appointment booked successfully!");
       setIsError(false);
     } catch (err) {
