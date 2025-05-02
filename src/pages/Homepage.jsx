@@ -7,6 +7,7 @@ import WhyChooseUs from '../components/ChooseUs';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Herocarousel from '../components/Herocarousel';
+
 // Animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -25,7 +26,7 @@ const HomePage = () => {
     <motion.div initial="hidden" animate="visible" variants={fadeIn}>
       <Box sx={{ padding: '15px 0 0 0' }}>
         {/* Hero Section */}
-        <Herocarousel/>
+        < Herocarousel/>
         
        {/* <motion.div variants={fadeInUp}>
           <Box
@@ -153,6 +154,7 @@ const HomePage = () => {
         >
           <WhyChooseUs />
         </motion.div>
+        
       </Box>
     </motion.div>
   );

@@ -78,10 +78,10 @@ const ServicesSection = () => {
   };
 
   return (
-    <Box className="px-4 py-12 bg-gray-50">
+    <Box className="px-4 py-20 bg-gray-50 ">
       <Typography
         variant="h4"
-        className="text-center font-bold text-primary mb-10"
+        className="text-center font-extrabold text-blue-800 mb-10"
       >
         Our Services
       </Typography>

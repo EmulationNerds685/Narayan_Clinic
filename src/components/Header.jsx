@@ -23,6 +23,7 @@ const menuItems = [
   { label: 'About Us', path: '/about' },
   { label: 'Services', path: '/services' },
   { label: 'Contact', path: '/contact' },
+  { label: 'Reach Us', path: 'https://maps.app.goo.gl/tsKEg2pHUXZzp1STA' },
   { label: 'Book Appointment', path: '/book' },
 ];
 
@@ -91,7 +92,7 @@ const Header = () => {
 
         {/* Desktop Nav */}
         {!isMobile && (
-          <Box sx={{ display: 'flex', gap: 2 }}>
+          <Box sx={{ display: 'flex', gap: 1 }}>
             {menuItems.map(({ label, path }) => (
               <Button
                 key={label}

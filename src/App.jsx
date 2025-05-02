@@ -26,7 +26,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Nunito-Sans","Roboto", "Helvetica", "Arial", sans-serif',
     button: {
       textTransform: 'none',
       fontWeight: 600,
@@ -52,9 +52,9 @@ const theme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} className="font-[Nunito_Sans]">
       <CssBaseline />
-      <Router>
+      <Router >
         <Header />
         <Approutes />
         <Footer />

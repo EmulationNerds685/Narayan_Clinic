@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import { Box, Typography, Button, IconButton } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
