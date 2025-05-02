@@ -22,7 +22,7 @@ const doctors = [
   {
     name: 'Dr. Jagriti Bhardwaj',
     specialty: 'Gynecologist & Obstetrician',
-    image: 'doctor_sample.jpg',
+    image: 'jbp.png',
     qualifications: 'MBBS (SNMC, Agra), MS (OBG, PGIMS), DNB (OBG)',
     experience: 'SIR Ganga Ram Hospital, New Delhi\nEx. Senior, PGIMS New Delhi\nEx. Assistant Professor, HIMS, Dehradun',
     specializations: 'Laparoscopic Surgeon, Infertility Specialist',
