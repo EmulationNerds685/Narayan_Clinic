@@ -5,15 +5,14 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Approutes from "./Routes/AppRoutes";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#072AC8',
-      contrastText: '#ffffff',
+      main: '#C00008',           // updated main color
+      contrastText: '#ffffff',   // white text for contrast
     },
     secondary: {
-      main: '#F49D37', // complementary warm secondary (orange-gold), feel free to swap
+      main: '#F49D37',           // keep secondary unless you want to adjust
       contrastText: '#ffffff',
     },
     background: {
@@ -26,7 +25,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Nunito-Sans","Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Poppins", "Roboto", "Helvetica", "Arial", sans-serif',
     button: {
       textTransform: 'none',
       fontWeight: 600,
@@ -43,7 +42,7 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: '#072AC8',
+          backgroundColor: '#C00008', // updated to match new primary
         },
       },
     },

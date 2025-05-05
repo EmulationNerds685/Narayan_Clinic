@@ -7,6 +7,7 @@ import WhyChooseUs from "../components/ChooseUs";
 import { motion } from "framer-motion";
 
 import Herocarousel from "../components/Herocarousel";
+import NewDoc from "../components/newDOC.JSX";
 
 
 
@@ -44,7 +45,7 @@ const HomePage = () => {
         ><Box sx={{marginTop:"10px",marginBottom:"10px"}}>
           <DoctorsSection /></Box>
         </motion.div>
-
+        <NewDoc/>
         <motion.div
           variants={fadeIn}
           initial="hidden"

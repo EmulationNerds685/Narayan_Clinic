@@ -72,7 +72,7 @@ const Herocarousel = () => {
   });
 
   return (
-    <Box className="relative h-[60vh] overflow-hidden" {...handlers}>
+    <Box className=" relative h-[100vh] overflow-hidden" {...handlers}>
   <AnimatePresence initial={false} mode="wait">
   <motion.div
     key={current}
@@ -83,7 +83,7 @@ const Herocarousel = () => {
     style={{
       backgroundImage: `url(${slides[current].image})`,
     }}
-    className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-center px-4 bg-cover bg-center"
+    className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-center px-1 bg-cover bg-center"
   >
     <Box className="z-[2] text-white">
       <Typography variant="h3" fontWeight="bold" gutterBottom>
@@ -146,7 +146,7 @@ const Herocarousel = () => {
         {slides.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full ${index === current ? 'bg-white' : 'bg-gray-400'} transition-all duration-300`}
+            className={`w-3 h-3 rounded-full ${index === current ? 'bg-red-400' : 'bg-gray-400'} transition-all duration-300`}
             onClick={() => setCurrent(index)}
           />
         ))}

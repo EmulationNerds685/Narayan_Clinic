@@ -61,7 +61,7 @@ const Header = () => {
             sx={{
               color: '#fff',
               fontWeight: 'bold',
-              fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' },
+              fontSize: { xs: '1rem', sm: '1.25rem', md: '1rem' },
             }}
           >
             Narayan Heart & Maternity Center
