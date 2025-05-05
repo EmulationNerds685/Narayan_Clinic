@@ -7,9 +7,8 @@ import WhyChooseUs from "../components/ChooseUs";
 import { motion } from "framer-motion";
 
 import Herocarousel from "../components/Herocarousel";
-import NewDoc from "../components/newDOC.JSX";
 
-
+import Doctor from "../components/Doctor";
 
 const fadeIn = {
   hidden: { opacity: 0 },
@@ -17,23 +16,21 @@ const fadeIn = {
 };
 
 const HomePage = () => {
-  
-
   return (
     <motion.div initial="hidden" animate="visible" variants={fadeIn}>
       <Box sx={{ padding: "15px 0 0 0" }}>
-       <Box sx={{marginTop:"10px",marginBottom:"10px"}}>
-
-        <Herocarousel />
-       </Box>
+        <Box sx={{ marginTop: "10px", marginBottom: "10px" }}>
+          <Herocarousel />
+        </Box>
 
         <motion.div
           variants={fadeIn}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-        ><Box sx={{marginTop:"10px",marginBottom:"10px"}}>
-          <ServicesSection />
+        >
+          <Box sx={{ marginTop: "10px", marginBottom: "10px" }}>
+            <ServicesSection />
           </Box>
         </motion.div>
 
@@ -42,17 +39,21 @@ const HomePage = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-        ><Box sx={{marginTop:"10px",marginBottom:"10px"}}>
-          <DoctorsSection /></Box>
+        >
+          <Box sx={{ marginTop: "10px", marginBottom: "10px" }}>
+            <DoctorsSection />
+          </Box>
         </motion.div>
-        <NewDoc/>
+        <Doctor />
         <motion.div
           variants={fadeIn}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-        ><Box sx={{marginTop:"10px",marginBottom:"10px"}}>
-          <WhyChooseUs /></Box>
+        >
+          <Box sx={{ marginTop: "10px", marginBottom: "10px" }}>
+            <WhyChooseUs />
+          </Box>
         </motion.div>
       </Box>
     </motion.div>

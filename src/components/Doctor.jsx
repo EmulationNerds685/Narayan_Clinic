@@ -18,7 +18,7 @@ const doctors = [
   },
 ];
 
-const NewDoc = () => {
+const Doctor = () => {
   return (
     <div className="flex flex-col gap-10 !py-10">
       {doctors.map((doc, index) => (
@@ -43,4 +43,4 @@ const NewDoc = () => {
   );
 };
 
-export default NewDoc;
+export default Doctor;
