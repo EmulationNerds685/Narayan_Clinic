@@ -25,6 +25,7 @@ function Appointment() {
     name: "",
     phoneNumber: "",
     address: "",
+    service:"",
     appointmentDate: "",
     timeSlot: "",
   });
@@ -59,6 +60,7 @@ function Appointment() {
         name: "",
         phoneNumber: "",
         address: "",
+        service:"",
         appointmentDate: "",
         timeSlot: "",
       });
@@ -138,6 +140,14 @@ function Appointment() {
             inputProps={{ min: today }}
             sx={{ mb: 2 }}
           />
+          <FormControl fullWidth sx={{ mb: 2 }}>
+            <InputLabel>What Do You Need Help With?</InputLabel>
+            <Select name="service" value={formData.service} onChange={handleChange} required>
+              <MenuItem value="">Pick a Specialist</MenuItem>
+              <MenuItem value="Cardiologist">Cardiologist</MenuItem>
+              <MenuItem value="Gynaecologist">Gynaecologist</MenuItem>
+                      </Select>
+          </FormControl>
           <FormControl fullWidth sx={{ mb: 2 }}>
             <InputLabel>Time Slot</InputLabel>
             <Select name="timeSlot" value={formData.timeSlot} onChange={handleChange} required>
