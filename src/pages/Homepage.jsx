@@ -7,6 +7,7 @@ import WhyChooseUs from "../components/ChooseUs";
 import { motion } from "framer-motion";
 
 import Herocarousel from "../components/Herocarousel";
+import ServiceCards from "./ServiceCards";
 
 
 
@@ -44,7 +45,9 @@ const HomePage = () => {
             <DoctorsSection />
           </Box>
         </motion.div>
-        
+        <div className="bg-gray-100 min-h-screen">
+      <ServiceCards />
+    </div>
         <motion.div
           variants={fadeIn}
           initial="hidden"
