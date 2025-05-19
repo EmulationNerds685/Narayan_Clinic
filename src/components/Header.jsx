@@ -46,7 +46,7 @@ const Header = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: theme.palette.primary.main }}>
+    <AppBar position="sticky" sx={{ backgroundColor: theme.palette.primary.main }}>
       <Toolbar sx={{ justifyContent: 'space-between', flexWrap: 'wrap', gap: 1 }}>
         {/* Logo + Title */}
         <Stack direction="row" alignItems="center" spacing={2}>
