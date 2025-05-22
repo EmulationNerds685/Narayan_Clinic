@@ -8,6 +8,19 @@ import { useSwipeable } from 'react-swipeable';
 
 const slides = [
   {
+    title: 'Advanced Cardiac Diagnostics',
+    subtitle: 'ECG, ECHO, TMT & more — early detection, better outcomes.',
+    buttonText: 'View Heart Tests',
+    image: '/ECGimage.png',
+    link: '/Cardioservices',
+  },
+  {
+    title: 'Preventive & Follow-up Cardiology',
+    subtitle: 'Manage risk, adjust treatment, and stay heart healthy.',
+    buttonText: 'Cardiology Follow-up',
+    image: '/9802344.jpg',
+    link: '/Cardioservices',
+  }, {
     title: 'Comprehensive Antenatal Care',
     subtitle: 'Safe and personalized pregnancy monitoring with expert support.',
     buttonText: 'Learn About ANC',
@@ -28,20 +41,7 @@ const slides = [
     image: '/gyno.jpg',
     link: '/Gynoservices',
   },
-  {
-    title: 'Advanced Cardiac Diagnostics',
-    subtitle: 'ECG, ECHO, TMT & more — early detection, better outcomes.',
-    buttonText: 'View Heart Tests',
-    image: '/7118254.jpg',
-    link: '/Cardioservices',
-  },
-  {
-    title: 'Preventive & Follow-up Cardiology',
-    subtitle: 'Manage risk, adjust treatment, and stay heart healthy.',
-    buttonText: 'Cardiology Follow-up',
-    image: '/9802344.jpg',
-    link: '/Cardioservices',
-  },
+ 
 ];
 
 

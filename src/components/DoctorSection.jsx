@@ -16,7 +16,7 @@ const doctors = [
     name: 'Dr. Sushant Kumar Pathak',
     specialty: 'Interventional Cardiologist',
     image: 'skp.jpg',
-    qualifications: 'MBBS (Kolkata), MD (Medicine, PMCH Patna) - Gold Medalist, DM (Cardiology, IGP, ME & R)',
+    qualifications: 'MBBS (Kolkata), MD (Medicine, PMCH Patna) - Gold Medalist, DM (Cardiology, IPGME&R)',
     experience: 'Senior Consultant, Ford Hospital, Patna\nAssistant Director, IGIC, PMCH',
   },
   {

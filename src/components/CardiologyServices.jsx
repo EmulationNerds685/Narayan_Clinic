@@ -14,12 +14,11 @@ const cardiologyServices = [
   { title: 'Echocardiogram', description: 'Ultrasound of the heart to assess structure and function.' },
   { title: 'Stress Test', description: 'Measures heart function under physical stress.' },
   { title: '24-Hour Holter Monitoring', description: 'Continuous heart rhythm monitoring for 24 hours.' },
-  { title: 'Cardiac MRI & CT', description: 'Advanced imaging of heart and blood vessels.' },
   { title: 'Heart Disease Risk Assessment', description: 'Evaluates your risk of developing heart disease.' },
-  { title: 'Interventional Cardiology Consultation', description: 'Expert advice on procedures like angioplasty.' },
+  { title: 'Interventional Cardiology Consultation', description: 'Expert advice on procedures like angioplasty. coronary and peripheral angiography, angioplasty, BMV,Pacemaker,CRTP,TAVI,EVAR,Treatment of limb ischemia, electrophysiology' },
   { title: 'Lifestyle & Nutritional Counseling', description: 'Heart-healthy lifestyle and diet plans.' },
   { title: 'Pacemaker & Device Monitoring', description: 'Ongoing management of implanted heart devices.' },
-  { title: 'Hypertension & Cholesterol Management', description: 'Treatment and monitoring of high BP & lipids.' },
+  { title: 'Hypertension,Diabetes & Cholesterol Management', description: 'Treatment and monitoring of high BP & lipids.' },
 ];
 
 const CardiologyServices = () => {

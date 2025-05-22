@@ -32,18 +32,17 @@ const Services = () => {
       icon: <FavoriteIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
       description:
         'Our cardiology department provides state-of-the-art diagnostics and treatment for a wide range of cardiovascular conditions. We focus on early detection, prevention, and personalized treatment plans.',
-      services: [
-        { title: 'Electrocardiogram (ECG)', description: 'Records the electrical activity of your heart.' },
-        { title: 'Echocardiogram', description: 'Ultrasound of the heart to assess structure and function.' },
-        { title: 'Stress Test', description: 'Measures heart function under physical stress.' },
-        { title: '24-Hour Holter Monitoring', description: 'Continuous heart rhythm monitoring for 24 hours.' },
-        { title: 'Cardiac MRI & CT', description: 'Advanced imaging of heart and blood vessels.' },
-        { title: 'Heart Disease Risk Assessment', description: 'Evaluates your risk of developing heart disease.' },
-        { title: 'Interventional Cardiology Consultation', description: 'Expert advice on procedures like angioplasty.' },
-        { title: 'Lifestyle & Nutritional Counseling', description: 'Heart-healthy lifestyle and diet plans.' },
-        { title: 'Pacemaker & Device Monitoring', description: 'Ongoing management of implanted heart devices.' },
-        { title: 'Hypertension & Cholesterol Management', description: 'Treatment and monitoring of high BP & lipids.' },
-      ],
+      services:[
+  { title: 'Electrocardiogram (ECG)', description: 'Records the electrical activity of your heart.' },
+  { title: 'Echocardiogram', description: 'Ultrasound of the heart to assess structure and function.' },
+  { title: 'Stress Test', description: 'Measures heart function under physical stress.' },
+  { title: '24-Hour Holter Monitoring', description: 'Continuous heart rhythm monitoring for 24 hours.' },
+  { title: 'Heart Disease Risk Assessment', description: 'Evaluates your risk of developing heart disease.' },
+  { title: 'Interventional Cardiology Consultation', description: 'Expert advice on procedures like angioplasty.     coronary and peripheral angiography, angioplasty, BMV,Pacemaker,CRTP,TAVI,EVAR,Treatment of limb ischemia, electrophysiology' },
+  { title: 'Lifestyle & Nutritional Counseling', description: 'Heart-healthy lifestyle and diet plans.' },
+  { title: 'Pacemaker & Device Monitoring', description: 'Ongoing management of implanted heart devices.' },
+  { title: 'Hypertension,Diabetes & Cholesterol Management', description: 'Treatment and monitoring of high BP & lipids.' },
+],
       id: 'cardiology',
     },
     {
@@ -104,8 +103,8 @@ const Services = () => {
         <Grid container spacing={6} justifyContent="center">
           {specialities.map((item) => (
             <Grid item xs={12} sm={6} key={item.id}>
-              <motion.div variants={cardVariants} whileHover={{ scale: 1.03 }}>
-                <Card className="text-center shadow-md hover:shadow-lg transition duration-300 h-full">
+              <motion.div variants={cardVariants} whileHover={{ scale: 1.02 }}>
+                <Card className="text-center shadow-md hover:shadow-lg transition duration-300 !h-full">
                   <CardMedia className="!pt-6">{item.icon}</CardMedia>
                   <CardContent>
                     <Typography variant="h6" className="!mt-2 font-semibold text-primary">
@@ -124,7 +123,7 @@ const Services = () => {
                     </Button>
 
                     <Collapse in={expanded === item.id} timeout="auto" unmountOnExit>
-                      <Box sx={{ mt: 3, maxHeight: 400, overflowY: 'auto' }}>
+                      <Box sx={{ mt: 3, maxHeight: 600, overflowY: 'auto' }}>
                         <Grid container spacing={2}>
                           {item.services.map((service, idx) => (
                             <Grid item xs={12} sm={6} key={idx}>

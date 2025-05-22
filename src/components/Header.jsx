@@ -64,7 +64,7 @@ const Header = () => {
               fontSize: { xs: '1rem', sm: '1.25rem', md: '1rem' },
             }}
           >
-            Narayan Heart & Maternity Center
+            Narayan Heart & Maternity Centre
           </Typography>
         </Stack>
 

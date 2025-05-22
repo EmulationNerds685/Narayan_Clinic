@@ -8,7 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#C00008',           // updated main color
+      main: '#30638E',           // updated main color
       contrastText: '#ffffff',   // white text for contrast
     },
     secondary: {
@@ -42,7 +42,7 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: '#C00008', // updated to match new primary
+          backgroundColor: '#30638E', // updated to match new primary
         },
       },
     },

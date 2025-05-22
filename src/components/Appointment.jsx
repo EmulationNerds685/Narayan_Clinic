@@ -170,7 +170,7 @@ function Appointment() {
             type="submit"
             variant="contained"
             fullWidth
-            sx={{ backgroundColor: "#26415E", color: "white", "&:hover": { backgroundColor: "#4A6B8A" } }}
+            sx={{ backgroundColor: "#C00008", color: "white", "&:hover": { backgroundColor: "#800005" } }}
             disabled={!agreedToTerms || loading}
           >
             {loading ? <CircularProgress size={24} color="primary" /> : "Book Appointment"}

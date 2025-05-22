@@ -33,7 +33,7 @@ const Footer = () => {
                 alt="Logo"
                 style={{ height: 30, width: "auto" }}
               />
-              Narayan Heart & Maternity Center
+              Narayan Heart & Maternity Centre
             </Typography>
             <Typography variant="body2" sx={{ mt: 1 }}>
               Providing compassionate care with a specialized team in cardiology
@@ -106,7 +106,7 @@ const Footer = () => {
         {/* Divider + Copyright */}
         <Divider sx={{ my: 3, borderColor: "rgba(255,255,255,0.3)" }} />
         <Typography variant="body2" align="center">
-          © {new Date().getFullYear()} Narayan Heart & Maternity Center All
+          © {new Date().getFullYear()} Narayan Heart & Maternity Centre All
           rights reserved.
         </Typography>
       </Container>

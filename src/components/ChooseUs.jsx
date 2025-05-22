@@ -83,7 +83,7 @@ const WhyChooseUs = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <Grid container spacing={10} justifyContent="center">
+        <Grid container spacing={5} justifyContent="center">
           {addresss.map((item, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <motion.div variants={cardVariants} whileHover={{ scale: 1.05 }}>

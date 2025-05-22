@@ -7,6 +7,7 @@ import Appointment from '../components/Appointment'
 import CardiologyServices from '../components/CardiologyServices'
 import GynecologyServices from '../components/GynecologyServices'
 import LearnANCSection from '../pages/LearnANCSection'
+import DoctorsSection from '../components/DoctorSection'
 const Approutes=()=>{
 return (
     <Routes>
@@ -17,6 +18,7 @@ return (
         <Route path='/Cardioservices' element={<CardiologyServices/>} />
         <Route path='/Gynoservices' element={<GynecologyServices/>} />
         <Route path='/anc' element={<LearnANCSection/>} />
+        <Route path='/doctors' element={<DoctorsSection/>} />
         <Route path='/book' element={<Appointment/>} />
     </Routes>
 )
