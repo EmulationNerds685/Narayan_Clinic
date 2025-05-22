@@ -12,7 +12,7 @@ const slides = [
     subtitle: 'Safe and personalized pregnancy monitoring with expert support.',
     buttonText: 'Learn About ANC',
     image: '/maternity_img.jpg',
-    link: '/Gynoservices',
+    link: '/anc',
   },
   {
     title: 'Postnatal & Breastfeeding Support',
