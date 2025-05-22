@@ -9,17 +9,18 @@ import {
   CardMedia,
   Collapse,
   Button,
-  useTheme,
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FemaleIcon from '@mui/icons-material/Female';
-import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
+import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { motion } from 'framer-motion';
 
+
+const primaryColor = '#C00008';
+
 const Services = () => {
-  const theme = useTheme();
   const [expanded, setExpanded] = useState(null);
 
   const toggleExpand = (card) => {
@@ -29,25 +30,38 @@ const Services = () => {
   const specialities = [
     {
       title: 'Cardiology',
-      icon: <FavoriteIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
+      icon: <FavoriteIcon sx={{ fontSize: 50, color: primaryColor }} />,
       description:
         'Our cardiology department provides state-of-the-art diagnostics and treatment for a wide range of cardiovascular conditions. We focus on early detection, prevention, and personalized treatment plans.',
-      services:[
-  { title: 'Electrocardiogram (ECG)', description: 'Records the electrical activity of your heart.' },
-  { title: 'Echocardiogram', description: 'Ultrasound of the heart to assess structure and function.' },
-  { title: 'Stress Test', description: 'Measures heart function under physical stress.' },
-  { title: '24-Hour Holter Monitoring', description: 'Continuous heart rhythm monitoring for 24 hours.' },
-  { title: 'Heart Disease Risk Assessment', description: 'Evaluates your risk of developing heart disease.' },
-  { title: 'Interventional Cardiology Consultation', description: 'Expert advice on procedures like angioplasty.     coronary and peripheral angiography, angioplasty, BMV,Pacemaker,CRTP,TAVI,EVAR,Treatment of limb ischemia, electrophysiology' },
-  { title: 'Lifestyle & Nutritional Counseling', description: 'Heart-healthy lifestyle and diet plans.' },
-  { title: 'Pacemaker & Device Monitoring', description: 'Ongoing management of implanted heart devices.' },
-  { title: 'Hypertension,Diabetes & Cholesterol Management', description: 'Treatment and monitoring of high BP & lipids.' },
-],
+      services: [
+        { title: 'Electrocardiogram (ECG)', description: 'Records the electrical activity of your heart.' },
+        { title: 'Echocardiogram', description: 'Ultrasound of the heart to assess structure and function.' },
+        { title: 'Stress Test', description: 'Measures heart function under physical stress.' },
+        { title: '24-Hour Holter Monitoring', description: 'Continuous heart rhythm monitoring for 24 hours.' },
+        { title: 'Heart Disease Risk Assessment', description: 'Evaluates your risk of developing heart disease.' },
+        {
+          title: 'Interventional Cardiology Consultation',
+          description: [
+            'Angioplasty',
+            'Coronary and Peripheral Angiography',
+            'BMV (Balloon Mitral Valvotomy)',
+            'Pacemaker Implantation',
+            'CRTP (Cardiac Resynchronization Therapy Pacemaker)',
+            'TAVI (Transcatheter Aortic Valve Implantation)',
+            'EVAR (Endovascular Aneurysm Repair)',
+            'Treatment of Limb Ischemia',
+            'Electrophysiology Studies'
+          ],
+        },
+        { title: 'Lifestyle & Nutritional Counseling', description: 'Heart-healthy lifestyle and diet plans.' },
+        { title: 'Pacemaker & Device Monitoring', description: 'Ongoing management of implanted heart devices.' },
+        { title: 'Hypertension, Diabetes & Cholesterol Management', description: 'Treatment and monitoring of high BP & lipids.' },
+      ],
       id: 'cardiology',
     },
     {
       title: 'Gynecology',
-      icon: <FemaleIcon sx={{ fontSize: 50, color: theme.palette.primary.main }} />,
+      icon: <FemaleIcon sx={{ fontSize: 50, color: primaryColor }} />,
       description:
         'We offer a full spectrum of women’s health services, including routine exams, prenatal care, fertility evaluation, and menopause management. Our team is dedicated to providing compassionate, confidential care.',
       services: [
@@ -88,8 +102,8 @@ const Services = () => {
     <Box className="!px-4 !py-20 bg-gray-50" sx={{ marginTop: '20px', marginBottom: '20px' }}>
       <Typography
         variant="h4"
-        className="text-center font-extrabold text-[#C00008] !mb-10"
-        sx={{ margin: '20px' }}
+        className="text-center font-extrabold !mb-10"
+        sx={{ color: primaryColor, margin: '20px' }}
       >
         Our Specialities
       </Typography>
@@ -107,7 +121,11 @@ const Services = () => {
                 <Card className="text-center shadow-md hover:shadow-lg transition duration-300 !h-full">
                   <CardMedia className="!pt-6">{item.icon}</CardMedia>
                   <CardContent>
-                    <Typography variant="h6" className="!mt-2 font-semibold text-primary">
+                    <Typography
+                      variant="h6"
+                      className="!mt-2 font-semibold"
+                      sx={{ color: primaryColor }}
+                    >
                       {item.title}
                     </Typography>
                     <Typography variant="body2" className="!mt-1 text-gray-700 !mb-4">
@@ -117,7 +135,13 @@ const Services = () => {
                     <Button
                       onClick={() => toggleExpand(item.id)}
                       endIcon={expanded === item.id ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-                      sx={{ textTransform: 'none' }}
+                      sx={{
+                        textTransform: 'none',
+                        color: primaryColor,
+                        '&:hover': {
+                          backgroundColor: '#FDE6E6',
+                        },
+                      }}
                     >
                       {expanded === item.id ? 'Hide Services' : 'View Services'}
                     </Button>
@@ -129,16 +153,25 @@ const Services = () => {
                             <Grid item xs={12} sm={6} key={idx}>
                               <Card variant="outlined" sx={{ height: '100%' }}>
                                 <CardContent>
-                                  <MedicalServicesIcon
-                                    color="primary"
-                                    sx={{ fontSize: 30, mb: 1 }}
-                                  />
+                                <MonitorHeartIcon/>
                                   <Typography variant="subtitle1" fontWeight={600}>
                                     {service.title}
                                   </Typography>
-                                  <Typography variant="body2" color="text.secondary">
-                                    {service.description}
-                                  </Typography>
+
+                                  {/* Conditional rendering of string vs list */}
+                                  {Array.isArray(service.description) ? (
+                                    <ul style={{ paddingLeft: '20px', marginTop: '8px' }}>
+                                      {service.description.map((item, subIdx) => (
+                                        <li key={subIdx} style={{ fontSize: '0.875rem', color: '#555' }}>
+                                          {item}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  ) : (
+                                    <Typography variant="body2" color="text.secondary">
+                                      {service.description}
+                                    </Typography>
+                                  )}
                                 </CardContent>
                               </Card>
                             </Grid>

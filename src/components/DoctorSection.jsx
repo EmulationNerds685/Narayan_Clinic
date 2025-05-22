@@ -7,9 +7,10 @@ import {
   CardMedia,
   Typography,
   Grid,
-  useTheme,
 } from '@mui/material';
 import { motion } from 'framer-motion';
+
+const primaryColor = '#C00008';
 
 const doctors = [
   {
@@ -48,16 +49,14 @@ const cardVariants = {
 };
 
 const DoctorsSection = () => {
-  const theme = useTheme();
-
   return (
-    <Box sx={{ padding: 4, backgroundColor: theme.palette.background.default }}>
+    <Box sx={{ padding: 4, backgroundColor: '#f9f9f9' }}>
       <Typography
         variant="h4"
         sx={{
           textAlign: 'center',
           mb: 4,
-          color: theme.palette.primary.dark,
+          color: primaryColor,
           fontWeight: 'bold',
         }}
       >
@@ -92,7 +91,7 @@ const DoctorsSection = () => {
                     <Typography
                       gutterBottom
                       variant="h6"
-                      sx={{ color: theme.palette.primary.main }}
+                      sx={{ color: primaryColor }}
                     >
                       {doc.name}
                     </Typography>

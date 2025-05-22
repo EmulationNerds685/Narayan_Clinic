@@ -15,6 +15,10 @@ import FeedbackDialog from '../components/Feedback';
 const Contact = () => {
   const theme = useTheme();
   const backendURL = import.meta.env.VITE_BACKEND_URL;
+const [feedbackData, setFeedbackData] = useState({
+  name: '',
+  feedback: '',
+});
 
   const [formData, setFormData] = useState({
     name: '',
@@ -129,22 +133,94 @@ const Contact = () => {
                 value={formData.message}
                 onChange={handleChange}
               />
-              <Button
-                type="submit"
-                variant="contained"
-                fullWidth
-                sx={{
-                  backgroundColor: theme.palette.primary.main,
-                  color: theme.palette.primary.contrastText,
-                  '&:hover': {
-                    backgroundColor: theme.palette.primary.dark,
-                  },
-                }}
-              >
-                Send Message
-              </Button>
+                <Button
+  type="submit"
+  variant="outlined"
+  fullWidth
+  sx={{
+    color: theme.palette.primary.main,
+    borderColor: theme.palette.primary.main,
+    '&:hover': {
+      backgroundColor: '#30638E',
+      color: '#ffffff',
+      borderColor: '#30638E',
+    },
+  }}
+>
+  Send Message
+</Button>
             </Box>
           </Paper>
+          <Grid item xs={12} md={6}>
+  <Paper elevation={3} className="!p-6 space-y-4">
+    <Typography
+      variant="h6"
+      className="!mb-4 font-semibold"
+      sx={{ color: theme.palette.primary.main }}
+    >
+      Give Us Your Feedback
+    </Typography>
+
+    <Box
+      component="form"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        try {
+          const result = await axios.post(`${backendURL}/feedback`, feedbackData);
+          setResponse(result.data.message || 'Feedback submitted successfully!');
+          setIsError(false);
+        } catch (err) {
+          console.error(err);
+          setResponse('There was an error submitting your feedback.');
+          setIsError(true);
+        } finally {
+          setDialogOpen(true);
+          setFeedbackData({ name: '', feedback: '' });
+        }
+      }}
+      className="space-y-4"
+    >
+      <TextField
+        fullWidth
+        label="Your Name"
+        name="name"
+        required
+        value={feedbackData.name}
+        onChange={(e) => setFeedbackData({ ...feedbackData, name: e.target.value })}
+      className="!mb-4"
+      />
+      <TextField
+      className="!mb-4"
+        fullWidth
+        label="Your Feedback"
+        name="feedback"
+        required
+        multiline
+        rows={4}
+        value={feedbackData.feedback}
+        onChange={(e) => setFeedbackData({ ...feedbackData, feedback: e.target.value })}
+      />
+    <Button
+  type="submit"
+  variant="outlined"
+  fullWidth
+  sx={{
+    color: theme.palette.primary.main,
+    borderColor: theme.palette.primary.main,
+    '&:hover': {
+      backgroundColor: '#30638E',
+      color: '#ffffff',
+      borderColor: '#30638E',
+    },
+  }}
+>
+  Submit Feedback
+</Button>
+
+    </Box>
+  </Paper>
+</Grid>
+
         </Grid>
 
         {/* Contact Form */}

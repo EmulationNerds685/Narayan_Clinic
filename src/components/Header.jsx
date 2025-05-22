@@ -56,6 +56,7 @@ const Header = () => {
             alt="Logo"
             sx={{ height: 40, width: 'auto' }}
           />
+          <Link to ="/">
           <Typography
             variant="h6"
             sx={{
@@ -63,9 +64,10 @@ const Header = () => {
               fontWeight: 'bold',
               fontSize: { xs: '1rem', sm: '1.25rem', md: '1rem' },
             }}
-          >
+            >
             Narayan Heart & Maternity Centre
           </Typography>
+            </Link>
         </Stack>
 
         {/* Phone Section */}
