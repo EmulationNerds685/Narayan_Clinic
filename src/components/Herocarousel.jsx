@@ -1,10 +1,7 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
-import { Box, Typography, Button, IconButton } from '@mui/material';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
+import { Link } from 'react-router-dom';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const slides = [
   {
@@ -20,7 +17,8 @@ const slides = [
     buttonText: 'Cardiology Follow-up',
     image: '/9802344.jpg',
     link: '/Cardioservices',
-  }, {
+  },
+  {
     title: 'Comprehensive Antenatal Care',
     subtitle: 'Safe and personalized pregnancy monitoring with expert support.',
     buttonText: 'Learn About ANC',
@@ -41,9 +39,7 @@ const slides = [
     image: '/gyno.jpg',
     link: '/Gynoservices',
   },
- 
 ];
-
 
 const Herocarousel = () => {
   const [current, setCurrent] = useState(0);
@@ -53,9 +49,7 @@ const Herocarousel = () => {
   const prevSlide = () => setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
 
   const resetTimeout = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
   };
 
   useEffect(() => {
@@ -72,86 +66,49 @@ const Herocarousel = () => {
   });
 
   return (
-    <Box className=" relative h-[100vh] overflow-hidden" {...handlers}>
-  <AnimatePresence initial={false} mode="wait">
-  <motion.div
-    key={current}
-    initial={{ x: 300, opacity: 0 }}
-    animate={{ x: 0, opacity: 1 }}
-    exit={{ x: -300, opacity: 0 }}
-    transition={{ duration: 0.6 }}
-    style={{
-      backgroundImage: `url(${slides[current].image})`,
-    }}
-    className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-center px-1 bg-cover bg-center"
-  >
-    <Box className="z-[2] text-white">
-      <Typography variant="h3" fontWeight="bold" gutterBottom>
-        {slides[current].title}
-      </Typography>
-      <Typography variant="h6" gutterBottom>
-        {slides[current].subtitle}
-      </Typography>
-      <Link to={slides[current].link} style={{ textDecoration: 'none' }}>
-        <Button variant="contained" sx={{ mt: 2, borderRadius: 20 }}>
-          {slides[current].buttonText}
-        </Button>
-      </Link>
-    </Box>
-  </motion.div>
-</AnimatePresence>
-
-        
+    <div className="relative h-screen w-full overflow-hidden" {...handlers}>
+      <div
+        style={{ backgroundImage: `url(${slides[current].image})` }}
+        className="absolute top-0 left-0 w-full h-full bg-cover bg-center flex items-center justify-center text-center !px-4"
+      >
+        <div className="z-20 bg-black/60 !p-6 rounded-lg max-w-xl text-white">
+          <h2 className="text-3xl font-bold !mb-2">{slides[current].title}</h2>
+          <p className="text-lg mb-4">{slides[current].subtitle}</p>
+          <Link to={slides[current].link}>
+            <button className="bg-red-500 hover:bg-red-600 text-white !px-6 !py-2 rounded-full font-medium transition">
+              {slides[current].buttonText}
+            </button>
+          </Link>
+        </div>
+      </div>
 
       {/* Arrows */}
-      <IconButton
-  onClick={prevSlide}
-  sx={{
-    position: 'absolute',
-    top: '50%',
-    left: '1rem',
-    transform: 'translateY(-50%)',
-    zIndex: 3,
-    backgroundColor: 'rgba(0,0,0,0.6)',
-    color: '#fff',
-    '&:hover': {
-      backgroundColor: 'rgba(0,0,0,0.8)',
-    },
-  }}
->
-  <ArrowBackIos />
-</IconButton>
-
-<IconButton
-  onClick={nextSlide}
-  sx={{
-    position: 'absolute',
-    top: '50%',
-    right: '1rem',
-    transform: 'translateY(-50%)',
-    zIndex: 3,
-    backgroundColor: 'rgba(0,0,0,0.6)',
-    color: '#fff',
-    '&:hover': {
-      backgroundColor: 'rgba(0,0,0,0.8)',
-    },
-  }}
->
-  <ArrowForwardIos />
-</IconButton>
-
+      <button
+        onClick={prevSlide}
+        className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white !p-2 rounded-full z-30"
+      >
+        <ChevronLeft size={24} />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white !p-2 rounded-full z-30"
+      >
+        <ChevronRight size={24} />
+      </button>
 
       {/* Dots */}
-      <Box className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-[3] flex gap-2">
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-30">
         {slides.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full ${index === current ? 'bg-red-400' : 'bg-gray-400'} transition-all duration-300`}
             onClick={() => setCurrent(index)}
+            className={`h-2 w-2 rounded-full transition-all duration-300 ${
+              index === current ? 'bg-red-400 w-4' : 'bg-gray-400'
+            }`}
           />
         ))}
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 
