@@ -1,108 +1,97 @@
 import React from 'react';
 import {
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  Box,
-} from '@mui/material';
-import FemaleIcon from '@mui/icons-material/Female';
-import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
-import ChildCareIcon from '@mui/icons-material/ChildCare';
-import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import OpacityIcon from '@mui/icons-material/Opacity';
-import PregnantWomanIcon from '@mui/icons-material/PregnantWoman';
-import ScienceIcon from '@mui/icons-material/Science';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
+  FaFemale,
+  FaChild,
+  FaShieldAlt,
+  FaHeart,
+  FaTint,
+  FaFlask,
+  FaCheckCircle,
+  FaHeartbeat,
+  FaUserNurse,
+  FaEye,
+  FaStethoscope,
+} from 'react-icons/fa';
+
+const iconColor = '#C00008';
 
 const gynecologyServices = [
   {
     title: 'Prenatal & Postnatal Care',
     description: 'Comprehensive care before and after childbirth.',
-    icon: <ChildCareIcon sx={{ color: '#C00008' }} />,
+    icon: <FaChild size={40} color={iconColor} />,
   },
   {
     title: 'Annual Pelvic Exam & Pap Smear',
     description: 'Routine screening for women’s reproductive health.',
-    icon: <HealthAndSafetyIcon sx={{ color: '#C00008' }} />,
+    icon: <FaShieldAlt size={40} color={iconColor} />,
   },
   {
     title: 'Fertility Assessment & Treatment',
     description: 'Evaluation and assistance for conception.',
-    icon: <FavoriteIcon sx={{ color: '#C00008' }} />,
+    icon: <FaHeart size={40} color={iconColor} />,
   },
   {
     title: 'Menstrual Disorder Management',
     description: 'Treatment for irregular or painful periods.',
-    icon: <OpacityIcon sx={{ color: '#C00008' }} />,
+    icon: <FaTint size={40} color={iconColor} />,
   },
   {
     title: 'PCOS Support',
     description: 'Diagnosis and management of Polycystic Ovary Syndrome.',
-    icon: <ScienceIcon sx={{ color: '#C00008' }} />,
+    icon: <FaFlask size={40} color={iconColor} />,
   },
   {
     title: 'Birth Control Counseling',
     description: 'Guidance on contraceptive methods.',
-    icon: <CheckCircleIcon sx={{ color: '#C00008' }} />,
+    icon: <FaCheckCircle size={40} color={iconColor} />,
   },
   {
     title: 'Menopause & Hormone Therapy',
     description: 'Support through hormonal changes.',
-    icon: <MonitorHeartIcon sx={{ color: '#C00008' }} />,
+    icon: <FaHeartbeat size={40} color={iconColor} />,
   },
   {
     title: 'Minimally Invasive Surgery',
     description: 'Advanced surgical solutions with minimal downtime.',
-    icon: <PregnantWomanIcon sx={{ color: '#C00008' }} />,
+    icon: <FaUserNurse size={40} color={iconColor} />,
   },
   {
     title: 'STD Testing',
     description: 'Confidential and accurate screening for STDs.',
-    icon: <VisibilityIcon sx={{ color: '#C00008' }} />,
+    icon: <FaEye size={40} color={iconColor} />,
   },
   {
     title: 'Ultrasound & Imaging',
     description: 'Imaging for diagnosis and monitoring.',
-    icon: <MedicalServicesIcon sx={{ color: '#C00008' }} />,
+    icon: <FaStethoscope size={40} color={iconColor} />,
   },
 ];
 
 const GynecologyServices = () => {
   return (
-    <Box className="!py-10 !px-4 bg-white">
-      <Typography variant="h4" className="text-center text-[#C00008] font-bold !mb-6">
+    <section className="!py-10 !px-4 bg-white">
+      <h2 className="text-center text-[#C00008] font-bold text-3xl !mb-8">
         Gynecology Services
-      </Typography>
+      </h2>
 
-     <Box className="flex justify-center !mb-6">
-  <FemaleIcon sx={{ fontSize: 60, color: '#C00008' }} />
-</Box>
+      <div className="flex justify-center !mb-8">
+        <FaFemale size={60} color={iconColor} />
+      </div>
 
-
-      <Grid container spacing={3} justifyContent="center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
         {gynecologyServices.map((service, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card className="h-full shadow hover:shadow-lg transition">
-              <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <Box sx={{ display: 'flex',flexDirection: 'column', alignItems: 'center', gap: 1 }}>
-                  {service.icon}
-                  <Typography variant="subtitle1" fontWeight={600}>
-                    {service.title}
-                  </Typography>
-                </Box>
-                <Typography variant="body2" color="text.secondary">
-                  {service.description}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+          <div
+            key={index}
+            className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center hover:shadow-lg transition-shadow"
+          >
+            <div className="!mb-4">{service.icon}</div>
+            <h3 className="text-lg font-semibold text-center !mb-2">{service.title}</h3>
+            <p className="text-gray-600 text-sm text-center">{service.description}</p>
+          </div>
         ))}
-      </Grid>
-    </Box>
+      </div>
+    </section>
   );
 };
 

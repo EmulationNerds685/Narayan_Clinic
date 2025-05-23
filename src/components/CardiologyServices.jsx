@@ -1,21 +1,15 @@
 import React from 'react';
 import {
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  Box,
-} from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
-import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
-import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
-import AvTimerIcon from '@mui/icons-material/AvTimer';
-import AssessmentIcon from '@mui/icons-material/Assessment';
-import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import DevicesIcon from '@mui/icons-material/Devices';
-import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+  FaHeartbeat,
+  FaStethoscope,
+  FaRunning,
+  FaClock,
+  FaClipboardCheck,
+  FaProcedures,
+  FaAppleAlt,
+  FaPlug,
+  FaHospitalAlt,
+} from 'react-icons/fa';
 
 const iconColor = '#C00008';
 
@@ -23,34 +17,34 @@ const cardiologyServices = [
   {
     title: 'Electrocardiogram (ECG)',
     description: 'Records the electrical activity of your heart.',
-    icon: <MonitorHeartIcon sx={{ color: iconColor }} />,
+    icon: <FaHeartbeat size={40} color={iconColor} />,
   },
   {
     title: 'Echocardiogram',
     description: 'Ultrasound of the heart to assess structure and function.',
-    icon: <MedicalServicesIcon sx={{ color: iconColor }} />,
+    icon: <FaStethoscope size={40} color={iconColor} />,
   },
   {
     title: 'Stress Test',
     description: 'Measures heart function under physical stress.',
-    icon: <FitnessCenterIcon sx={{ color: iconColor }} />,
+    icon: <FaRunning size={40} color={iconColor} />,
   },
   {
     title: '24-Hour Holter Monitoring',
     description: 'Continuous heart rhythm monitoring for 24 hours.',
-    icon: <AvTimerIcon sx={{ color: iconColor }} />,
+    icon: <FaClock size={40} color={iconColor} />,
   },
   {
     title: 'Heart Disease Risk Assessment',
     description: 'Evaluates your risk of developing heart disease.',
-    icon: <AssessmentIcon sx={{ color: iconColor }} />,
+    icon: <FaClipboardCheck size={40} color={iconColor} />,
   },
   {
     title: 'Interventional Cardiology Consultation',
     description: (
       <>
         Expert advice on procedures including:
-        <ul style={{ paddingLeft: '1rem', marginTop: '0.5rem' }}>
+        <ul className="list-disc list-inside mt-2 space-y-1">
           <li>Angioplasty</li>
           <li>Coronary and Peripheral Angiography</li>
           <li>BMV (Balloon Mitral Valvotomy)</li>
@@ -63,56 +57,49 @@ const cardiologyServices = [
         </ul>
       </>
     ),
-    icon: <HeartBrokenIcon sx={{ color: iconColor }} />,
+    icon: <FaProcedures size={40} color={iconColor} />,
   },
   {
     title: 'Lifestyle & Nutritional Counseling',
     description: 'Heart-healthy lifestyle and diet plans.',
-    icon: <TipsAndUpdatesIcon sx={{ color: iconColor }} />,
+    icon: <FaAppleAlt size={40} color={iconColor} />,
   },
   {
     title: 'Pacemaker & Device Monitoring',
     description: 'Ongoing management of implanted heart devices.',
-    icon: <DevicesIcon sx={{ color: iconColor }} />,
+    icon: <FaPlug size={40} color={iconColor} />,
   },
   {
     title: 'Hypertension, Diabetes & Cholesterol Management',
     description: 'Treatment and monitoring of high BP & lipids.',
-    icon: <LocalHospitalIcon sx={{ color: iconColor }} />,
+    icon: <FaHospitalAlt size={40} color={iconColor} />,
   },
 ];
 
 const CardiologyServices = () => {
   return (
-    <Box className="!py-10 !px-4 bg-gray-50">
-      <Typography variant="h4" className="text-center text-[#C00008] font-bold !mb-6">
+    <section className="!py-10 !px-4 bg-gray-50">
+      <h2 className="text-center text-[#C00008] font-bold text-3xl !mb-8">
         Cardiology Services
-      </Typography>
+      </h2>
 
-      <Box className="flex justify-center !mb-6">
-        <FavoriteIcon sx={{ fontSize: 60, color: iconColor }} />
-      </Box>
+      <div className="flex justify-center !mb-8">
+        <FaHeartbeat size={60} color={iconColor} />
+      </div>
 
-      <Grid container spacing={3} justifyContent="center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
         {cardiologyServices.map((service, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card className="h-full shadow hover:shadow-lg transition">
-              <CardContent sx={{ display: 'flex', flexDirection: 'column',justifyContent:"center", gap: 1 }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column',alignItems: 'center',justifyContent:"center", gap: 1 }}>
-                  {service.icon}
-                  <Typography variant="subtitle1" fontWeight={600}>
-                    {service.title}
-                  </Typography>
-                </Box>
-                <Typography variant="body2" color="text.secondary">
-                  {service.description}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+          <div
+            key={index}
+            className="bg-white shadow-md rounded-lg !p-6 flex flex-col items-center hover:shadow-lg transition-shadow"
+          >
+            <div className="mb-4">{service.icon}</div>
+            <h3 className="text-lg font-semibold text-center !mb-2">{service.title}</h3>
+            <div className="text-gray-600 text-sm text-center">{service.description}</div>
+          </div>
         ))}
-      </Grid>
-    </Box>
+      </div>
+    </section>
   );
 };
 

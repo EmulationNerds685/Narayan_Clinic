@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 import Herocarousel from "../components/Herocarousel";
 import Testimonials from "../components/Testimonials";
+import ClinicFAQAccordion from "../components/ClinicFAQAccordion";
 
 
 
@@ -54,8 +55,10 @@ const HomePage = () => {
         >
           <Box sx={{ marginTop: "10px", marginBottom: "10px" }}>
             <WhyChooseUs />
+
           </Box>
       <Testimonials/>
+      <ClinicFAQAccordion/>
         </motion.div>
       </Box>
     </motion.div>
