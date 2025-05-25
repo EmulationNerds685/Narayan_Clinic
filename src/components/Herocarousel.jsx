@@ -39,6 +39,14 @@ const slides = [
     image: '/gyno.jpg',
     link: '/Gynoservices',
   },
+  {
+  title: 'Consult a Specialist Today',
+  subtitle: 'Expert care in Cardiology and Gynecology — book your appointment in just a few clicks.',
+  buttonText: 'Book Appointment',
+  image: '/appointment.jpg', // Update with your actual image path
+  link: '/book',      // Update to your booking page route
+}
+
 ];
 
 const HeroCarousel = () => {

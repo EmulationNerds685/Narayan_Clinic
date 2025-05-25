@@ -22,9 +22,9 @@ const faqs = [
       "Our Clinic Timings is Morning:09:00 AM-10:30 AM And Evening: 06:30 PM -08:00 PM.",
   },
   {
-    question: "Is insurance accepted for treatments?",
+    question: "When to visit a Cardiologist?",
     answer:
-      "We work with several insurance providers. Please contact our reception or check our insurance partners list for details.",
+      "When patient have symptoms such as shortness of breath, chest pain, syncope, palpitation, headache,uneaseiness, they can consult cardiologist",
   },
 ];
 
