@@ -1,116 +1,148 @@
 import React from "react";
-import {
-  Box,
-  Container,
-  Grid,
-  Typography,
-  Divider,
-  useTheme,
-} from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import { Link } from "react-router-dom"; // Only import Link from react-router-dom
+import { Link } from "react-router-dom";
+import { 
+  FaHeart, 
+  FaMapMarkerAlt, 
+  FaPhone, 
+  FaEnvelope,
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin,
+  FaYoutube
+} from "react-icons/fa";
 
 const Footer = () => {
-  const theme = useTheme();
-
   return (
-    <Box
-      sx={{
-        backgroundColor: theme.palette.primary.main,
-        color: "#fff",
-        pt: 3,
-        pb: 3,
-        mt: 0,
-      }}
-    >
-      <Container maxWidth="lg">
-        <Grid container spacing={4}>
+    <footer className="bg-[#30638E] text-white !py-12 !px-4 sm:!px-6">
+      <div className="max-w-6xl !mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Clinic Info */}
-          <Grid item xs={12} sm={4}>
-            <Typography variant="h6" fontWeight="bold" style={{display:"flex"}}>
-                           <img
+          <div className="!space-y-4">
+            <div className="flex items-center !space-x-2">
+              <img
                 src="/nc.png"
                 alt="Logo"
-                style={{ height: 30, width: "auto" }}
+                className="h-8 w-auto"
               />
-              Narayan Heart & Maternity Centre
-            </Typography>
-            <Typography variant="body2" sx={{ mt: 1 }}>
+              <h3 className="text-xl font-bold">Narayan Heart & Maternity Centre</h3>
+            </div>
+            <p className="text-blue-100">
               Providing compassionate care with a specialized team in cardiology
               and gynecology in Patna.
-            </Typography>
-          </Grid>
+            </p>
+            
+            {/* Social Media */}
+            <div className="!pt-2">
+              <h4 className="font-medium !mb-3">Connect With Us</h4>
+              <div className="flex !space-x-4">
+                <a href="#" className="text-blue-100 hover:text-white transition-colors">
+                  <FaFacebook className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-blue-100 hover:text-white transition-colors">
+                  <FaTwitter className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-blue-100 hover:text-white transition-colors">
+                  <FaInstagram className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-blue-100 hover:text-white transition-colors">
+                  <FaLinkedin className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-blue-100 hover:text-white transition-colors">
+                  <FaYoutube className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+          </div>
 
           {/* Navigation */}
-          <Grid item xs={12} sm={4}>
-            <Typography variant="h6" fontWeight="bold">
-              Quick Links
-            </Typography>
-            <Box sx={{ mt: 1 }}>
-              <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
-                <Typography variant="body2" sx={{ mb: 1 }}>
-                  Home
-                </Typography>
+          <div className="!space-y-4">
+            <h3 className="text-xl font-bold">Quick Links</h3>
+            <nav className="!space-y-2">
+              <Link to="/" className="block text-blue-100 hover:text-white transition-colors">
+                Home
               </Link>
-              <Link
-                to="/services"
-                style={{ color: "inherit", textDecoration: "none" }}
+              <Link to="/services" className="block text-blue-100 hover:text-white transition-colors">
+                Services
+              </Link>
+              <Link to="/doctors" className="block text-blue-100 hover:text-white transition-colors">
+                Our Doctors
+              </Link>
+              <Link to="/contact" className="block text-blue-100 hover:text-white transition-colors">
+                Contact
+              </Link>
+              <a 
+                href="https://maps.app.goo.gl/tsKEg2pHUXZzp1STA" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block text-blue-100 hover:text-white transition-colors"
               >
-                <Typography variant="body2" sx={{ mb: 1 }}>
-                  Services
-                </Typography>
-              </Link>
-              <Link
-                to="/doctors"
-                style={{ color: "inherit", textDecoration: "none" }}
-              >
-                <Typography variant="body2" sx={{ mb: 1 }}>
-                  Our Doctors
-                </Typography>
-              </Link>
-              <Link
-                to="/contact"
-                style={{ color: "inherit", textDecoration: "none" }}
-              >
-                <Typography variant="body2" sx={{ mb: 1 }}>
-                  Contact
-                </Typography>
-              </Link>
-              <Typography variant="body2" sx={{ mb: 1 }}>
-                <a
-                  style={{ textDecoration: "none" }}
-                  href="https://maps.app.goo.gl/tsKEg2pHUXZzp1STA"
-                >
-                  Reach us
-                </a>
-              </Typography>
-            </Box>
-          </Grid>
+                Reach us
+              </a>
+            </nav>
+          </div>
 
           {/* Contact Info */}
-          <Grid item xs={12} sm={4}>
-            <Typography variant="h6" fontWeight="bold">
-              Contact Us
-            </Typography>
+          <div className="!space-y-4">
+            <h3 className="text-xl font-bold">Contact Us</h3>
+            <address className="not-italic !space-y-2 text-blue-100">
+              <div className="flex items-start !space-x-2">
+                <FaMapMarkerAlt className="!mt-1 flex-shrink-0" />
+                <span>MIG, 245, Lohia Nagar, kankarbagh, Patna-800020</span>
+              </div>
+              <div className="flex items-center !space-x-2">
+                <FaPhone />
+                <span>+91 9708441467 | +91 98301 97624</span>
+              </div>
+              <div className="flex items-center !space-x-2">
+                <FaEnvelope />
+                <span>support@heartmaternityclinic.com</span>
+              </div>
+            </address>
+          </div>
 
-            <Typography variant="body2" sx={{ mt: 1 }}>
-              📍 MIG, 245, Lohia Nagar, kankarbagh,Patna-800020
-              <br />
-              📞 +91 9708441467 | +91 98301 97624
-              <br />
-              📧 support@heartmaternityclinic.com
-            </Typography>
-          </Grid>
-        </Grid>
+          {/* Newsletter */}
+          <div className="!space-y-4">
+            <h3 className="text-xl font-bold">Newsletter</h3>
+            <p className="text-blue-100">
+              Subscribe to our newsletter for health tips and updates.
+            </p>
+            <form className="flex flex-col !space-y-3">
+              <input 
+                type="email" 
+                placeholder="Your email address" 
+                className="!px-4 !py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <button 
+                type="submit"
+                className="bg-blue-600 hover:bg-blue-700 text-white !px-4 !py-2 rounded transition-colors"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
 
         {/* Divider + Copyright */}
-        <Divider sx={{ my: 3, borderColor: "rgba(255,255,255,0.3)" }} />
-        <Typography variant="body2" align="center">
-          © {new Date().getFullYear()} Narayan Heart & Maternity Centre All
-          rights reserved.
-        </Typography>
-      </Container>
-    </Box>
+        <div className="border-t border-blue-700 !my-8"></div>
+        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left text-blue-100 text-sm !space-y-2 md:!space-y-0">
+          <p>
+            © {new Date().getFullYear()} Narayan Heart & Maternity Centre. All rights reserved.
+          </p>
+          <div className="flex items-center !space-x-4">
+            <Link to="/privacy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="hover:text-white transition-colors">
+              Terms of Service
+            </Link>
+            <p className="flex items-center">
+              Made with <FaHeart className="!mx-1 text-red-400" /> in Patna
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 };
 

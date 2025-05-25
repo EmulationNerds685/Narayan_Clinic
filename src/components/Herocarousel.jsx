@@ -41,22 +41,26 @@ const slides = [
   },
 ];
 
-const Herocarousel = () => {
+const HeroCarousel = () => {
   const [current, setCurrent] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const timeoutRef = useRef(null);
 
   const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+  const goToSlide = (index) => setCurrent(index);
 
   const resetTimeout = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
   };
 
   useEffect(() => {
-    resetTimeout();
-    timeoutRef.current = setTimeout(nextSlide, 5000);
+    if (!isHovered) {
+      resetTimeout();
+      timeoutRef.current = setTimeout(nextSlide, 5000);
+    }
     return () => resetTimeout();
-  }, [current]);
+  }, [current, isHovered]);
 
   const handlers = useSwipeable({
     onSwipedLeft: nextSlide,
@@ -66,44 +70,60 @@ const Herocarousel = () => {
   });
 
   return (
-    <div className="relative h-screen w-full overflow-hidden" {...handlers}>
-      <div
+    <div 
+      className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] max-h-screen overflow-hidden"
+      {...handlers}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center transition-opacity duration-500 ease-in-out"
         style={{ backgroundImage: `url(${slides[current].image})` }}
-        className="absolute top-0 left-0 w-full h-full bg-cover bg-center flex items-center justify-center text-center !px-4"
-      >
-        <div className="z-20 bg-black/60 !p-6 rounded-lg max-w-xl text-white">
-          <h2 className="text-3xl font-bold !mb-2">{slides[current].title}</h2>
-          <p className="text-lg mb-4">{slides[current].subtitle}</p>
+      />
+      
+      {/* Overlay */}
+      <div className="absolute inset-0  " />
+
+      {/* Content */}
+      <div className="relative h-full flex items-center justify-center !px-4 sm:!px-6 lg:!px-8">
+        <div className="text-center max-w-2xl md:max-w-3xl lg:max-w-4xl w-full  rounded-lg !p-6 sm:!p-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white !mb-2 sm:!mb-3">
+            {slides[current].title}
+          </h2>
+          <p className="text-white text-base sm:text-lg md:text-xl !mb-4 sm:!mb-6">
+            {slides[current].subtitle}
+          </p>
           <Link to={slides[current].link}>
-            <button className="bg-red-500 hover:bg-red-600 text-white !px-6 !py-2 rounded-full font-medium transition">
+            <button className="bg-red-500 hover:bg-red-600 text-white !px-5 !py-2 sm:!px-6 sm:!py-2.5 rounded-full font-medium transition-colors duration-300 text-sm sm:text-base">
               {slides[current].buttonText}
             </button>
           </Link>
         </div>
       </div>
 
-      {/* Arrows */}
+      {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white !p-2 rounded-full z-30"
+        className="absolute top-1/2 left-2 sm:left-4 -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white !p-2 rounded-full z-10 focus:outline-none focus:ring-2 focus:ring-white"
       >
-        <ChevronLeft size={24} />
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white !p-2 rounded-full z-30"
+        className="absolute top-1/2 right-2 sm:right-4 -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white !p-2 rounded-full z-10 focus:outline-none focus:ring-2 focus:ring-white"
       >
-        <ChevronRight size={24} />
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
-      {/* Dots */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+      {/* Pagination Dots */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrent(index)}
-            className={`h-2 w-2 rounded-full transition-all duration-300 ${
-              index === current ? 'bg-red-400 w-4' : 'bg-gray-400'
+            onClick={() => goToSlide(index)}
+            className={`h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full transition-all duration-300 ${
+              index === current ? 'bg-red-400 w-6 sm:w-8' : 'bg-gray-400 hover:bg-gray-300'
             }`}
           />
         ))}
@@ -112,4 +132,4 @@ const Herocarousel = () => {
   );
 };
 
-export default Herocarousel;
+export default HeroCarousel;

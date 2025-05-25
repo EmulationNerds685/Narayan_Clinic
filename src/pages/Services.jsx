@@ -1,30 +1,17 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import {
-  Box,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  CardMedia,
-  Collapse,
-  Button,
-} from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FemaleIcon from '@mui/icons-material/Female';
-import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
-import HealingIcon from '@mui/icons-material/Healing';
-import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
-import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import UpdateIcon from '@mui/icons-material/Update';
-import AssessmentIcon from '@mui/icons-material/Assessment';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { motion } from 'framer-motion';
-
-const primaryColor = '#C00008';
+import {
+  FaHeart,
+  FaFemale,
+  FaHeartbeat,
+  FaClinicMedical,
+  FaCheckCircle,
+  FaDumbbell,
+  FaSyncAlt,
+  FaChartBar,
+  FaHospital,
+  FaStethoscope
+} from 'react-icons/fa';
 
 const Services = () => {
   const [expanded, setExpanded] = useState(null);
@@ -36,16 +23,15 @@ const Services = () => {
   const specialities = [
     {
       title: 'Cardiology',
-      icon: <FavoriteIcon sx={{ fontSize: 50, color: primaryColor }} />,
-      description:
-        'Our cardiology department provides state-of-the-art diagnostics and treatment for a wide range of cardiovascular conditions. We focus on early detection, prevention, and personalized treatment plans.',
+      icon: <FaHeart className="w-12 h-12" />,
+      description: 'Our cardiology department provides state-of-the-art diagnostics and treatment for a wide range of cardiovascular conditions. We focus on early detection, prevention, and personalized treatment plans.',
       id: 'cardiology',
       services: [
-        { title: 'Electrocardiogram (ECG)', description: 'Records the electrical activity of your heart.', icon: <MonitorHeartIcon sx={{ color: primaryColor }} /> },
-        { title: 'Echocardiogram', description: 'Ultrasound of the heart to assess structure and function.', icon: <HealingIcon sx={{ color: primaryColor }} /> },
-        { title: 'Stress Test', description: 'Measures heart function under physical stress.', icon: <FitnessCenterIcon sx={{ color: primaryColor }} /> },
-        { title: '24-Hour Holter Monitoring', description: 'Continuous heart rhythm monitoring for 24 hours.', icon: <UpdateIcon sx={{ color: primaryColor }} /> },
-        { title: 'Heart Disease Risk Assessment', description: 'Evaluates your risk of developing heart disease.', icon: <AssessmentIcon sx={{ color: primaryColor }} /> },
+        { title: 'Electrocardiogram (ECG)', description: 'Records the electrical activity of your heart.', icon: <FaHeartbeat className="w-6 h-6" /> },
+        { title: 'Echocardiogram', description: 'Ultrasound of the heart to assess structure and function.', icon: <FaStethoscope className="w-6 h-6" /> },
+        { title: 'Stress Test', description: 'Measures heart function under physical stress.', icon: <FaDumbbell className="w-6 h-6" /> },
+        { title: '24-Hour Holter Monitoring', description: 'Continuous heart rhythm monitoring for 24 hours.', icon: <FaSyncAlt className="w-6 h-6" /> },
+        { title: 'Heart Disease Risk Assessment', description: 'Evaluates your risk of developing heart disease.', icon: <FaChartBar className="w-6 h-6" /> },
         {
           title: 'Interventional Cardiology Consultation',
           description: [
@@ -59,37 +45,37 @@ const Services = () => {
             'Treatment of Limb Ischemia',
             'Electrophysiology Studies',
           ],
-          icon: <LocalHospitalIcon sx={{ color: primaryColor }} />,
+          icon: <FaHospital className="w-6 h-6" />,
         },
-        { title: 'Lifestyle & Nutritional Counseling', description: 'Heart-healthy lifestyle and diet plans.', icon: <FitnessCenterIcon sx={{ color: primaryColor }} /> },
-        { title: 'Pacemaker & Device Monitoring', description: 'Ongoing management of implanted heart devices.', icon: <UpdateIcon sx={{ color: primaryColor }} /> },
-        { title: 'Hypertension, Diabetes & Cholesterol Management', description: 'Treatment and monitoring of high BP & lipids.', icon: <CheckCircleIcon sx={{ color: primaryColor }} /> },
+        { title: 'Lifestyle & Nutritional Counseling', description: 'Heart-healthy lifestyle and diet plans.', icon: <FaDumbbell className="w-6 h-6" /> },
+        { title: 'Pacemaker & Device Monitoring', description: 'Ongoing management of implanted heart devices.', icon: <FaSyncAlt className="w-6 h-6" /> },
+        { title: 'Hypertension, Diabetes & Cholesterol Management', description: 'Treatment and monitoring of high BP & lipids.', icon: <FaCheckCircle className="w-6 h-6" /> },
       ],
     },
     {
       title: 'Gynecology',
-      icon: <FemaleIcon sx={{ fontSize: 50, color: primaryColor }} />,
-      description:
-        'We offer a full spectrum of women’s health services, including routine exams, prenatal care, fertility evaluation, and menopause management. Our team is dedicated to providing compassionate, confidential care.',
+      icon: <FaFemale className="w-12 h-12" />,
+      description: 'We offer a full spectrum of women\'s health services, including routine exams, prenatal care, fertility evaluation, and menopause management. Our team is dedicated to providing compassionate, confidential care.',
       id: 'gynecology',
       services: [
-        { title: 'Prenatal & Postnatal Care', description: 'Comprehensive care before and after childbirth.', icon: <LocalHospitalIcon sx={{ color: primaryColor }} /> },
-        { title: 'Annual Pelvic Exam & Pap Smear', description: 'Routine screening for women’s reproductive health.', icon: <CheckCircleIcon sx={{ color: primaryColor }} /> },
-        { title: 'Fertility Assessment & Treatment', description: 'Evaluation and assistance for conception.', icon: <FavoriteIcon sx={{ color: primaryColor }} /> },
-        { title: 'Management of Menstrual Disorders', description: 'Treatment for irregular or painful periods.', icon: <HealingIcon sx={{ color: primaryColor }} /> },
-        { title: 'PCOS Support', description: 'Diagnosis and management of Polycystic Ovary Syndrome.', icon: <MonitorHeartIcon sx={{ color: primaryColor }} /> },
-        { title: 'Birth Control Counseling', description: 'Guidance on contraceptive methods.', icon: <AccessibilityNewIcon sx={{ color: primaryColor }} /> },
-        { title: 'Menopause & Hormone Therapy', description: 'Support through hormonal changes.', icon: <AssessmentIcon sx={{ color: primaryColor }} /> },
-        { title: 'Minimally Invasive Surgery', description: 'Advanced surgical solutions with minimal downtime.', icon: <LocalHospitalIcon sx={{ color: primaryColor }} /> },
-        { title: 'STD Testing', description: 'Confidential and accurate screening for STDs.', icon: <CheckCircleIcon sx={{ color: primaryColor }} /> },
-        { title: 'Ultrasound & Imaging Services', description: 'Imaging for diagnosis and monitoring.', icon: <MonitorHeartIcon sx={{ color: primaryColor }} /> },
+        { title: 'Prenatal & Postnatal Care', description: 'Comprehensive care before and after childbirth.', icon: <FaHospital className="w-6 h-6" /> },
+        { title: 'Annual Pelvic Exam & Pap Smear', description: 'Routine screening for women\'s reproductive health.', icon: <FaCheckCircle className="w-6 h-6" /> },
+        { title: 'Fertility Assessment & Treatment', description: 'Evaluation and assistance for conception.', icon: <FaHeart className="w-6 h-6" /> },
+        { title: 'Management of Menstrual Disorders', description: 'Treatment for irregular or painful periods.', icon: <FaStethoscope className="w-6 h-6" /> },
+        { title: 'PCOS Support', description: 'Diagnosis and management of Polycystic Ovary Syndrome.', icon: <FaHeartbeat className="w-6 h-6" /> },
+        { title: 'Birth Control Counseling', description: 'Guidance on contraceptive methods.', icon: <FaClinicMedical className="w-6 h-6" /> },
+        { title: 'Menopause & Hormone Therapy', description: 'Support through hormonal changes.', icon: <FaChartBar className="w-6 h-6" /> },
+        { title: 'Minimally Invasive Surgery', description: 'Advanced surgical solutions with minimal downtime.', icon: <FaHospital className="w-6 h-6" /> },
+        { title: 'STD Testing', description: 'Confidential and accurate screening for STDs.', icon: <FaCheckCircle className="w-6 h-6" /> },
+        { title: 'Ultrasound & Imaging Services', description: 'Imaging for diagnosis and monitoring.', icon: <FaHeartbeat className="w-6 h-6" /> },
       ],
     },
   ];
 
   const containerVariants = {
-    hidden: {},
+    hidden: { opacity: 0 },
     visible: {
+      opacity: 1,
       transition: {
         staggerChildren: 0.2,
       },
@@ -103,102 +89,105 @@ const Services = () => {
       y: 0,
       transition: { duration: 0.6, ease: 'easeOut' },
     },
+    hover: {
+      y: -5,
+      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
+      transition: { duration: 0.3 }
+    }
   };
 
   return (
-    <Box className="!px-4 !py-20 bg-gray-50" sx={{ marginTop: '20px', marginBottom: '20px' }}>
-      <Typography
-        variant="h4"
-        className="text-center font-extrabold !mb-10"
-        sx={{ color: primaryColor, margin: '20px' }}
+    <div className="bg-gradient-to-b from-gray-50 to-white !py-20 !px-8 sm:!px-6 lg:!px-20">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center !mb-16 max-w-4xl mx-auto"
       >
-        Our Specialities
-      </Typography>
+        <h2 className="text-4xl font-bold text-red-600 !mb-4">Our Specialities</h2>
+        <div className="w-20 h-1 bg-red-500 mx-auto rounded-full"></div>
+      </motion.div>
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
       >
-        <Grid container spacing={6} justifyContent="center">
-          {specialities.map((item) => (
-            <Grid item xs={12} sm={6} key={item.id}>
-              <motion.div variants={cardVariants} whileHover={{ scale: 1.02 }}>
-                <Card className="text-center shadow-md hover:shadow-lg transition duration-300 !h-full">
-                  
-                  <CardContent>
-                    <Typography
-                      variant="h6"
-                      className="!mt-2 font-semibold"
-                      sx={{ color: primaryColor }}
-                    >
-                      {item.title}
-                    </Typography>
+        {specialities.map((item) => (
+          <motion.div
+            key={item.id}
+            variants={cardVariants}
+            whileHover="hover"
+            className="h-full"
+          >
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-full overflow-hidden border border-gray-100">
+              <div className="!p-8 text-center">
+                <div className="text-red-600 !mb-6 flex justify-center">
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 !mb-4">{item.title}</h3>
+                <p className="text-gray-600 !mb-6">{item.description}</p>
+                
+                <button
+                  onClick={() => toggleExpand(item.id)}
+                  className="text-red-600 hover:text-red-700 font-medium flex items-center justify-center mx-auto transition-colors"
+                >
+                  {expanded === item.id ? (
+                    <>
+                      Hide Services
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 !ml-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      View Services
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 !ml-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </div>
 
-                    <Box sx={{ mt: 1, mb: 2 }}>{item.icon}</Box>
-
-                    <Typography variant="body2" className="!mt-1 text-gray-700 !mb-4">
-                      {item.description}
-                    </Typography>
-
-                    <Button
-                      onClick={() => toggleExpand(item.id)}
-                      endIcon={expanded === item.id ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-                      sx={{
-                        textTransform: 'none',
-                        color: primaryColor,
-                        '&:hover': {
-                          backgroundColor: '#FDE6E6',
-                        },
-                      }}
-                    >
-                      {expanded === item.id ? 'Hide Services' : 'View Services'}
-                    </Button>
-
-                    <Collapse in={expanded === item.id} timeout="auto" unmountOnExit>
-                      <Box sx={{ mt: 3, maxHeight: 600, overflowY: 'auto' }}>
-                        <Grid container spacing={2}>
-                          {item.services.map((service, idx) => (
-                            <Grid item xs={12} sm={6} key={idx}>
-                              <Card variant="outlined" sx={{ height: '100%' }}>
-                               <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-  <Box sx={{ display: 'flex',flexDirection:"column", alignItems: 'center', gap: 1 }}>
-    {service.icon}
-    <Typography variant="subtitle1" fontWeight={600}>
-      {service.title}
-    </Typography>
-  </Box>
-
-  {Array.isArray(service.description) ? (
-    <Box component="ul" sx={{ pl: 3, mt: 1, mb: 0 }}>
-      {service.description.map((item, subIdx) => (
-        <li key={subIdx} style={{ fontSize: '0.875rem', color: '#555', lineHeight: 1.5 }}>
-          {item}
-        </li>
-      ))}
-    </Box>
-  ) : (
-    <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
-      {service.description}
-    </Typography>
-  )}
-</CardContent>
-
-                              </Card>
-                            </Grid>
-                          ))}
-                        </Grid>
-                      </Box>
-                    </Collapse>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
+              {expanded === item.id && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="!px-6 !pb-8"
+                >
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-96 overflow-y-auto !pr-2">
+                    {item.services.map((service, idx) => (
+                      <div key={idx} className="bg-gray-50 rounded-lg !p-4 border border-gray-200">
+                        <div className="flex flex-col items-center text-center">
+                          <div className="text-red-600 !mb-2">
+                            {service.icon}
+                          </div>
+                          <h4 className="font-semibold text-gray-800 !mb-2">{service.title}</h4>
+                          {Array.isArray(service.description) ? (
+                            <ul className="text-sm text-gray-600 space-y-1 text-left !pl-4">
+                              {service.description.map((desc, i) => (
+                                <li key={i} className="list-disc">{desc}</li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <p className="text-sm text-gray-600">{service.description}</p>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </div>
+          </motion.div>
+        ))}
       </motion.div>
-    </Box>
+    </div>
   );
 };
 
