@@ -9,14 +9,14 @@ const slides = [
     subtitle: 'ECG, ECHO, TMT & more — early detection, better outcomes.',
     buttonText: 'View Heart Tests',
     image: '/ECGimage.png',
-    link: '/Cardioservices',
+    link: '/cdd',
   },
   {
     title: 'Preventive & Follow-up Cardiology',
     subtitle: 'Manage risk, adjust treatment, and stay heart healthy.',
     buttonText: 'Cardiology Follow-up',
     image: '/9802344.jpg',
-    link: '/Cardioservices',
+    link: '/FollowUp',
   },
   {
     title: 'Comprehensive Antenatal Care',
@@ -30,7 +30,7 @@ const slides = [
     subtitle: 'Caring for you and your baby after delivery.',
     buttonText: 'See Postnatal Services',
     image: '/postnatal.jpg',
-    link: '/Gynoservices',
+    link: '/postnatal',
   },
   {
     title: 'Expert Gynaecological Services',

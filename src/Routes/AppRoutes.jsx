@@ -9,6 +9,9 @@ import GynecologyServices from '../components/GynecologyServices'
 import LearnANCSection from '../pages/LearnANCSection'
 import DoctorsSection from '../components/DoctorSection'
 import AllService from '../pages/AllService'
+import CardiacDiagnosticsDetails from '../pages/CardiacDiagnosticsDetails'
+import CardiologyFollowUp from '../pages/CardiologyFollowUp'
+import PostnatalServicesModal from '../pages/PostnatalServicesModal'
 const Approutes=()=>{
 return (
     <Routes>
@@ -21,6 +24,9 @@ return (
         <Route path='/anc' element={<LearnANCSection/>} />
         <Route path='/doctors' element={<DoctorsSection/>} />
         <Route path='/book' element={<Appointment/>} />
+        <Route path='/cdd' element={<CardiacDiagnosticsDetails/>} />
+        <Route path='/FollowUp' element={<CardiologyFollowUp/>} />
+        <Route path='/postnatal' element={<PostnatalServicesModal/>} />
     </Routes>
 )
 }

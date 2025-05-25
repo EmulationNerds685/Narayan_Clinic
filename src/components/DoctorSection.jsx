@@ -1,12 +1,13 @@
 import React from "react";
 import { FaUserMd, FaAward, FaBriefcase, FaClinicMedical } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 const DoctorsSection = () => {
   const doctors = [
     {
       name: 'Dr. Sushant Kumar Pathak',
       specialty: 'Interventional Cardiologist',
       image: 'skp.jpg',
+      link:'/book',
       qualifications: 'MBBS (Kolkata), MD (Medicine, PMCH Patna) - Gold Medalist, DM (Cardiology, IPGME&R)',
       experience: 'Senior Consultant, Ford Hospital, Patna\nAssistant Director, IGIC, PMCH',
     },
@@ -14,6 +15,7 @@ const DoctorsSection = () => {
       name: 'Dr. Jagriti Bhardwaj',
       specialty: 'Gynecologist & Obstetrician',
       image: 'jbp.png',
+      link:'/book',
       qualifications: 'MBBS (SNMC, Agra), MS (OBG, PGIMS), DNB (OBG)',
       experience: 'SIR Ganga Ram Hospital, New Delhi\nEx. Senior, PGIMS New Delhi\nEx. Assistant Professor, HIMS, Dehradun',
       specializations: 'Laparoscopic Surgeon, Infertility Specialist',
@@ -79,9 +81,11 @@ const DoctorsSection = () => {
               </div>
               
               <div className="!px-6 !py-4 bg-gray-50 border-t border-gray-100">
+               <Link to={doctor.link}>
                 <button className="w-full bg-red-500 hover:bg-red-700 text-white !py-2 !px-4 rounded-lg transition-colors duration-300">
                   Book Appointment
                 </button>
+               </Link>
               </div>
             </div>
           ))}
