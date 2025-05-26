@@ -92,11 +92,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center !space-x-2">
                 <FaPhone />
-                <span>+91 9708441467 | +91 98301 97624</span>
+                <span>+91 9708441467 | +91 98361 97624</span>
               </div>
               <div className="flex items-center !space-x-2">
                 <FaEnvelope />
-                <span>support@heartmaternityclinic.com</span>
+                <span>narayanheartmaternitycentre@gmail.com</span>
               </div>
             </address>
           </div>

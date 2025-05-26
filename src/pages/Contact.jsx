@@ -66,7 +66,7 @@ const [feedbackData, setFeedbackData] = useState({
       <Grid container spacing={4}>
         {/* Contact Info + Map */}
         <Grid item xs={12} md={6}>
-          <Paper elevation={3} className="!p-6 space-y-4">
+          <Paper elevation={3} className="!p-6 !space-y-4">
            
             <div className="!mt-4">
               <iframe
@@ -88,11 +88,11 @@ const [feedbackData, setFeedbackData] = useState({
             </div>
             <div>
               <p className="font-medium">📞 Phone:</p>
-              <p>+91 9708441467 | +91 98301 97624</p>
+              <p>+91 9708441467 | +91 98361 97624</p>
             </div>
             <div>
               <p className="font-medium">✉️ Email:</p>
-              <p>contact@clinic.com</p>
+              <p>narayanheartmaternitycentre@gmail.com</p>
             </div>
  <Typography
               variant="h6"
@@ -102,7 +102,7 @@ const [feedbackData, setFeedbackData] = useState({
               Send Us a Message
             </Typography>
 
-            <Box component="form" onSubmit={handleSubmit} className="space-y-4">
+            <Box component="form" onSubmit={handleSubmit} className="!space-y-4">
               <TextField
                 fullWidth
                 label="Name"
@@ -152,7 +152,7 @@ const [feedbackData, setFeedbackData] = useState({
             </Box>
           </Paper>
           <Grid item xs={12} md={6}>
-  <Paper elevation={3} className="!p-6 space-y-4">
+  <Paper elevation={3} className="!p-6 !space-y-4">
     <Typography
       variant="h6"
       className="!mb-4 font-semibold"

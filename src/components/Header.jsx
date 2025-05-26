@@ -87,7 +87,7 @@ const Header = () => {
             +91 97084 41467
           </a>
           <span>|</span>
-          <a href="tel:+919830197624" style={{ color: '#fff', textDecoration: 'none' }}>
+          <a href="tel:+919836197624" style={{ color: '#fff', textDecoration: 'none' }}>
             +91 98361 97624
           </a>
         </Stack>
