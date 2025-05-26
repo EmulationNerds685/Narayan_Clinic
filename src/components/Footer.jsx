@@ -94,7 +94,7 @@ const Footer = () => {
                 <FaPhone />
                 <span>+91 9708441467 | +91 98361 97624</span>
               </div>
-              <div className="flex items-center !space-x-2">
+              <div className="flex items-center !space-x-2 ">
                 <FaEnvelope />
                 <span>narayanheartmaternitycentre@gmail.com</span>
               </div>
@@ -102,25 +102,7 @@ const Footer = () => {
           </div>
 
           {/* Newsletter */}
-          <div className="!space-y-4">
-            <h3 className="text-xl font-bold">Newsletter</h3>
-            <p className="text-blue-100">
-              Subscribe to our newsletter for health tips and updates.
-            </p>
-            <form className="flex flex-col !space-y-3">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="!px-4 !py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button 
-                type="submit"
-                className="bg-blue-600 hover:bg-blue-700 text-white !px-4 !py-2 rounded transition-colors"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
+        
         </div>
 
         {/* Divider + Copyright */}
