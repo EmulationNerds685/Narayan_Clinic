@@ -49,6 +49,7 @@ const Header = () => {
     <AppBar position="sticky" sx={{ backgroundColor: theme.palette.primary.main }}>
       <Toolbar sx={{ justifyContent: 'space-between', flexWrap: 'wrap', gap: 1 }}>
         {/* Logo + Title */}
+          <Link to ="/">
         <Stack direction="row" alignItems="center" spacing={2}>
           <Box
             component="img"
@@ -56,7 +57,6 @@ const Header = () => {
             alt="Logo"
             sx={{ height: 40, width: 'auto' }}
           />
-          <Link to ="/">
           <Typography
             variant="h6"
             sx={{
@@ -67,8 +67,8 @@ const Header = () => {
             >
             Narayan Heart & Maternity Centre
           </Typography>
-            </Link>
         </Stack>
+            </Link>
 
         {/* Phone Section */}
         <Stack
