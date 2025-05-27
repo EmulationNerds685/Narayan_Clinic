@@ -47,7 +47,7 @@ const PostnatalServicesModal = ({ onClose }) => {
 
   return (
     <div className="flex items-center justify-center !p-4 ">
-      <div className="bg-white rounded-xl shadow-2xl  w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-xl shadow-2xl  w-full  overflow-y-auto">
         {/* Header */}
         <div className="bg-pink-600 text-white !p-6 rounded-t-xl">
           <div className="flex justify-between items-start">
@@ -133,7 +133,7 @@ const PostnatalServicesModal = ({ onClose }) => {
             </div>
             <div className="md:w-1/3">
               <h3 className="text-xl font-semibold text-gray-800 !mb-4">When to Seek Help</h3>
-              <div className="bg-red-50 border border-red-200 rounded-lg p-5">
+              <div className="bg-red-50 border border-red-200 rounded-lg !p-5">
                 <ul className="!space-y-2 text-sm">
                   <li className="flex items-start">
                     <span className="text-red-600 font-medium !mr-2">•</span>
