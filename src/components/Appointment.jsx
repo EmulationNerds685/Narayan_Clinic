@@ -23,6 +23,7 @@ import axios from "axios";
 function Appointment() {
   const [formData, setFormData] = useState({
     name: "",
+    email:"",
     phoneNumber: "",
     address: "",
     service:"",
@@ -58,6 +59,7 @@ function Appointment() {
       setLoading(false);
       setFormData({
         name: "",
+        email:"",
         phoneNumber: "",
         address: "",
         service:"",
@@ -97,6 +99,16 @@ function Appointment() {
 
         <Box component="form" onSubmit={handleSubmit}>
           <TextField fullWidth label="Name" name="name" required value={formData.name} onChange={handleChange} sx={{ mb: 2 }} />
+            <TextField
+            fullWidth
+            label="email"
+            name="email"
+            type="email"
+            required
+            value={formData.email}
+            onChange={handleChange}
+            sx={{ mb: 2 }}
+          />
           <TextField
             fullWidth
             label="Phone Number"
