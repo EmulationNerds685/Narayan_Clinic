@@ -111,17 +111,36 @@ const Footer = () => {
           <p>
             © {new Date().getFullYear()} Narayan Heart & Maternity Centre. All rights reserved.
           </p>
-          <div className="flex items-center !space-x-4">
-            <Link to="/privacy" className="hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <Link to="/terms" className="hover:text-white transition-colors">
-              Terms of Service
-            </Link>
-            <p className="flex items-center">
-              Made with <FaHeart className="!mx-1 text-red-400" /> in Patna
-            </p>
-          </div>
+       <div className="flex items-center !space-x-4">
+  <a
+    href="https://merchant.razorpay.com/policy/QaQXGMpbHuXgY5/terms"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white transition-colors"
+  >
+    Terms & Conditions
+  </a>
+  <a
+    href="https://merchant.razorpay.com/policy/QaQXGMpbHuXgY5/refund"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white transition-colors"
+  >
+    Cancellation & Refund
+  </a>
+  <a
+    href="https://merchant.razorpay.com/policy/QaQXGMpbHuXgY5/shipping"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white transition-colors"
+  >
+    Shipping Policy
+  </a>
+  <p className="flex items-center">
+    Made with <FaHeart className="!mx-1 text-red-400" /> in Patna
+  </p>
+</div>
+
         </div>
       </div>
     </footer>
