@@ -121,6 +121,14 @@ const Footer = () => {
     Terms & Conditions
   </a>
   <a
+    href="https://merchant.razorpay.com/policy/QaQXGMpbHuXgY5/privacy"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white transition-colors"
+  >
+    Privacy Policy
+  </a>
+  <a
     href="https://merchant.razorpay.com/policy/QaQXGMpbHuXgY5/refund"
     target="_blank"
     rel="noopener noreferrer"
