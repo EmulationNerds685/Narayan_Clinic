@@ -12,6 +12,10 @@ import AllService from '../pages/AllService'
 import CardiacDiagnosticsDetails from '../pages/CardiacDiagnosticsDetails'
 import CardiologyFollowUp from '../pages/CardiologyFollowUp'
 import PostnatalServicesModal from '../pages/PostnatalServicesModal'
+import TermsAndConditions from '../pages/TermsAndConditions'
+import PrivacyPolicy from '../pages/PrivacyPolicy'
+import ShippingPolicy from '../pages/ShippingPolicy'
+import CancellationRefund from '../pages/CancellationRefund'
 const Approutes=()=>{
 return (
     <Routes>
@@ -27,6 +31,10 @@ return (
         <Route path='/cdd' element={<CardiacDiagnosticsDetails/>} />
         <Route path='/FollowUp' element={<CardiologyFollowUp/>} />
         <Route path='/postnatal' element={<PostnatalServicesModal/>} />
+        <Route path='/terms' element={<TermsAndConditions/>} />
+        <Route path='/privacypolicy' element={<PrivacyPolicy/>} />
+        <Route path='/shipping' element={<ShippingPolicy/>} />
+        <Route path='/cancellationRefund' element={<CancellationRefund/>} />
     </Routes>
 )
 }
