@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 const LearnANCSection = () => {
   return (
     <section className="bg-white !py-16 !px-6 md:!px-12 lg:!px-24">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl !mx-auto">
         {/* Heading */}
         <div className="text-center !mb-12">
           <Typography variant="h4" className="font-bold text-gray-800">
@@ -58,7 +58,7 @@ const LearnANCSection = () => {
             <img
               src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
               alt="Check-ups"
-              className="w-16 h-16 mx-auto !mb-4"
+              className="w-16 h-16 !mx-auto !mb-4"
             />
             <h4 className="text-xl font-semibold text-gray-800">Regular Check-Ups</h4>
             <p className="text-gray-600 !mt-2">Track fetal growth and monitor mother’s health throughout pregnancy.</p>
@@ -67,7 +67,7 @@ const LearnANCSection = () => {
             <img
               src="https://cdn-icons-png.flaticon.com/512/2920/2920237.png"
               alt="Nutrition"
-              className="w-16 h-16 mx-auto !mb-4"
+              className="w-16 h-16 !mx-auto !mb-4"
             />
             <h4 className="text-xl font-semibold text-gray-800">Nutritional Guidance</h4>
             <p className="text-gray-600 !mt-2">Customized diet plans to support a healthy pregnancy and fetal development.</p>
@@ -76,7 +76,7 @@ const LearnANCSection = () => {
             <img
               src="https://cdn-icons-png.flaticon.com/512/809/809957.png"
               alt="Birth Planning"
-              className="w-16 h-16 mx-auto !mb-4"
+              className="w-16 h-16 !mx-auto !mb-4"
             />
             <h4 className="text-xl font-semibold text-gray-800">Birth Planning</h4>
             <p className="text-gray-600 !mt-2">Preparation for delivery and counseling for labor and postpartum care.</p>

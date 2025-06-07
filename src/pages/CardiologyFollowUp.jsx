@@ -42,7 +42,7 @@ const CardiologyFollowUp = () => {
   };
 
   return (
-    <div className=" mx-auto !px-4 !py-12 sm:!px-6 lg:!px-8">
+    <div className=" !mx-auto !px-4 !py-12 sm:!px-6 lg:!px-8">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         {/* Header Section */}
         <div className="bg-blue-700 !px-6 !py-8 sm:px-10 sm:!py-12 text-white">

@@ -3,7 +3,7 @@ import React from 'react';
 const AboutUs = () => {
   return (
     <section className="bg-white !py-16 !px-4 !sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto space-y-16">
+      <div className="max-w-7xl !mx-auto space-y-16">
         {/* About Section */}
         <div className="flex flex-col lg:flex-row items-center gap-10">
           <img

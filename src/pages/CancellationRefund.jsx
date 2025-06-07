@@ -2,7 +2,7 @@ import React from "react";
 
 const CancellationRefund = () => {
   return (
-    <div className=" !mx-auto !px-4 !py-8">
+    <div className=" !!mx-auto !px-4 !py-8">
       <h1 className="text-3xl font-bold text-gray-800 !mb-6">
         Cancellation & Refund Policy
       </h1>

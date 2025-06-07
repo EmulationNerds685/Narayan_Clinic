@@ -102,10 +102,10 @@ const Services = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center !mb-16 max-w-4xl mx-auto"
+        className="text-center !mb-16  !!mx-auto"
       >
         <h2 className="text-4xl font-bold text-red-600 !mb-4">Our Specialities</h2>
-        <div className="w-20 h-1 bg-red-500 mx-auto rounded-full"></div>
+        <div className="w-20 h-1 bg-red-500 !mx-auto rounded-full"></div>
       </motion.div>
 
       <motion.div
@@ -113,7 +113,7 @@ const Services = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
+        className="grid grid-cols-1  gap-8  !mx-auto"
       >
         {specialities.map((item) => (
           <motion.div
@@ -122,7 +122,7 @@ const Services = () => {
             whileHover="hover"
             className="h-full"
           >
-            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-full overflow-hidden border border-gray-100">
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-full overflow-hidden border border-gray-100 w-full">
               <div className="!p-8 text-center">
                 <div className="text-red-600 !mb-6 flex justify-center">
                   {item.icon}
@@ -132,7 +132,7 @@ const Services = () => {
                 
                 <button
                   onClick={() => toggleExpand(item.id)}
-                  className="text-red-600 hover:text-red-700 font-medium flex items-center justify-center mx-auto transition-colors"
+                  className="text-red-600 hover:text-red-700 font-medium flex items-center justify-center !mx-auto transition-colors"
                 >
                   {expanded === item.id ? (
                     <>
@@ -169,7 +169,7 @@ const Services = () => {
                           </div>
                           <h4 className="font-semibold text-gray-800 !mb-2">{service.title}</h4>
                           {Array.isArray(service.description) ? (
-                            <ul className="text-sm text-gray-600 space-y-1 text-left !pl-4">
+                            <ul className="text-sm text-gray-600 !space-y-1 text-left !pl-4">
                               {service.description.map((desc, i) => (
                                 <li key={i} className="list-disc">{desc}</li>
                               ))}
