@@ -30,6 +30,8 @@ function Appointment() {
     appointmentDate: "",
     timeSlot: "",
   });
+  const [processingDialogOpen, setProcessingDialogOpen] = useState(false);
+
   const [dialogOpen, setDialogOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
@@ -42,33 +44,36 @@ function Appointment() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setLoading(true);
+ async function handleSubmit(e) {
+  e.preventDefault();
+  setLoading(true);
+  setProcessingDialogOpen(true); // Show processing dialog
 
-    try {
-      const result = await axios.post(`${backendURL}/book`, formData);
-      setResponse(result.data.message || "Appointment booked successfully!");
-      setIsError(false);
-    } catch (err) {
-      console.log(err)
-      setResponse("Error booking appointment. Please try again.");
-      setIsError(true);
-    } finally {
-      setDialogOpen(true);
-      setLoading(false);
-      setFormData({
-        name: "",
-        email:"",
-        phoneNumber: "",
-        address: "",
-        service:"",
-        appointmentDate: "",
-        timeSlot: "",
-      });
-      setAgreedToTerms(false);
-    }
+  try {
+    const result = await axios.post(`${backendURL}/book`, formData);
+    setResponse(result.data.message || "Appointment booked successfully!");
+    setIsError(false);
+  } catch (err) {
+    console.log(err);
+    setResponse("Error booking appointment. Please try again.");
+    setIsError(true);
+  } finally {
+    setProcessingDialogOpen(false); // Hide processing dialog
+    setDialogOpen(true);            // Show response dialog
+    setLoading(false);
+    setFormData({
+      name: "",
+      email: "",
+      phoneNumber: "",
+      address: "",
+      service: "",
+      appointmentDate: "",
+      timeSlot: "",
+    });
+    setAgreedToTerms(false);
   }
+}
+
 
   const handleDialogClose = () => setDialogOpen(false);
 
@@ -199,6 +204,18 @@ function Appointment() {
           <Button onClick={handleDialogClose} color="primary">OK</Button>
         </DialogActions>
       </Dialog>
+    <Dialog open={processingDialogOpen}>
+  <DialogTitle>Thanks for your patience!</DialogTitle>
+  <DialogContent sx={{ textAlign: 'center', pb: 3 }}>
+    <CircularProgress sx={{ my: 2 }} />
+    <DialogContentText>
+      We're securely processing your appointment—this may take up to 50 seconds. <br />
+      <strong>Please do not refresh or close the page.</strong>
+    </DialogContentText>
+  </DialogContent>
+</Dialog>
+
+
     </Box>
   );
 }
