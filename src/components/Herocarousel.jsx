@@ -8,7 +8,7 @@ const slides = [
     title: 'Advanced Cardiac Diagnostics',
     subtitle: 'ECG, ECHO, TMT & more — early detection, better outcomes.',
     buttonText: 'View Heart Tests',
-    image: '/ECGimage.png',
+    image: '/ECGimage.webp',
     link: '/cdd',
   },
   {
@@ -115,6 +115,7 @@ const HeroCarousel = () => {
         {slides.map((slide, index) => (
           <div 
             key={index}
+            laoding="lazy"
             className="absolute top-0 left-0 w-full h-full transition-opacity duration-500 ease-in-out"
             style={{
               left: `${index * 100}%`,

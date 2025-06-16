@@ -14,7 +14,7 @@ const DoctorsSection = () => {
     {
       name: 'Dr. Jagriti Bhardwaj',
       specialty: 'Gynecologist & Obstetrician',
-      image: 'jbp.png',
+      image: 'jbp.webp',
       link:'/book',
       qualifications: 'MBBS (SNMC, Agra), MS (OBG, PGIMS), DNB (OBG)',
       experience: 'SIR Ganga Ram Hospital, New Delhi\nEx. Senior, PGIMS New Delhi\nEx. Assistant Professor, HIMS, Dehradun',

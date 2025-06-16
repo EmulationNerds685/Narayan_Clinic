@@ -48,7 +48,8 @@ const CardiacDiagnosticsDetails = ({ onClose }) => {
           <div className="flex flex-col md:flex-row gap-8 !mb-8">
             <div className="md:w-1/3">
               <img 
-                src="/ECGimage.png" 
+              loading="lazy"
+                src="/ECGimage.webp" 
                 alt="Cardiac Diagnostics" 
                 className="w-full h-auto rounded-lg shadow-md"
               />
