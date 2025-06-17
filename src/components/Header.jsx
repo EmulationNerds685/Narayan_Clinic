@@ -53,7 +53,7 @@ const Header = () => {
         <Stack direction="row" alignItems="center" spacing={2}>
           <Box
             component="img"
-            src="/nc.png"
+            src="/nc.webp"
             alt="Logo"
             sx={{ height: 40, width: 'auto' }}
           />

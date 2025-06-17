@@ -15,7 +15,7 @@ const slides = [
     title: 'Preventive & Follow-up Cardiology',
     subtitle: 'Manage risk, adjust treatment, and stay heart healthy.',
     buttonText: 'Cardiology Follow-up',
-    image: '/9802344.jpg',
+    image: '/9802344.webp',
     link: '/FollowUp',
   },
   {
