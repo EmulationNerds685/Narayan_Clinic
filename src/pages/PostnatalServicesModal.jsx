@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -66,7 +67,7 @@ const PostnatalServicesModal = ({ onClose }) => {
             <div className="md:w-2/5">
               <div className="bg-pink-100 rounded-lg !p-6 h-full flex items-center justify-center">
                 <img 
-                  src="/postnatal.jpg" 
+                  src="/postnatal.webp" 
                   alt="Mother and newborn" 
                   className="rounded-lg shadow-md w-full h-auto"
                 />

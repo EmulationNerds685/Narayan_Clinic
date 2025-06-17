@@ -45,7 +45,7 @@ const LearnANCSection = () => {
           {/* Image */}
           <div className="w-full">
             <img
-              src="/gyno.jpg"
+              src="/gyno.webp"
               alt="Pregnant woman with doctor"
               className="rounded-lg shadow-lg w-full h-auto object-cover"
             />

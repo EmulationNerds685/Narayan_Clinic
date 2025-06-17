@@ -22,28 +22,28 @@ const slides = [
     title: 'Comprehensive Antenatal Care',
     subtitle: 'Safe and personalized pregnancy monitoring with expert support.',
     buttonText: 'Learn About ANC',
-    image: '/maternity_img.jpg',
+    image: '/maternity_img.webp',
     link: '/anc',
   },
   {
     title: 'Postnatal & Breastfeeding Support',
     subtitle: 'Caring for you and your baby after delivery.',
     buttonText: 'See Postnatal Services',
-    image: '/postnatal.jpg',
+    image: '/postnatal.webp',
     link: '/postnatal',
   },
   {
     title: 'Expert Gynaecological Services',
     subtitle: 'From menstrual issues to menopause — care for every stage.',
     buttonText: 'Explore Gynae Care',
-    image: '/gyno.jpg',
+    image: '/gyno.webp',
     link: '/Gynoservices',
   },
   {
     title: 'Consult a Specialist Today',
     subtitle: 'Expert care in Cardiology and Gynecology — book your appointment in just a few clicks.',
     buttonText: 'Book Appointment',
-    image: '/appointment.jpg',
+    image: '/appointment.webp',
     link: '/book',
   }
 ];

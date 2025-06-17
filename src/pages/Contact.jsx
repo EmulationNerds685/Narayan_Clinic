@@ -72,34 +72,37 @@ const Contact = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Contact Info + Map */}
-        <div className="!space-y-6">
-          <div className="bg-white rounded-lg shadow-md !p-6 !space-y-4">
-            <div className="!mt-4">
-              <iframe
-                title="Clinic Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3598.312158118437!2d85.15537607415408!3d25.594541477457266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed59001b844559%3A0xc68a23d3c5f4ed77!2sNarayan%20Heart%20%26%20Maternity%20Centre!5e0!3m2!1sen!2sin!4v1747651924946!5m2!1sen!2sin"
-                width="100%"
-                height="400"
-                className="border-0"
-                allowFullScreen=""
-                loading="lazy"
-              ></iframe>
-            </div>
-            <h3 className="text-xl font-semibold">Our Clinic</h3>
-            <div>
-              <p className="font-medium">📍 Address:</p>
-              <p>MIG, 245, Lohia Nagar, kankarbagh,Patna-800020</p>
-            </div>
-            <div>
-              <p className="font-medium">📞 Phone:</p>
-              <p>+91 9708441467 | +91 98361 97624</p>
-            </div>
-            <div>
-              <p className="font-medium">✉️ Email:</p>
-              <p>narayanheartmaternitycentre@gmail.com</p>
-            </div>
-          </div>
-        </div>
+      <div className="!space-y-6 !px-4 sm:!px-6">
+  <div className="bg-white rounded-lg shadow-md !p-6 !space-y-4">
+    <div className="!mt-4">
+      <iframe
+        title="Clinic Location"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3598.312158118437!2d85.15537607415408!3d25.594541477457266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed59001b844559%3A0xc68a23d3c5f4ed77!2sNarayan%20Heart%20%26%20Maternity%20Centre!5e0!3m2!1sen!2sin!4v1747651924946!5m2!1sen!2sin"
+        width="100%"
+        height="400"
+        className="border-0"
+        allowFullScreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
+    <h3 className="text-xl font-semibold">Our Clinic</h3>
+    <div>
+      <p className="font-medium">📍 Address:</p>
+      <p>MIG, 245, Lohia Nagar, kankarbagh, Patna-800020</p>
+    </div>
+    <div>
+      <p className="font-medium">📞 Phone:</p>
+      <p>+91 9708441467 | +91 98361 97624</p>
+    </div>
+    <div>
+      <p className="font-medium">✉️ Email:</p>
+      <p className="break-words text-sm sm:text-base">
+        narayanheartmaternitycentre@gmail.com
+      </p>
+    </div>
+  </div>
+</div>
+
 
         {/* Contact Form and Feedback */}
         <div className="!space-y-6">

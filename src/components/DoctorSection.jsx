@@ -6,7 +6,7 @@ const DoctorsSection = () => {
     {
       name: 'Dr. Sushant Kumar Pathak',
       specialty: 'Interventional Cardiologist',
-      image: 'skp.jpg',
+      image: 'skp.webp',
       link:'/book',
       qualifications: 'MBBS (Kolkata), MD (Medicine, PMCH Patna) - Gold Medalist, DM (Cardiology, IPGME&R)',
       experience: 'Senior Consultant, Ford Hospital, Patna\nAssistant Director, IGIC, PMCH',

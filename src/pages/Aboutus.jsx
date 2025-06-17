@@ -31,7 +31,7 @@ const AboutUs = () => {
             </p>
           </div>
           <img
-            src="/Mission.jpg"
+            src="/Mission.webp"
             alt="Our Mission"
             className="w-full lg:w-1/2 rounded-lg shadow-md object-cover"
           />
@@ -40,7 +40,7 @@ const AboutUs = () => {
         {/* Vision Section */}
         <div className="flex flex-col lg:flex-row items-center gap-10">
           <img
-            src="/about-clinic.jpg"
+            src="/about-clinic.webp"
             alt="Our Vision"
             className="w-full lg:w-1/2 rounded-lg shadow-md object-cover"
           />

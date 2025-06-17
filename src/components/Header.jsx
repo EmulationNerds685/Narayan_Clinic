@@ -136,7 +136,7 @@ const Header = () => {
                 <List>
                   {menuItems.map(({ label, path }) => (
                     <ListItem
-                      button
+                      button="true"
                       key={label}
                       component={Link}
                       to={path}
