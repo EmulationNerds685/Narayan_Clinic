@@ -188,46 +188,50 @@ function Appointment() {
           )}
 
           {otpSent && !otpVerified && (
-            <Box sx={{ display: "flex", gap: 1, mb: 2 }}>
-              {otp.map((digit, index) => (
-                <input
-                  key={index}
-                  type="text"
-                  value={digit}
-                  onChange={(e) => {
-                    const val = e.target.value;
-                    if (/^\d?$/.test(val)) {
-                      const newOtp = [...otp];
-                      newOtp[index] = val;
-                      setOtp(newOtp);
+           <Box sx={{ display: "flex", gap: 1, mb: 2 }}>
+  {otp.map((digit, index) => (
+    <input
+      key={index}
+      type="text"
+      id={`otp-${index}`}
+      value={digit}
+      onChange={(e) => {
+        const val = e.target.value;
+        if (/^\d?$/.test(val)) {
+          const newOtp = [...otp];
+          newOtp[index] = val;
+          setOtp(newOtp);
 
-                      // Move to next input if not last and value entered
-                      if (val && index < otp.length - 1) {
-                        document.getElementById(`otp-${index + 1}`)?.focus();
-                      }
-                    }
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === "Backspace" && !otp[index] && index > 0) {
-                      document.getElementById(`otp-${index - 1}`)?.focus();
-                    }
-                  }}
-                  maxLength={1}
-                  id={`otp-${index}`}
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    textAlign: "center",
-                    fontSize: "18px",
-                    margin: "0 5px",
-                  }}
-                />
-              ))}
+          // Move to next box
+          if (val && index < otp.length - 1) {
+            document.getElementById(`otp-${index + 1}`)?.focus();
+          }
+        }
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Backspace" && !otp[index] && index > 0) {
+          document.getElementById(`otp-${index - 1}`)?.focus();
+        }
+      }}
+      autoFocus={index === 0}
+      maxLength={1}
+      style={{
+        width: "40px",
+        height: "40px",
+        textAlign: "center",
+        fontSize: "18px",
+        margin: "0 5px",
+        border: "1px solid #ccc",
+        borderRadius: "6px",
+      }}
+    />
+  ))}
 
-              <Button variant="contained" onClick={handleVerifyOtp}>
-                Verify
-              </Button>
-            </Box>
+  <Button variant="contained" onClick={handleVerifyOtp}>
+    Verify
+  </Button>
+</Box>
+
           )}
 
           {otpVerified && (
