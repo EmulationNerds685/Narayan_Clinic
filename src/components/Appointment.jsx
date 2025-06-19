@@ -18,7 +18,7 @@ import {
   Checkbox,
   InputLabel,
   Select,
-  Grid
+  Grid,
 } from "@mui/material";
 import axios from "axios";
 
@@ -61,7 +61,9 @@ function Appointment() {
     }
     try {
       setOtpLoading(true);
-      const res = await axios.post(`${backendURL}/send-otp`, { email: formData.email });
+      const res = await axios.post(`${backendURL}/send-otp`, {
+        email: formData.email,
+      });
       setOtpSent(true);
       setResponse(res.data.message);
       setOtpDialogOpen(true);
@@ -140,38 +142,99 @@ function Appointment() {
   const handleDialogClose = () => setDialogOpen(false);
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" bgcolor="#f5f5f5" p={2}>
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="100vh"
+      bgcolor="#f5f5f5"
+      p={2}
+    >
       <Paper elevation={3} sx={{ padding: 4, maxWidth: 450, width: "100%" }}>
         <Typography variant="h5" textAlign="center" gutterBottom>
           Book an Appointment
         </Typography>
         <Box component="form" onSubmit={handleSubmit}>
-          <TextField fullWidth label="Name" name="name" required value={formData.name} onChange={handleChange} sx={{ mb: 2 }} />
-          <TextField fullWidth label="Email" name="email" type="email" required value={formData.email} onChange={handleChange} sx={{ mb: 1 }} />
+          <TextField
+            fullWidth
+            label="Name"
+            name="name"
+            required
+            value={formData.name}
+            onChange={handleChange}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            fullWidth
+            label="Email"
+            name="email"
+            type="email"
+            required
+            value={formData.email}
+            onChange={handleChange}
+            sx={{ mb: 1 }}
+          />
 
           {!otpVerified && (
             <Box sx={{ mb: 2 }}>
-              <Button onClick={handleSendOtp} variant="outlined" disabled={otpLoading}>
+              <Button
+                onClick={handleSendOtp}
+                variant="outlined"
+                disabled={otpLoading}
+              >
                 {otpLoading ? <CircularProgress size={20} /> : "Verify Email"}
               </Button>
             </Box>
           )}
 
           {otpSent && !otpVerified && (
-            <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
-              {otp.map((digit, idx) => (
-                <TextField
-                  key={idx}
+            <Box sx={{ display: "flex", gap: 1, mb: 2 }}>
+              {otp.map((digit, index) => (
+                <input
+                  key={index}
+                  type="text"
                   value={digit}
-                  onChange={(e) => handleOtpChange(idx, e.target.value)}
-                  inputProps={{ maxLength: 1, style: { textAlign: 'center' } }}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (/^\d?$/.test(val)) {
+                      const newOtp = [...otp];
+                      newOtp[index] = val;
+                      setOtp(newOtp);
+
+                      // Move to next input if not last and value entered
+                      if (val && index < otp.length - 1) {
+                        document.getElementById(`otp-${index + 1}`)?.focus();
+                      }
+                    }
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Backspace" && !otp[index] && index > 0) {
+                      document.getElementById(`otp-${index - 1}`)?.focus();
+                    }
+                  }}
+                  maxLength={1}
+                  id={`otp-${index}`}
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    textAlign: "center",
+                    fontSize: "18px",
+                    margin: "0 5px",
+                  }}
                 />
               ))}
-              <Button variant="contained" onClick={handleVerifyOtp}>Verify</Button>
+
+              <Button variant="contained" onClick={handleVerifyOtp}>
+                Verify
+              </Button>
             </Box>
           )}
 
-          {otpVerified && <Typography color="green" sx={{ mb: 2 }}>✔ Email Verified</Typography>}
+          {otpVerified && (
+            <Typography color="green" sx={{ mb: 2 }}>
+              ✔ Email Verified
+            </Typography>
+          )}
 
           <TextField
             fullWidth
@@ -187,18 +250,50 @@ function Appointment() {
               }
             }}
             inputProps={{ maxLength: 10 }}
-            error={formData.phoneNumber.length > 0 && formData.phoneNumber.length < 10}
-            helperText={formData.phoneNumber.length > 0 && formData.phoneNumber.length < 10 ? "Phone number must be 10 digits." : ""}
+            error={
+              formData.phoneNumber.length > 0 &&
+              formData.phoneNumber.length < 10
+            }
+            helperText={
+              formData.phoneNumber.length > 0 &&
+              formData.phoneNumber.length < 10
+                ? "Phone number must be 10 digits."
+                : ""
+            }
             sx={{ mb: 2 }}
           />
 
-          <TextField fullWidth label="Address" name="address" required value={formData.address} onChange={handleChange} sx={{ mb: 2 }} />
+          <TextField
+            fullWidth
+            label="Address"
+            name="address"
+            required
+            value={formData.address}
+            onChange={handleChange}
+            sx={{ mb: 2 }}
+          />
 
-          <TextField fullWidth label="Appointment Date" name="appointmentDate" type="date" required value={formData.appointmentDate} onChange={handleChange} InputLabelProps={{ shrink: true }} inputProps={{ min: today }} sx={{ mb: 2 }} />
+          <TextField
+            fullWidth
+            label="Appointment Date"
+            name="appointmentDate"
+            type="date"
+            required
+            value={formData.appointmentDate}
+            onChange={handleChange}
+            InputLabelProps={{ shrink: true }}
+            inputProps={{ min: today }}
+            sx={{ mb: 2 }}
+          />
 
           <FormControl fullWidth sx={{ mb: 2 }}>
             <InputLabel>What Do You Need Help With?</InputLabel>
-            <Select name="service" value={formData.service} onChange={handleChange} required>
+            <Select
+              name="service"
+              value={formData.service}
+              onChange={handleChange}
+              required
+            >
               <MenuItem value="">Pick a Specialist</MenuItem>
               <MenuItem value="Cardiologist">Cardiologist</MenuItem>
               <MenuItem value="Gynaecologist">Gynaecologist</MenuItem>
@@ -207,41 +302,86 @@ function Appointment() {
 
           <FormControl fullWidth sx={{ mb: 2 }}>
             <InputLabel>Time Slot</InputLabel>
-            <Select name="timeSlot" value={formData.timeSlot} onChange={handleChange} required>
+            <Select
+              name="timeSlot"
+              value={formData.timeSlot}
+              onChange={handleChange}
+              required
+            >
               <MenuItem value="">Select Time Slot</MenuItem>
-              <MenuItem value="09:00 AM - 10:00 AM">09:00 AM - 10:00 AM</MenuItem>
-              <MenuItem value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</MenuItem>
-              <MenuItem value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</MenuItem>
-              <MenuItem value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</MenuItem>
-              <MenuItem value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</MenuItem>
-              <MenuItem value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</MenuItem>
+              <MenuItem value="09:00 AM - 10:00 AM">
+                09:00 AM - 10:00 AM
+              </MenuItem>
+              <MenuItem value="10:00 AM - 11:00 AM">
+                10:00 AM - 11:00 AM
+              </MenuItem>
+              <MenuItem value="11:00 AM - 12:00 PM">
+                11:00 AM - 12:00 PM
+              </MenuItem>
+              <MenuItem value="12:00 PM - 01:00 PM">
+                12:00 PM - 01:00 PM
+              </MenuItem>
+              <MenuItem value="04:00 PM - 05:00 PM">
+                04:00 PM - 05:00 PM
+              </MenuItem>
+              <MenuItem value="05:00 PM - 06:00 PM">
+                05:00 PM - 06:00 PM
+              </MenuItem>
             </Select>
           </FormControl>
 
-          <FormControlLabel control={<Checkbox checked={agreedToTerms} onChange={() => setAgreedToTerms(!agreedToTerms)} />} label="I confirm all details are correct." />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={agreedToTerms}
+                onChange={() => setAgreedToTerms(!agreedToTerms)}
+              />
+            }
+            label="I confirm all details are correct."
+          />
 
-          <Button type="submit" variant="contained" fullWidth sx={{ backgroundColor: "#30638E", color: "white", mt: 2, '&:hover': { backgroundColor: "#1A4A6E" } }} disabled={!agreedToTerms || loading}>
-            {loading ? <CircularProgress size={24} color="primary" /> : "Book Appointment"}
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            sx={{
+              backgroundColor: "#30638E",
+              color: "white",
+              mt: 2,
+              "&:hover": { backgroundColor: "#1A4A6E" },
+            }}
+            disabled={!agreedToTerms || loading}
+          >
+            {loading ? (
+              <CircularProgress size={24} color="primary" />
+            ) : (
+              "Book Appointment"
+            )}
           </Button>
         </Box>
       </Paper>
 
       <Dialog open={dialogOpen} onClose={handleDialogClose}>
-        <DialogTitle>{isError ? "Submission Error" : "Appointment Confirmed"}</DialogTitle>
+        <DialogTitle>
+          {isError ? "Submission Error" : "Appointment Confirmed"}
+        </DialogTitle>
         <DialogContent>
           <DialogContentText>{response}</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleDialogClose} color="primary">OK</Button>
+          <Button onClick={handleDialogClose} color="primary">
+            OK
+          </Button>
         </DialogActions>
       </Dialog>
 
       <Dialog open={processingDialogOpen}>
         <DialogTitle>Thanks for your patience!</DialogTitle>
-        <DialogContent sx={{ textAlign: 'center', pb: 3 }}>
+        <DialogContent sx={{ textAlign: "center", pb: 3 }}>
           <CircularProgress sx={{ my: 2 }} />
           <DialogContentText>
-            We're securely processing your appointment—this may take up to 50 seconds. <br />
+            We're securely processing your appointment—this may take up to 50
+            seconds. <br />
             <strong>Please do not refresh or close the page.</strong>
           </DialogContentText>
         </DialogContent>
