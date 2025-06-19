@@ -18,8 +18,13 @@ import {
   Checkbox,
   InputLabel,
   Select,
+  Grid
 } from "@mui/material";
 import axios from "axios";
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
 
 function Appointment() {
   const [formData, setFormData] = useState({
@@ -31,18 +36,17 @@ function Appointment() {
     appointmentDate: "",
     timeSlot: "",
   });
-
+  const [otp, setOtp] = useState(["", "", "", ""]);
+  const [otpSent, setOtpSent] = useState(false);
+  const [otpVerified, setOtpVerified] = useState(false);
+  const [otpLoading, setOtpLoading] = useState(false);
   const [processingDialogOpen, setProcessingDialogOpen] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [otpDialogOpen, setOtpDialogOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [isError, setIsError] = useState(false);
   const [response, setResponse] = useState("");
-  const [isEmailVerified, setIsEmailVerified] = useState(false);
-  const [otpSent, setOtpSent] = useState(false);
-  const [otp, setOtp] = useState("");
-  const [showOtpInput, setShowOtpInput] = useState(false);
-
   const today = new Date().toISOString().split("T")[0];
   const backendURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -50,47 +54,58 @@ function Appointment() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const sendOtpToEmail = async () => {
+  const handleSendOtp = async () => {
+    if (!isValidEmail(formData.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
     try {
-      const response = await axios.post(`${backendURL}/send-otp`, {
-        email: formData.email,
-      });
+      setOtpLoading(true);
+      const res = await axios.post(`${backendURL}/send-otp`, { email: formData.email });
       setOtpSent(true);
-      setShowOtpInput(true);
-      alert("OTP sent to your email!");
-    } catch (err) {
-      console.error("Error sending OTP:", err);
+      setResponse(res.data.message);
+      setOtpDialogOpen(true);
+    } catch (error) {
+      console.error(error);
       alert("Failed to send OTP. Try again.");
+    } finally {
+      setOtpLoading(false);
     }
   };
 
-  const verifyOtp = async () => {
+  const handleOtpChange = (index, value) => {
+    if (/^\d?$/.test(value)) {
+      const newOtp = [...otp];
+      newOtp[index] = value;
+      setOtp(newOtp);
+    }
+  };
+
+  const handleVerifyOtp = async () => {
+    const enteredOtp = otp.join("");
+    if (enteredOtp.length !== 4) {
+      alert("Enter the complete 4-digit OTP.");
+      return;
+    }
     try {
-      const response = await axios.post(`${backendURL}/verify-otp`, {
+      const res = await axios.post(`${backendURL}/verify-otp`, {
         email: formData.email,
-        otp: otp,
+        otp: enteredOtp,
       });
-      if (response.data.success) {
-        setIsEmailVerified(true);
-        alert("Email verified successfully!");
-      } else {
-        alert("Invalid or expired OTP.");
-      }
-    } catch (err) {
-      console.error("Verification error:", err);
-      alert("Verification failed.");
+      setOtpVerified(true);
+      setOtpDialogOpen(false);
+      alert("Email verified successfully!");
+    } catch (error) {
+      alert("Invalid or expired OTP.");
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isEmailVerified) {
-      setResponse("Please verify your email before booking.");
-      setIsError(true);
-      setDialogOpen(true);
+    if (!otpVerified) {
+      alert("Please verify your email before booking.");
       return;
     }
-
     setLoading(true);
     setProcessingDialogOpen(true);
 
@@ -115,80 +130,48 @@ function Appointment() {
         appointmentDate: "",
         timeSlot: "",
       });
-      setAgreedToTerms(false);
-      setOtp("");
-      setIsEmailVerified(false);
+      setOtp(["", "", "", ""]);
       setOtpSent(false);
-      setShowOtpInput(false);
+      setOtpVerified(false);
+      setAgreedToTerms(false);
     }
   };
 
   const handleDialogClose = () => setDialogOpen(false);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-        backgroundColor: "#f5f5f5",
-        padding: 2,
-      }}
-    >
-      <Paper
-        elevation={3}
-        sx={{
-          padding: 4,
-          maxWidth: 450,
-          width: "100%",
-          backgroundColor: "white",
-          borderRadius: "12px",
-        }}
-      >
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" bgcolor="#f5f5f5" p={2}>
+      <Paper elevation={3} sx={{ padding: 4, maxWidth: 450, width: "100%" }}>
         <Typography variant="h5" textAlign="center" gutterBottom>
           Book an Appointment
         </Typography>
-
         <Box component="form" onSubmit={handleSubmit}>
           <TextField fullWidth label="Name" name="name" required value={formData.name} onChange={handleChange} sx={{ mb: 2 }} />
-          
-          <TextField
-            fullWidth
-            label="Email"
-            name="email"
-            type="email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            sx={{ mb: 1 }}
-          />
+          <TextField fullWidth label="Email" name="email" type="email" required value={formData.email} onChange={handleChange} sx={{ mb: 1 }} />
 
-          {!isEmailVerified && formData.email && (
-            <Button onClick={sendOtpToEmail} variant="outlined" sx={{ mb: 2 }}>
-              Send OTP to Verify
-            </Button>
-          )}
-
-          {showOtpInput && !isEmailVerified && (
-            <>
-              <TextField
-                fullWidth
-                label="Enter OTP"
-                value={otp}
-                onChange={(e) => setOtp(e.target.value)}
-                inputProps={{ maxLength: 4 }}
-                sx={{ mb: 1 }}
-              />
-              <Button variant="contained" onClick={verifyOtp} sx={{ mb: 2 }}>
-                Verify OTP
+          {!otpVerified && (
+            <Box sx={{ mb: 2 }}>
+              <Button onClick={handleSendOtp} variant="outlined" disabled={otpLoading}>
+                {otpLoading ? <CircularProgress size={20} /> : "Verify Email"}
               </Button>
-            </>
+            </Box>
           )}
 
-          {isEmailVerified && (
-            <Typography sx={{ color: "green", mb: 2 }}>✅ Email Verified</Typography>
+          {otpSent && !otpVerified && (
+            <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+              {otp.map((digit, idx) => (
+                <TextField
+                  key={idx}
+                  value={digit}
+                  onChange={(e) => handleOtpChange(idx, e.target.value)}
+                  inputProps={{ maxLength: 1, style: { textAlign: 'center' } }}
+                />
+              ))}
+              <Button variant="contained" onClick={handleVerifyOtp}>Verify</Button>
+            </Box>
           )}
+
+          {otpVerified && <Typography color="green" sx={{ mb: 2 }}>✔ Email Verified</Typography>}
 
           <TextField
             fullWidth
@@ -205,36 +188,13 @@ function Appointment() {
             }}
             inputProps={{ maxLength: 10 }}
             error={formData.phoneNumber.length > 0 && formData.phoneNumber.length < 10}
-            helperText={
-              formData.phoneNumber.length > 0 && formData.phoneNumber.length < 10
-                ? "Phone number must be 10 digits."
-                : ""
-            }
+            helperText={formData.phoneNumber.length > 0 && formData.phoneNumber.length < 10 ? "Phone number must be 10 digits." : ""}
             sx={{ mb: 2 }}
           />
 
-          <TextField
-            fullWidth
-            label="Address"
-            name="address"
-            required
-            value={formData.address}
-            onChange={handleChange}
-            sx={{ mb: 2 }}
-          />
+          <TextField fullWidth label="Address" name="address" required value={formData.address} onChange={handleChange} sx={{ mb: 2 }} />
 
-          <TextField
-            fullWidth
-            label="Appointment Date"
-            name="appointmentDate"
-            type="date"
-            required
-            value={formData.appointmentDate}
-            onChange={handleChange}
-            InputLabelProps={{ shrink: true }}
-            inputProps={{ min: today }}
-            sx={{ mb: 2 }}
-          />
+          <TextField fullWidth label="Appointment Date" name="appointmentDate" type="date" required value={formData.appointmentDate} onChange={handleChange} InputLabelProps={{ shrink: true }} inputProps={{ min: today }} sx={{ mb: 2 }} />
 
           <FormControl fullWidth sx={{ mb: 2 }}>
             <InputLabel>What Do You Need Help With?</InputLabel>
@@ -258,24 +218,14 @@ function Appointment() {
             </Select>
           </FormControl>
 
-          <FormControlLabel
-            control={<Checkbox checked={agreedToTerms} onChange={() => setAgreedToTerms(!agreedToTerms)} />}
-            label="I confirm all details are correct."
-          />
+          <FormControlLabel control={<Checkbox checked={agreedToTerms} onChange={() => setAgreedToTerms(!agreedToTerms)} />} label="I confirm all details are correct." />
 
-          <Button
-            type="submit"
-            variant="contained"
-            fullWidth
-            sx={{ backgroundColor: "#30638E", color: "white", "&:hover": { backgroundColor: "#1A4A6E" } }}
-            disabled={!agreedToTerms || loading}
-          >
+          <Button type="submit" variant="contained" fullWidth sx={{ backgroundColor: "#30638E", color: "white", mt: 2, '&:hover': { backgroundColor: "#1A4A6E" } }} disabled={!agreedToTerms || loading}>
             {loading ? <CircularProgress size={24} color="primary" /> : "Book Appointment"}
           </Button>
         </Box>
       </Paper>
 
-      {/* Dialogs */}
       <Dialog open={dialogOpen} onClose={handleDialogClose}>
         <DialogTitle>{isError ? "Submission Error" : "Appointment Confirmed"}</DialogTitle>
         <DialogContent>
