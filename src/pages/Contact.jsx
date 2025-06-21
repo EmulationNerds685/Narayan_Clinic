@@ -67,7 +67,7 @@ const Contact = () => {
   return (
     <div className="max-w-7xl !mx-auto !py-10 !px-4 sm:!px-6 lg:!px-8 w-full">
       <Helmet>
-  <title>Contact Narayan Heart & Maternity Centre | Clinic in Patna</title>
+  <title>Contact Narayan Heart & Maternity Centre | Best Cardiologist and Gynecologist Clinic in Patna</title>
   <meta
     name="description"
     content="Get in touch with Dr. Sushant Kumar Pathak and Dr. Jagriti Bhardwaj. View clinic timings, address, and contact info for appointments in Patna."

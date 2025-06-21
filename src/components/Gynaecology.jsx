@@ -16,7 +16,6 @@ import {
   FaClinicMedical,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 
 const GynecologyServices = () => {
   const iconColor = '#8E44AD';
@@ -46,13 +45,7 @@ const GynecologyServices = () => {
 
   return (
     <div className="bg-gradient-to-b from-purple-50 to-white !py-12 !px-4 sm:!px-6 lg:!px-8">
-      <Helmet>
-        <title>Dr. Jagriti Bhardwaj | Top Gynaecologist in Patna</title>
-        <meta
-          name="description"
-          content="Dr. Jagriti Bhardwaj offers advanced gynaecological care, pregnancy checkups, and women's health services in Patna. Book a consultation today."
-        />
-      </Helmet>
+      
 
       {/* Doctor Profile Card */}
       <div className="max-w-4xl !mx-auto !mb-12">

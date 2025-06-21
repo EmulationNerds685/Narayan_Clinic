@@ -4,7 +4,7 @@ const AboutUs = () => {
   return (
     <section className="bg-white !py-16 !px-4 sm:!px-6 lg:!px-8">
       <Helmet>
-  <title>About Narayan Heart & Maternity Centre | Meet Our Doctors</title>
+  <title>About Narayan Heart & Maternity Centre | Our Mission And Vision</title>
   <meta
     name="description"
     content="Learn about Narayan Heart & Maternity Centre, a multi-speciality clinic in Patna led by Dr. Sushant Kumar Pathak (Cardiologist) and Dr. Jagriti Bhardwaj (Gynaecologist). Dedicated to compassionate and expert healthcare."

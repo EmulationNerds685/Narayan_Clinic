@@ -51,7 +51,7 @@ const theme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme} className="font-[Nunito_Sans]">
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router >
         <Header />
