@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async'
 const CardiologyFollowUp = () => {
   const followUpData = {
     title: "Cardiology Follow-Up Care",
@@ -43,6 +44,14 @@ const CardiologyFollowUp = () => {
 
   return (
     <div className=" !mx-auto !px-4 !py-12 sm:!px-6 lg:!px-8">
+     <Helmet>
+  <title>Cardiology Follow-Up Care | Dr. Sushant Kumar Pathak, Patna</title>
+  <meta
+    name="description"
+    content="Continue your heart treatment journey with regular follow-up consultations by Dr. Sushant Kumar Pathak at Narayan Heart & Maternity Centre, Patna."
+  />
+</Helmet>
+
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         {/* Header Section */}
         <div className="bg-blue-700 !px-6 !py-8 sm:px-10 sm:!py-12 text-white">

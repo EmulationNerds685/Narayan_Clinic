@@ -1,6 +1,7 @@
 import React from "react";
 import { FaUserMd, FaAward, FaBriefcase, FaClinicMedical } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet-async'
 const DoctorsSection = () => {
   const doctors = [
     {
@@ -24,6 +25,14 @@ const DoctorsSection = () => {
 
   return (
     <div className="!py-12 !px-4 sm:!px-6 lg:!px-8 bg-gray-50">
+     <Helmet>
+  <title>Our Doctors | Dr. Sushant Pathak & Dr. Jagriti Bhardwaj - Patna</title>
+  <meta
+    name="description"
+    content="Meet our specialists at Narayan Heart & Maternity Centre, Patna — Dr. Sushant Kumar Pathak (Cardiologist) and Dr. Jagriti Bhardwaj (Gynaecologist). Learn more about their qualifications and experience."
+  />
+</Helmet>
+
       <div className="max-w-7xl !!mx-auto">
         <h2 className="text-3xl font-bold text-center text-gray-900 !mb-2">Our Expert Doctors</h2>
         <div className="w-20 h-1 bg-blue-600 !mx-auto !mb-12 rounded-full"></div>

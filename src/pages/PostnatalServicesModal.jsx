@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { Helmet } from 'react-helmet-async'
 const PostnatalServicesModal = ({ onClose }) => {
   const services = [
     {
@@ -48,6 +48,14 @@ const PostnatalServicesModal = ({ onClose }) => {
 
   return (
     <div className="flex items-center justify-center !p-4 ">
+     <Helmet>
+  <title>Postnatal Care Services in Patna | Dr. Jagriti Bhardwaj</title>
+  <meta
+    name="description"
+    content="Get expert postnatal care for new mothers at Narayan Heart & Maternity Centre, Patna. Led by Dr. Jagriti Bhardwaj, our services ensure complete recovery and support."
+  />
+</Helmet>
+
       <div className="bg-white rounded-xl shadow-2xl  w-full  overflow-y-auto">
         {/* Header */}
         <div className="bg-pink-600 text-white !p-6 rounded-t-xl">

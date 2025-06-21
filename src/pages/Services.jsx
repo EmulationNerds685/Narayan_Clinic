@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import {
   FaHeart,
   FaFemale,
@@ -98,6 +100,14 @@ const Services = () => {
 
   return (
     <div className="bg-gradient-to-b from-gray-50 to-white !py-20 !px-8 sm:!px-6 lg:!px-20">
+      <Helmet>
+  <title>Clinic Services | Cardiology & Gynaecology in Patna</title>
+  <meta
+    name="description"
+    content="Explore the medical services at Narayan Heart & Maternity Centre in Patna, including expert cardiology by Dr. Sushant Kumar Pathak and gynaecological care by Dr. Jagriti Bhardwaj."
+  />
+</Helmet>
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

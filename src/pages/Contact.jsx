@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import FeedbackDialog from '../components/Feedback';
-
+import { Helmet } from 'react-helmet-async';
 const Contact = () => {
   const backendURL = import.meta.env.VITE_BACKEND_URL;
   const [feedbackData, setFeedbackData] = useState({
@@ -66,6 +66,14 @@ const Contact = () => {
 
   return (
     <div className="max-w-7xl !mx-auto !py-10 !px-4 sm:!px-6 lg:!px-8 w-full">
+      <Helmet>
+  <title>Contact Narayan Heart & Maternity Centre | Clinic in Patna</title>
+  <meta
+    name="description"
+    content="Get in touch with Dr. Sushant Kumar Pathak and Dr. Jagriti Bhardwaj. View clinic timings, address, and contact info for appointments in Patna."
+  />
+</Helmet>
+
       <h2 className="text-center !mb-8 text-3xl font-bold text-blue-600">
         Contact Us
       </h2>

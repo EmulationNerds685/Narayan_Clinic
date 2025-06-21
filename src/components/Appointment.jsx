@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
+import { Helmet } from 'react-helmet-async'
 import {
   TextField,
   Button,
@@ -150,6 +151,14 @@ function Appointment() {
       bgcolor="#f5f5f5"
       p={2}
     >
+      <Helmet>
+  <title>Book Appointment | Narayan Heart & Maternity Centre, Patna</title>
+  <meta
+    name="description"
+    content="Book an online appointment with Dr. Sushant Kumar Pathak (Cardiologist) or Dr. Jagriti Bhardwaj (Gynaecologist) at Narayan Heart & Maternity Centre, Patna."
+  />
+</Helmet>
+
       <Paper elevation={3} sx={{ padding: 4, maxWidth: 450, width: "100%" }}>
         <Typography variant="h5" textAlign="center" gutterBottom>
           Book an Appointment

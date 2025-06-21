@@ -1,9 +1,17 @@
 import React from 'react';
 import { Typography } from '@mui/material';
-
+import { Helmet } from 'react-helmet-async'
 const LearnANCSection = () => {
   return (
     <section className="bg-white !py-16 !px-6 md:!px-12 lg:!px-24">
+      <Helmet>
+  <title>Antenatal Care (ANC) in Patna | Dr. Jagriti Bhardwaj</title>
+  <meta
+    name="description"
+    content="Learn about Antenatal Care (ANC) services offered at Narayan Heart & Maternity Centre, Patna by Dr. Jagriti Bhardwaj. Ensure a healthy pregnancy with expert checkups and guidance."
+  />
+</Helmet>
+
       <div className="max-w-6xl !mx-auto">
         {/* Heading */}
         <div className="text-center !mb-12">

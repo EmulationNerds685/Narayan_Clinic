@@ -1,9 +1,17 @@
 import React from 'react';
-
+import { Helmet } from 'react-helmet-async';
 const AboutUs = () => {
   return (
-    <section className="bg-white !py-16 !px-4 !sm:px-6 lg:px-8">
-      <div className="max-w-7xl !mx-auto space-y-16">
+    <section className="bg-white !py-16 !px-4 sm:!px-6 lg:!px-8">
+      <Helmet>
+  <title>About Narayan Heart & Maternity Centre | Meet Our Doctors</title>
+  <meta
+    name="description"
+    content="Learn about Narayan Heart & Maternity Centre, a multi-speciality clinic in Patna led by Dr. Sushant Kumar Pathak (Cardiologist) and Dr. Jagriti Bhardwaj (Gynaecologist). Dedicated to compassionate and expert healthcare."
+  />
+</Helmet>
+
+      <div className="max-w-7xl !mx-auto !space-y-16">
         {/* About Section */}
         <div className="flex flex-col lg:flex-row items-center gap-10">
           <img

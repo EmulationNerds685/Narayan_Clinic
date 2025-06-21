@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async'
 const CardiacDiagnosticsDetails = ({ onClose }) => {
   const diagnosticTests = [
     {
@@ -26,6 +27,14 @@ const CardiacDiagnosticsDetails = ({ onClose }) => {
 
   return (
     <div className=" flex items-center justify-center !p-4">
+      <Helmet>
+  <title>Cardiac Diagnostics in Patna | Dr. Sushant Kumar Pathak</title>
+  <meta
+    name="description"
+    content="Narayan Heart & Maternity Centre offers advanced cardiac diagnostic tests in Patna, including ECG, ECHO, and TMT under the care of Dr. Sushant Kumar Pathak."
+  />
+</Helmet>
+
       <div className="bg-white rounded-lg shadow-xl  w-full  overflow-y-auto">
         {/* Header */}
         <div className="bg-indigo-700 text-white !p-6 rounded-t-lg">
