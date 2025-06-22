@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useInView } from 'react-intersection-observer';
 
 const slides = [
   {
@@ -78,11 +79,10 @@ const HeroCarousel = () => {
   };
 
   useEffect(() => {
-    // Reset transitioning state after animation completes
     if (transitionRef.current) clearTimeout(transitionRef.current);
     transitionRef.current = setTimeout(() => {
       setIsTransitioning(false);
-    }, 500); // Match this with your CSS transition duration
+    }, 500);
   }, [current]);
 
   useEffect(() => {
@@ -107,44 +107,48 @@ const HeroCarousel = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Slides container with smooth transition */}
       <div 
         className="absolute inset-0 transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${current * 100}%)` }}
       >
-        {slides.map((slide, index) => (
-          <div 
-            key={index}
-            laoding="lazy"
-            className="absolute top-0 left-0 w-full h-full transition-opacity duration-500 ease-in-out"
-            style={{
-              left: `${index * 100}%`,
-              backgroundImage: `url(${slide.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          >
-            {/* Overlay */}
-            <div className="bg-opacity-40" />
-            
-            {/* Content */}
-            <div className="relative h-full flex items-center justify-center !px-4 sm:!px-6 lg:!px-8">
-              <div className="text-center max-w-2xl md:max-w-3xl lg:max-w-4xl w-full rounded-lg !p-6 sm:!p-8">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white !mb-2 sm:!mb-3">
-                  {slide.title}
-                </h2>
-                <p className="text-white text-base sm:text-lg md:text-xl !mb-4 sm:!mb-6">
-                  {slide.subtitle}
-                </p>
-                <Link to={slide.link}>
-                  <button className="bg-red-500 hover:bg-red-600 text-white !px-5 !py-2 sm:!px-6 sm:!py-2.5 rounded-full font-medium transition-colors duration-300 text-sm sm:text-base">
-                    {slide.buttonText}
-                  </button>
-                </Link>
+        {slides.map((slide, index) => {
+          const { ref, inView } = useInView({
+            triggerOnce: true,
+            rootMargin: '200px',
+          });
+
+          return (
+            <div 
+              key={index}
+              ref={ref}
+              className="absolute top-0 left-0 w-full h-full transition-opacity duration-500 ease-in-out"
+              style={{
+                left: `${index * 100}%`,
+                backgroundImage: inView ? `url(${slide.image})` : 'none',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            >
+              <div className="absolute inset-0 " />
+
+              <div className="relative h-full flex items-center justify-center !px-4 sm:!px-6 lg:!px-8">
+                <div className="text-center max-w-2xl md:max-w-3xl lg:max-w-4xl w-full rounded-lg !p-6 sm:!p-8">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white !mb-2 sm:!mb-3">
+                    {slide.title}
+                  </h2>
+                  <p className="text-white text-base sm:text-lg md:text-xl !mb-4 sm:!mb-6">
+                    {slide.subtitle}
+                  </p>
+                  <Link to={slide.link}>
+                    <button className="bg-red-500 hover:bg-red-600 text-white !px-5 !py-2 sm:!px-6 sm:!py-2.5 rounded-full font-medium transition-colors duration-300 text-sm sm:text-base">
+                      {slide.buttonText}
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Navigation Arrows */}
