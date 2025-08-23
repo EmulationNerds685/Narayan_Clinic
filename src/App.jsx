@@ -3,6 +3,7 @@ import HomePage from "./pages/Homepage";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router } from "react-router-dom";
 import Approutes from "./Routes/AppRoutes";
+import ScrollToTop from "./Routes/ScrollToTop";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 const theme = createTheme({
@@ -54,6 +55,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router >
+      <ScrollToTop/>
         <Header />
         <Approutes />
         <Footer />
