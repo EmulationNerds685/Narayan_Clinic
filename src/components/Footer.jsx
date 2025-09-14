@@ -14,12 +14,12 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#30638E] text-white !py-12 !px-4 sm:!px-6">
-      <div className="max-w-6xl !!mx-auto">
+    <footer className="bg-[#30638E] text-white py-12 px-4 sm:px-6 overflow-x-hidden">
+      <div className="max-w-[100%] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Clinic Info */}
-          <div className="!space-y-4">
-            <div className="flex items-center !space-x-2">
+          <div className="space-y-4">
+            <div className="flex items-center space-x-2">
               <img src="/nc.webp" alt="Logo" className="h-8 w-auto" />
               <h3 className="text-xl font-bold">
                 Narayan Heart & Maternity Centre
@@ -31,37 +31,22 @@ const Footer = () => {
             </p>
 
             {/* Social Media */}
-            <div className="!pt-2">
-              <h4 className="font-medium !mb-3">Connect With Us</h4>
-              <div className="flex !space-x-4">
-                <a
-                  href="#"
-                  className="text-blue-100 hover:text-white transition-colors"
-                >
+            <div className="pt-2">
+              <h4 className="font-medium mb-3">Connect With Us</h4>
+              <div className="flex space-x-4">
+                <a href="#" className="text-blue-100 hover:text-white transition-colors">
                   <FaFacebook className="w-5 h-5" />
                 </a>
-                <a
-                  href="#"
-                  className="text-blue-100 hover:text-white transition-colors"
-                >
+                <a href="#" className="text-blue-100 hover:text-white transition-colors">
                   <FaTwitter className="w-5 h-5" />
                 </a>
-                <a
-                  href="#"
-                  className="text-blue-100 hover:text-white transition-colors"
-                >
+                <a href="#" className="text-blue-100 hover:text-white transition-colors">
                   <FaInstagram className="w-5 h-5" />
                 </a>
-                <a
-                  href="#"
-                  className="text-blue-100 hover:text-white transition-colors"
-                >
+                <a href="#" className="text-blue-100 hover:text-white transition-colors">
                   <FaLinkedin className="w-5 h-5" />
                 </a>
-                <a
-                  href="#"
-                  className="text-blue-100 hover:text-white transition-colors"
-                >
+                <a href="#" className="text-blue-100 hover:text-white transition-colors">
                   <FaYoutube className="w-5 h-5" />
                 </a>
               </div>
@@ -69,80 +54,53 @@ const Footer = () => {
           </div>
 
           {/* Navigation */}
-          <div className="!space-y-4">
+          <div className="space-y-4">
             <h3 className="text-xl font-bold">Quick Links</h3>
-            <nav className="!space-y-2">
-              <Link
-                to="/"
-                className="block text-blue-100 hover:text-white transition-colors"
-              >
-                Home
-              </Link>
-              <Link
-                to="/services"
-                className="block text-blue-100 hover:text-white transition-colors"
-              >
-                Services
-              </Link>
-              <Link
-                to="/doctors"
-                className="block text-blue-100 hover:text-white transition-colors"
-              >
-                Our Doctors
-              </Link>
-              <Link
-                to="/contact"
-                className="block text-blue-100 hover:text-white transition-colors"
-              >
-                Contact
-              </Link>
-              <a
-                href="https://maps.app.goo.gl/tsKEg2pHUXZzp1STA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-blue-100 hover:text-white transition-colors"
-              >
+            <nav className="space-y-2">
+              <Link to="/" className="block text-blue-100 hover:text-white transition-colors">Home</Link>
+              <Link to="/services" className="block text-blue-100 hover:text-white transition-colors">Services</Link>
+              <Link to="/doctors" className="block text-blue-100 hover:text-white transition-colors">Our Doctors</Link>
+              <Link to="/contact" className="block text-blue-100 hover:text-white transition-colors">Contact</Link>
+              <a href="https://maps.app.goo.gl/tsKEg2pHUXZzp1STA" target="_blank" rel="noopener noreferrer" className="block text-blue-100 hover:text-white transition-colors">
                 Reach us
               </a>
             </nav>
           </div>
 
           {/* Contact Info */}
-          <div className="!space-y-4">
+          <div className="space-y-4">
             <h3 className="text-xl font-bold">Contact Us</h3>
-            <address className="not-italic !space-y-2 text-blue-100">
-              <div className="flex items-start !space-x-2">
-                <FaMapMarkerAlt className="!mt-1 flex-shrink-0" />
-                <span>MIG, 245, Lohia Nagar, kankarbagh, Patna-800020</span>
+            <address className="not-italic space-y-2 text-blue-100">
+              <div className="flex items-start space-x-2">
+                <FaMapMarkerAlt className="mt-1 flex-shrink-0" />
+                <span>MIG, 245, Lohia Nagar, Kankarbagh, Patna-800020</span>
               </div>
-              <div className="flex items-center !space-x-2">
+              <div className="flex items-center space-x-2">
                 <FaPhone />
                 <span>+91 9708441467 | +91 98361 97624</span>
               </div>
-              <div className="flex items-center !space-x-2 ">
+              <div className="flex items-center space-x-2">
                 <FaEnvelope />
                 <span>narayanheartmaternitycentre@gmail.com</span>
               </div>
             </address>
           </div>
 
-          {/* Newsletter */}
+          {/* Newsletter / Placeholder */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold">Newsletter</h3>
+            <p className="text-blue-100">Subscribe to our updates (coming soon)</p>
+          </div>
         </div>
 
         {/* Divider + Copyright */}
-        <div className="border-t border-blue-700 !my-8"></div>
-        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left text-blue-100 text-sm !space-y-2 md:!space-y-0">
-          <p>
-            © {new Date().getFullYear()} Narayan Heart & Maternity Centre. All
-            rights reserved.
-          </p>
-          <div className="flex items-center !space-x-4">
+        <div className="border-t border-blue-700 my-8"></div>
+        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left text-blue-100 text-sm space-y-2 md:space-y-0">
+          <p>© {new Date().getFullYear()} Narayan Heart & Maternity Centre. All rights reserved.</p>
+          <div className="flex flex-wrap justify-center md:justify-start items-center gap-4">
             <Link to="/terms">Terms & Conditions</Link>
-
             <Link to="/privacypolicy">Privacy Policy</Link>
-
             <Link to="/cancellationRefund">Cancellation & Refund</Link>
-
             <Link to="/shipping">Shipping Policy</Link>
           </div>
         </div>

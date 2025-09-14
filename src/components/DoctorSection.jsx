@@ -24,77 +24,87 @@ const DoctorsSection = () => {
   ];
 
   return (
-    <div className="!py-12 !px-4 sm:!px-6 lg:!px-8 bg-gray-50">
-    
+ <div className="!py-12 !px-4 sm:!px-6 lg:!px-8 bg-gray-50">
+  <div className="max-w-7xl !!mx-auto">
+    <h2 className="text-3xl font-bold text-center text-gray-900 !mb-2">
+      Our Expert Doctors
+    </h2>
+    <div className="w-20 h-1 bg-blue-600 !mx-auto !mb-12 rounded-full"></div>
 
-      <div className="max-w-7xl !!mx-auto">
-        <h2 className="text-3xl font-bold text-center text-gray-900 !mb-2">Our Expert Doctors</h2>
-        <div className="w-20 h-1 bg-blue-600 !mx-auto !mb-12 rounded-full"></div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {doctors.map((doctor, index) => (
-            <div 
-              key={index}
-              className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
-            >
-              <div className="md:flex">
-                <div className="md:w-1/3 !p-6 flex justify-center">
-                  <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-blue-100">
-                    <img 
-                      src={doctor.image} 
-                      alt={doctor.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                
-                <div className="md:w-2/3 !p-6">
-                  <div className="flex items-center !mb-4">
-                    <FaUserMd className="text-red-500 !mr-2" />
-                    <h3 className="text-2xl font-bold text-gray-800">{doctor.name}</h3>
-                  </div>
-                  
-                  <p className="text-lg text-red-500 font-medium !mb-4">{doctor.specialty}</p>
-                  
-                  {doctor.specializations && (
-                    <p className="text-sm text-red-500 font-medium !mb-4">
-                      <FaClinicMedical className="inline !mr-1" />
-                      {doctor.specializations}
-                    </p>
-                  )}
-                  
-                  <div className="!mb-4 flex items-start">
-                    <FaAward className="text-red-500 !mt-1 !mr-2 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold text-gray-700">Qualifications</h4>
-                      <p className="text-gray-600">{doctor.qualifications}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <FaBriefcase className="text-red-500 !mt-1 !mr-2 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold text-gray-700">Experience</h4>
-                      {doctor.experience.split('\n').map((line, i) => (
-                        <p key={i} className="text-gray-600">{line}</p>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="!px-6 !py-4 bg-gray-50 border-t border-gray-100">
-               <Link to={doctor.link}>
-                <button className="w-full bg-red-500 hover:bg-red-700 text-white !py-2 !px-4 rounded-lg transition-colors duration-300">
-                  Book Appointment
-                </button>
-               </Link>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {doctors.map((doctor, index) => (
+        <div
+          key={index}
+          className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl"
+        >
+          <div className="md:flex">
+            {/* Image Section */}
+            <div className="md:w-1/3 p-4 flex justify-center">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-blue-100 hover:scale-105 transition-transform">
+                <img
+                  src={doctor.image}
+                  alt={doctor.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
-          ))}
+
+            {/* Info Section */}
+            <div className="md:w-2/3 p-4 sm:p-6">
+              <div className="flex items-center mb-3">
+                <FaUserMd className="text-blue-600 mr-2" />
+                <h3 className="text-2xl font-bold text-gray-800">{doctor.name}</h3>
+              </div>
+
+              <p className="text-lg text-blue-600 font-medium mb-3">{doctor.specialty}</p>
+
+              {doctor.specializations && (
+                <p className="text-sm text-gray-700 mb-3 flex items-center">
+                  <FaClinicMedical className="text-blue-600 mr-1" />
+                  {doctor.specializations}
+                </p>
+              )}
+
+              <div className="mb-3 flex items-start">
+                <FaAward className="text-blue-600 mt-1 mr-2 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-gray-700">Qualifications</h4>
+                  <ul className="list-disc ml-5 text-gray-600 text-sm">
+                    {doctor.qualifications.split(',').map((q, i) => (
+                      <li key={i}>{q.trim()}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <FaBriefcase className="text-blue-600 mt-1 mr-2 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-gray-700">Experience</h4>
+                  <ul className="list-disc ml-5 text-gray-600 text-sm">
+                    {doctor.experience.split('\n').map((line, i) => (
+                      <li key={i}>{line}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="px-6 py-4 bg-gray-50 border-t border-gray-100">
+            <Link to={doctor.link}>
+              <button className="w-full bg-[#3CAEA3] hover:bg-[#2F8B82] text-white py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all">
+                Book Appointment
+              </button>
+            </Link>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
+  </div>
+</div>
+
   );
 };
 

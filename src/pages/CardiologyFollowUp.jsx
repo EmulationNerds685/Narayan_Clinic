@@ -54,9 +54,9 @@ const CardiologyFollowUp = () => {
 
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         {/* Header Section */}
-        <div className="bg-blue-700 !px-6 !py-8 sm:px-10 sm:!py-12 text-white">
+        <div className="bg-[#3CAEA3] !px-6 !py-8 sm:!px-10 sm:!py-12 text-white">
           <h2 className="text-3xl font-bold !mb-3">{followUpData.title}</h2>
-          <p className="text-blue-100 max-w-2xl">{followUpData.description}</p>
+          <p className="text-white max-w-2xl">{followUpData.description}</p>
         </div>
         
         {/* Main Content */}
@@ -65,7 +65,7 @@ const CardiologyFollowUp = () => {
           <div className="grid gap-8 md:grid-cols-3 !mb-12">
             {followUpData.features.map((feature, index) => (
               <div key={index} className="bg-blue-50 rounded-lg !p-6 hover:shadow-md transition-shadow">
-                <div className="text-blue-600 !mb-4">
+                <div className="text-[#3CAEA3] !mb-4">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 !mb-2">{feature.title}</h3>

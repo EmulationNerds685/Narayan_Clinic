@@ -56,7 +56,7 @@ const GynecologyServices = () => {
 
       {/* Doctor Profile Card */}
       <div className="max-w-4xl !mx-auto !mb-12">
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl border border-gray-100">
           <div className="md:flex">
             <div className="md:w-1/3 !p-6 flex justify-center">
               <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-purple-100">
@@ -68,14 +68,14 @@ const GynecologyServices = () => {
                 <FaUserMd className="text-purple-500 !mr-2" />
                 <h3 className="text-2xl font-bold text-gray-800">{jagriti.name}</h3>
               </div>
-              <p className="text-lg text-purple-600 font-medium !mb-4">{jagriti.specialty}</p>
+              <p className="text-lg text-purple-600 font-medium !mb-3">{jagriti.specialty}</p>
               {jagriti.specializations && (
                 <p className="text-sm text-purple-600 font-medium !mb-4">
                   <FaClinicMedical className="inline !mr-1" />
                   {jagriti.specializations}
                 </p>
               )}
-              <div className="mb-4 flex items-start">
+              <div className="!mb-4 flex items-start">
                 <FaAward className="text-purple-500 !mt-1 !mr-2 flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold text-gray-700">Qualifications</h4>
@@ -105,14 +105,16 @@ const GynecologyServices = () => {
 
       {/* Gynecology Services Section */}
       <div className="max-w-7xl !mx-auto">
-        <h2 className="text-3xl font-bold text-center text-gray-900 !mb-2">Gynecology Services</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-900 !mb-2">
+          <span className="text-purple-600">Gynecology</span> Services
+        </h2>
         <div className="w-20 h-1 bg-purple-600 !mx-auto !mb-12 rounded-full"></div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {gynecologyServices.map((service, index) => (
             <div
               key={index}
-              className="group relative bg-white !p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border-l-4 border-transparent hover:border-purple-500"
+              className="group relative bg-white !p-6 rounded-lg shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 border-l-4 border-transparent hover:border-purple-500"
             >
               <div className="flex flex-col h-full">
                 <div className="flex items-center !mb-4">
@@ -123,11 +125,11 @@ const GynecologyServices = () => {
                 </div>
                 <div className="text-gray-600 flex-grow">{service.description}</div>
                 <div className="!mt-4 !pt-4 border-t border-gray-100 group-hover:border-gray-200 transition-colors duration-300">
-                  <button className="text-purple-600 hover:text-purple-700 font-medium text-sm flex items-center">
+                  <button className="text-purple-600 hover:underline font-medium text-sm flex items-center">
                     Learn more
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 !ml-1"
+                      className="h-4 w-4 ml-1"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >

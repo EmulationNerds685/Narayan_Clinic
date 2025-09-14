@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { Helmet } from 'react-helmet-async'
+import { Helmet } from "react-helmet-async";
 import {
   TextField,
   Button,
@@ -19,7 +19,6 @@ import {
   Checkbox,
   InputLabel,
   Select,
-  Grid,
 } from "@mui/material";
 import axios from "axios";
 
@@ -43,7 +42,6 @@ function Appointment() {
   const [otpLoading, setOtpLoading] = useState(false);
   const [processingDialogOpen, setProcessingDialogOpen] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [otpDialogOpen, setOtpDialogOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -51,9 +49,8 @@ function Appointment() {
   const today = new Date().toISOString().split("T")[0];
   const backendURL = import.meta.env.VITE_BACKEND_URL;
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSendOtp = async () => {
     if (!isValidEmail(formData.email)) {
@@ -67,20 +64,11 @@ function Appointment() {
       });
       setOtpSent(true);
       setResponse(res.data.message);
-      setOtpDialogOpen(true);
     } catch (error) {
       console.error(error);
       alert("Failed to send OTP. Try again.");
     } finally {
       setOtpLoading(false);
-    }
-  };
-
-  const handleOtpChange = (index, value) => {
-    if (/^\d?$/.test(value)) {
-      const newOtp = [...otp];
-      newOtp[index] = value;
-      setOtp(newOtp);
     }
   };
 
@@ -91,12 +79,11 @@ function Appointment() {
       return;
     }
     try {
-      const res = await axios.post(`${backendURL}/verify-otp`, {
+      await axios.post(`${backendURL}/verify-otp`, {
         email: formData.email,
         otp: enteredOtp,
       });
       setOtpVerified(true);
-      setOtpDialogOpen(false);
       alert("Email verified successfully!");
     } catch (error) {
       alert("Invalid or expired OTP.");
@@ -117,7 +104,6 @@ function Appointment() {
       setResponse(result.data.message || "Appointment booked successfully!");
       setIsError(false);
     } catch (err) {
-      console.log(err);
       setResponse("Error booking appointment. Please try again.");
       setIsError(true);
     } finally {
@@ -140,33 +126,61 @@ function Appointment() {
     }
   };
 
-  const handleDialogClose = () => setDialogOpen(false);
-
   return (
     <Box
       display="flex"
       justifyContent="center"
       alignItems="center"
       minHeight="100vh"
-      bgcolor="#f5f5f5"
-      p={2}
+      sx={{
+        background: "linear-gradient(to bottom right, #f0f6fa, #ffffff)",
+        p: 2,
+      }}
     >
       <Helmet>
-  <title>Book Appointment | Narayan Heart & Maternity Centre, Patna</title>
-  <meta
-    name="description"
-    content="Book an online appointment with Dr. Sushant Kumar Pathak (Cardiologist) or Dr. Jagriti Bhardwaj (Gynaecologist) at Narayan Heart & Maternity Centre, Patna."
-  />
-</Helmet>
+        <title>
+          Book Appointment | Narayan Heart & Maternity Centre, Patna
+        </title>
+        <meta
+          name="description"
+          content="Book an online appointment with Dr. Sushant Kumar Pathak (Cardiologist) or Dr. Jagriti Bhardwaj (Gynaecologist) at Narayan Heart & Maternity Centre, Patna."
+        />
+      </Helmet>
 
-      <Paper elevation={3} sx={{ padding: 4, maxWidth: 450, width: "100%" }}>
-        <Typography variant="h5" textAlign="center" gutterBottom>
+      <Paper
+        elevation={4}
+        sx={{
+          p: 4,
+          maxWidth: 500,
+          width: "100%",
+          borderRadius: 3,
+        }}
+      >
+        <Typography
+          variant="h5"
+          align="center"
+          fontWeight="bold"
+          gutterBottom
+          sx={{ color: "#30638E" }}
+        >
           Book an Appointment
         </Typography>
+        <Box
+          sx={{
+            width: 60,
+            height: 3,
+            backgroundColor: "#30638E",
+            mx: "auto",
+            mb: 3,
+            borderRadius: 2,
+          }}
+        />
+
+        {/* Form */}
         <Box component="form" onSubmit={handleSubmit}>
           <TextField
             fullWidth
-            label="Name"
+            label="Full Name"
             name="name"
             required
             value={formData.name}
@@ -181,70 +195,61 @@ function Appointment() {
             required
             value={formData.email}
             onChange={handleChange}
-            sx={{ mb: 1 }}
+            sx={{ mb: 2 }}
           />
 
           {!otpVerified && (
-            <Box sx={{ mb: 2 }}>
+            <Button
+              onClick={handleSendOtp}
+              variant="outlined"
+              size="small"
+              sx={{ mb: 2, borderColor: "#30638E", color: "#30638E" }}
+              disabled={otpLoading}
+            >
+              {otpLoading ? <CircularProgress size={20} /> : "Send OTP"}
+            </Button>
+          )}
+
+          {otpSent && !otpVerified && (
+            <Box sx={{ display: "flex", alignItems: "center", mb: 2, gap: 1 }}>
+              {otp.map((digit, index) => (
+                <TextField
+                  key={index}
+                  value={digit}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (/^\d?$/.test(val)) {
+                      const newOtp = [...otp];
+                      newOtp[index] = val;
+                      setOtp(newOtp);
+                      if (val && index < otp.length - 1) {
+                        document
+                          .getElementById(`otp-${index + 1}`)
+                          ?.focus();
+                      }
+                    }
+                  }}
+                  id={`otp-${index}`}
+                  inputProps={{ maxLength: 1, style: { textAlign: "center" } }}
+                  sx={{ width: 56 }}
+                />
+              ))}
               <Button
-                onClick={handleSendOtp}
-                variant="outlined"
-                disabled={otpLoading}
+                variant="contained"
+                size="small"
+                onClick={handleVerifyOtp}
+                sx={{
+                  backgroundColor: "#30638E",
+                  "&:hover": { backgroundColor: "#1A4A6E" },
+                }}
               >
-                {otpLoading ? <CircularProgress size={20} /> : "Verify Email"}
+                Verify
               </Button>
             </Box>
           )}
 
-          {otpSent && !otpVerified && (
-           <Box sx={{ display: "flex", gap: 1, mb: 2 }}>
-  {otp.map((digit, index) => (
-    <input
-      key={index}
-      type="text"
-      id={`otp-${index}`}
-      value={digit}
-      onChange={(e) => {
-        const val = e.target.value;
-        if (/^\d?$/.test(val)) {
-          const newOtp = [...otp];
-          newOtp[index] = val;
-          setOtp(newOtp);
-
-          // Move to next box
-          if (val && index < otp.length - 1) {
-            document.getElementById(`otp-${index + 1}`)?.focus();
-          }
-        }
-      }}
-      onKeyDown={(e) => {
-        if (e.key === "Backspace" && !otp[index] && index > 0) {
-          document.getElementById(`otp-${index - 1}`)?.focus();
-        }
-      }}
-      autoFocus={index === 0}
-      maxLength={1}
-      style={{
-        width: "40px",
-        height: "40px",
-        textAlign: "center",
-        fontSize: "18px",
-        margin: "0 5px",
-        border: "1px solid #ccc",
-        borderRadius: "6px",
-      }}
-    />
-  ))}
-
-  <Button variant="contained" onClick={handleVerifyOtp}>
-    Verify
-  </Button>
-</Box>
-
-          )}
-
           {otpVerified && (
-            <Typography color="green" sx={{ mb: 2 }}>
+            <Typography sx={{ mb: 2, color: "green", fontWeight: 500 }}>
               ✔ Email Verified
             </Typography>
           )}
@@ -300,7 +305,7 @@ function Appointment() {
           />
 
           <FormControl fullWidth sx={{ mb: 2 }}>
-            <InputLabel>What Do You Need Help With?</InputLabel>
+            <InputLabel>Specialist</InputLabel>
             <Select
               name="service"
               value={formData.service}
@@ -351,6 +356,7 @@ function Appointment() {
               />
             }
             label="I confirm all details are correct."
+            sx={{ mb: 2 }}
           />
 
           <Button
@@ -360,13 +366,14 @@ function Appointment() {
             sx={{
               backgroundColor: "#30638E",
               color: "white",
-              mt: 2,
+              py: 1.2,
+              fontWeight: "bold",
               "&:hover": { backgroundColor: "#1A4A6E" },
             }}
             disabled={!agreedToTerms || loading}
           >
             {loading ? (
-              <CircularProgress size={24} color="primary" />
+              <CircularProgress size={24} color="inherit" />
             ) : (
               "Book Appointment"
             )}
@@ -374,27 +381,33 @@ function Appointment() {
         </Box>
       </Paper>
 
-      <Dialog open={dialogOpen} onClose={handleDialogClose}>
-        <DialogTitle>
+      {/* Success/Error Dialog */}
+      <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)}>
+        <DialogTitle
+          sx={{ fontWeight: "bold", color: isError ? "error.main" : "success.main" }}
+        >
           {isError ? "Submission Error" : "Appointment Confirmed"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText>{response}</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleDialogClose} color="primary">
+          <Button
+            onClick={() => setDialogOpen(false)}
+            sx={{ color: "#30638E", fontWeight: "bold" }}
+          >
             OK
           </Button>
         </DialogActions>
       </Dialog>
 
+      {/* Processing Dialog */}
       <Dialog open={processingDialogOpen}>
-        <DialogTitle>Thanks for your patience!</DialogTitle>
+        <DialogTitle>Processing Appointment</DialogTitle>
         <DialogContent sx={{ textAlign: "center", pb: 3 }}>
-          <CircularProgress sx={{ my: 2 }} />
+          <CircularProgress sx={{ my: 2, color: "#30638E" }} />
           <DialogContentText>
-            We're securely processing your appointment—this may take up to 50
-            seconds. <br />
+            We're securely processing your appointment. <br />
             <strong>Please do not refresh or close the page.</strong>
           </DialogContentText>
         </DialogContent>

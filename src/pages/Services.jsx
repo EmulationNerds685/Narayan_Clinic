@@ -77,9 +77,7 @@ const Services = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
@@ -92,30 +90,33 @@ const Services = () => {
     },
     hover: {
       y: -5,
-      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
+      scale: 1.02,
+      boxShadow: '0 12px 28px -6px rgba(0, 0, 0, 0.1)',
       transition: { duration: 0.3 }
     }
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white !py-20 !px-8 sm:!px-6 lg:!px-20">
+    <div className="bg-gradient-to-b from-gray-50 to-white py-20 px-8 sm:px-6 lg:px-20">
   
+      {/* Section Heading */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center !mb-16  !!mx-auto"
+        className="text-center mb-16 mx-auto"
       >
-        <h2 className="text-4xl font-bold text-red-600 !mb-4">Our Specialities</h2>
-        <div className="w-20 h-1 bg-red-500 !mx-auto rounded-full"></div>
+        <h2 className="text-4xl font-bold text-[#30638E] mb-4">Our Specialities</h2>
+        <div className="w-20 h-1 bg-[#3CAEA3] mx-auto rounded-full"></div>
       </motion.div>
 
+      {/* Cards */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="grid grid-cols-1  gap-8  !mx-auto"
+        className="grid grid-cols-1 gap-8 mx-auto"
       >
         {specialities.map((item) => (
           <motion.div
@@ -125,28 +126,29 @@ const Services = () => {
             className="h-full"
           >
             <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-full overflow-hidden border border-gray-100 w-full">
-              <div className="!p-8 text-center">
-                <div className="text-red-600 !mb-6 flex justify-center">
+              <div className="p-8 text-center">
+                <div className="text-[#3CAEA3] mb-6 flex justify-center">
                   {item.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800 !mb-4">{item.title}</h3>
-                <p className="text-gray-600 !mb-6">{item.description}</p>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">{item.title}</h3>
+                <p className="text-gray-600 mb-6">{item.description}</p>
                 
+                {/* Expand Button */}
                 <button
                   onClick={() => toggleExpand(item.id)}
-                  className="text-red-600 hover:text-red-700 font-medium flex items-center justify-center !mx-auto transition-colors"
+                  className="text-[#3CAEA3] hover:text-[#30638E] font-medium flex items-center justify-center mx-auto transition-colors"
                 >
                   {expanded === item.id ? (
                     <>
                       Hide Services
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 !ml-2" viewBox="0 0 20 20" fill="currentColor">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
                       </svg>
                     </>
                   ) : (
                     <>
                       View Services
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 !ml-2" viewBox="0 0 20 20" fill="currentColor">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
                     </>
@@ -154,24 +156,25 @@ const Services = () => {
                 </button>
               </div>
 
+              {/* Expanded Services */}
               {expanded === item.id && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="!px-6 !pb-8"
+                  className="px-6 pb-8"
                 >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-96 overflow-y-auto !pr-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-96 overflow-y-auto pr-2">
                     {item.services.map((service, idx) => (
-                      <div key={idx} className="bg-gray-50 rounded-lg !p-4 border border-gray-200">
+                      <div key={idx} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                         <div className="flex flex-col items-center text-center">
-                          <div className="text-red-600 !mb-2">
+                          <div className="text-[#3CAEA3] mb-2">
                             {service.icon}
                           </div>
-                          <h4 className="font-semibold text-gray-800 !mb-2">{service.title}</h4>
+                          <h4 className="font-semibold text-gray-800 mb-2">{service.title}</h4>
                           {Array.isArray(service.description) ? (
-                            <ul className="text-sm text-gray-600 !space-y-1 text-left !pl-4">
+                            <ul className="text-sm text-gray-600 space-y-1 text-left pl-4">
                               {service.description.map((desc, i) => (
                                 <li key={i} className="list-disc">{desc}</li>
                               ))}
