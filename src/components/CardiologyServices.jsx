@@ -19,7 +19,7 @@ const CardiologyServices = () => {
   const iconColor = '#3CAEA3'; // Red color for icons
 
   const cardiologyServices = [
-    { title: 'Electrocardiogram (ECG)', description: 'Records the electrical activity of your heart.', icon: <FaHeartbeat size={40} color={iconColor} /> },
+    { title: 'Electrocardiogram (ECG)', description: 'Records the electrical activity of your heart.', icon: <FaHeartbeat size={38} color={iconColor} /> },
     { title: 'Echocardiogram', description: 'Ultrasound of the heart to assess structure and function.', icon: <FaStethoscope size={40} color={iconColor} /> },
     { title: 'Stress Test', description: 'Measures heart function under physical stress.', icon: <FaRunning size={40} color={iconColor} /> },
     { title: '24-Hour Holter Monitoring', description: 'Continuous heart rhythm monitoring for 24 hours.', icon: <FaClock size={40} color={iconColor} /> },
@@ -29,7 +29,7 @@ const CardiologyServices = () => {
       description: (
         <>
           Expert advice on procedures including:
-          <ul className="list-disc list-inside mt-2 space-y-1">
+          <ul className="list-disc list-inside !mt-2 !space-y-1">
             <li>Angioplasty</li>
             <li>Coronary and Peripheral Angiography</li>
             <li>BMV (Balloon Mitral Valvotomy)</li>
@@ -129,7 +129,7 @@ const CardiologyServices = () => {
                 Learn more
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 ml-1"
+                  className="h-4 w-4 !ml-1"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >

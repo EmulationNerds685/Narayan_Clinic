@@ -1,142 +1,123 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardContent, Typography, Avatar } from '@mui/material';
 
+// Your original patient data
 const testimonials = [
   {
+    id: 1,
     name: 'Anjali Sharma',
     feedback: 'The doctors and nurses at Narayan Heart & Maternity Centre took great care of me during my pregnancy. Highly recommended!',
-    image: '/images/anjali.jpg',
+    image: '/Anjali.jpg',
   },
   {
+    id: 2,
     name: 'Ramesh Verma',
-    feedback: 'Excellent cardiac care services! Dr. Shushant Kumar saved my fathers life. Thank you for the compassionate treatment.',
-    image: '/images/ramesh.jpg',
+    feedback: 'Excellent cardiac care services! Dr. Shushant Kumar saved my father\'s life. Thank you for the compassionate treatment.',
+    image: '/Ramesh.jpg',
   },
   {
+    id: 3,
     name: 'Sneha Patel',
     feedback: 'Very hygienic environment and friendly staff. My delivery experience here was smooth and reassuring. Dr. Jagriti Bhardwaj was amazing throughout.',
-    image: '/images/sneha.jpg',
+    image: '/Sneha.jpg',
   },
   {
+    id: 4,
     name: 'Vikram Singh',
     feedback: 'I was diagnosed with a heart condition, and Dr. Shushant Kumar explained everything with clarity and care. I feel much better now thanks to his treatment.',
-    image: '/images/vikram.jpg',
+    image: '/Vikram.jpg',
   },
   {
+    id: 5,
     name: 'Pooja Desai',
     feedback: 'Dr. Jagriti Bhardwaj is a wonderful gynaecologist. She made my entire pregnancy journey stress-free and was always available for any concerns.',
-    image: '/images/pooja.jpg',
+    image: '/Pooja.jpg',
   },
   {
+    id: 6,
     name: 'Manoj Rathi',
     feedback: 'Narayan Heart & Maternity Centre is the best place for cardiac care. The staff is supportive, and Dr. Shushant Kumar is incredibly skilled and kind.',
-    image: '/images/manoj.jpg',
+    image: '/Manoj.jpg',
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3
-    }
-  }
-};
-
-const cardVariants = {
-  hidden: { y: 50, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: 'spring',
-      stiffness: 100,
-      damping: 10
-    }
-  },
-  hover: {
-    y: -10,
-    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-    transition: {
-      duration: 0.3
-    }
-  }
-};
-
 const Testimonials = () => {
-  return (
-    <div className="bg-gradient-to-br from-gray-50 to-blue-50 !py-16 !px-4 sm:!px-6 lg:!px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-center !mb-12"
-      >
-        <h2 className="text-4xl font-bold text-gray-900 !mb-4">
-          What Our Patients Say
-        </h2>
-        <div className="w-20 h-1 bg-blue-500 !mx-auto rounded-full"></div>
-      </motion.div>
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl !mx-auto"
-      >
-        {testimonials.map((testimonial, index) => (
+  // Effect for auto-sliding carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000); // Changes testimonial every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+
+  return (
+    <section className="py-16 bg-gray-900">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl font-extrabold text-white uppercase tracking-wider">
+            What Our <span className="text-blue-400">Patients</span> Say
+          </h2>
+          <div className="w-24 h-1 bg-blue-400 mx-auto mt-4 rounded"></div>
+        </motion.div>
+
+        <div className="relative overflow-hidden">
           <motion.div
-            key={index}
-            variants={cardVariants}
-            whileHover="hover"
-            className="h-full"
+            // Animate the x-position to create the sliding effect
+            animate={{ x: `-${currentIndex * 100}%` }}
+            transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+            className="flex"
           >
-            <Card className="h-full shadow-md hover:shadow-xl transition-shadow duration-300 rounded-xl overflow-hidden border border-gray-100">
-              <CardContent className="!p-6 h-full flex flex-col">
-                <div className="flex items-center gap-4 !mb-4">
-                  <Avatar 
-                    src={testimonial.image} 
-                    alt={testimonial.name}
-                    className="w-12 h-12 border-2 border-blue-100"
-                  />
-                  <Typography 
-                    variant="h6" 
-                    component="div"
-                    className="font-bold text-gray-800"
-                  >
-                    {testimonial.name}
-                  </Typography>
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id} className="w-full flex-shrink-0 px-2 md:px-4">
+                <div className="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                  <p className="text-gray-300 text-lg italic mb-6">
+                    "{testimonial.feedback}"
+                  </p>
+                  <div className="flex items-center">
+                    <div className="h-16 w-16 rounded-full overflow-hidden mr-4 border-2 border-blue-400">
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-white text-xl font-bold">{testimonial.name}</h3>
+                      <p className="text-blue-400 font-semibold">Verified Patient</p>
+                    </div>
+                  </div>
                 </div>
-                <Typography 
-                  variant="body2" 
-                  color="text.secondary"
-                  className="text-gray-600 flex-grow"
-                >
-                  "{testimonial.feedback}"
-                </Typography>
-                <div className="!mt-4 flex justify-end">
-                  <svg 
-                    className="w-8 h-8 text-blue-400 opacity-70" 
-                    fill="currentColor" 
-                    viewBox="0 0 20 20"
-                  >
-                    <path 
-                      fillRule="evenodd" 
-                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" 
-                      clipRule="evenodd" 
-                    />
-                  </svg>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            ))}
           </motion.div>
-        ))}
-      </motion.div>
-    </div>
+        </div>
+
+        {/* Navigation Dots */}
+        <div className="flex justify-center mt-8 space-x-3">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`h-3 w-3 rounded-full transition-colors duration-300 ${
+                index === currentIndex ? 'bg-blue-400' : 'bg-gray-600 hover:bg-gray-500'
+              }`}
+              aria-label={`Go to testimonial ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
