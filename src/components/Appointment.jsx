@@ -30,11 +30,11 @@ function Appointment() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phoneNumber: "",
+    ph_number: "", // Corrected
     address: "",
     service: "",
-    appointmentDate: "",
-    timeSlot: "",
+    appointment_date: "", // Corrected
+    appointment_time: "", // Corrected
   });
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [otpSent, setOtpSent] = useState(false);
@@ -59,7 +59,7 @@ function Appointment() {
     }
     try {
       setOtpLoading(true);
-      const res = await axios.post(`${backendURL}/send-otp`, {
+      const res = await axios.post(`${backendURL}/api/otp/send`, {
         email: formData.email,
       });
       setOtpSent(true);
@@ -79,7 +79,7 @@ function Appointment() {
       return;
     }
     try {
-      await axios.post(`${backendURL}/verify-otp`, {
+      await axios.post(`${backendURL}/api/otp/verify`, {
         email: formData.email,
         otp: enteredOtp,
       });
@@ -100,7 +100,7 @@ function Appointment() {
     setProcessingDialogOpen(true);
 
     try {
-      const result = await axios.post(`${backendURL}/book`, formData);
+      const result = await axios.post(`${backendURL}/api/appointments/book`, formData);
       setResponse(result.data.message || "Appointment booked successfully!");
       setIsError(false);
     } catch (err) {
@@ -110,14 +110,15 @@ function Appointment() {
       setProcessingDialogOpen(false);
       setDialogOpen(true);
       setLoading(false);
+      // Corrected form data reset
       setFormData({
         name: "",
         email: "",
-        phoneNumber: "",
+        ph_number: "",
         address: "",
         service: "",
-        appointmentDate: "",
-        timeSlot: "",
+        appointment_date: "",
+        appointment_time: "",
       });
       setOtp(["", "", "", ""]);
       setOtpSent(false);
@@ -257,24 +258,24 @@ function Appointment() {
           <TextField
             fullWidth
             label="Phone Number"
-            name="phoneNumber"
+            name="ph_number" // Corrected
             type="tel"
             required
-            value={formData.phoneNumber}
+            value={formData.ph_number} // Corrected
             onChange={(e) => {
               const value = e.target.value;
               if (/^\d*$/.test(value) && value.length <= 10) {
-                setFormData({ ...formData, phoneNumber: value });
+                setFormData({ ...formData, ph_number: value }); // Corrected
               }
             }}
             inputProps={{ maxLength: 10 }}
             error={
-              formData.phoneNumber.length > 0 &&
-              formData.phoneNumber.length < 10
+              formData.ph_number.length > 0 && // Corrected
+              formData.ph_number.length < 10 // Corrected
             }
             helperText={
-              formData.phoneNumber.length > 0 &&
-              formData.phoneNumber.length < 10
+              formData.ph_number.length > 0 && // Corrected
+              formData.ph_number.length < 10 // Corrected
                 ? "Phone number must be 10 digits."
                 : ""
             }
@@ -294,10 +295,10 @@ function Appointment() {
           <TextField
             fullWidth
             label="Appointment Date"
-            name="appointmentDate"
+            name="appointment_date" // Corrected
             type="date"
             required
-            value={formData.appointmentDate}
+            value={formData.appointment_date} // Corrected
             onChange={handleChange}
             InputLabelProps={{ shrink: true }}
             inputProps={{ min: today }}
@@ -321,8 +322,8 @@ function Appointment() {
           <FormControl fullWidth sx={{ mb: 2 }}>
             <InputLabel>Time Slot</InputLabel>
             <Select
-              name="timeSlot"
-              value={formData.timeSlot}
+              name="appointment_time" // Corrected
+              value={formData.appointment_time} // Corrected
               onChange={handleChange}
               required
             >
