@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { Box, Typography, Button, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import DoctorsSection from "../components/DoctorSection";
 import ServicesSection from "./Services";
 import WhyChooseUs from "../components/ChooseUs";
@@ -11,8 +11,8 @@ import Testimonials from "../components/Testimonials";
 import ClinicFAQAccordion from "../components/ClinicFAQAccordion";
 
 const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.8, delay: 0.3 } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 };
 
 const HomePage = () => {
@@ -75,45 +75,51 @@ const HomePage = () => {
         </script>
       </Helmet>
 
-      <Box sx={{ padding: "15px 0 0 0" }}>
-        <Box sx={{ marginTop: "10px", marginBottom: "10px" }}>
-          <Herocarousel />
-        </Box>
-        <motion.div
-          variants={fadeIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <Box sx={{ marginTop: "10px", marginBottom: "10px" }}>
-            <ServicesSection />
-          </Box>
-        </motion.div>
+      {/* Hero Carousel — no extra padding, full bleed */}
+      <Herocarousel />
 
-        <motion.div
-          variants={fadeIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <Box sx={{ marginTop: "10px", marginBottom: "10px" }}>
-            <DoctorsSection />
-          </Box>
-        </motion.div>
+      {/* Services Section */}
+      <motion.div
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <ServicesSection />
+      </motion.div>
 
-        <motion.div
-          variants={fadeIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <Box sx={{ marginTop: "10px", marginBottom: "10px" }}>
-            <WhyChooseUs />
-          </Box>
-          <Testimonials />
-          <ClinicFAQAccordion />
-        </motion.div>
-      </Box>
+      {/* Doctors Section */}
+      <motion.div
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <DoctorsSection />
+      </motion.div>
+
+      {/* Why Choose Us */}
+      <motion.div
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <WhyChooseUs />
+      </motion.div>
+
+      {/* Testimonials */}
+      <motion.div
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <Testimonials />
+      </motion.div>
+
+      {/* FAQ */}
+      <ClinicFAQAccordion />
     </motion.div>
   );
 };

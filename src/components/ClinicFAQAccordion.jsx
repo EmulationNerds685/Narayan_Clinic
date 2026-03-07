@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const faqs = [
   {
@@ -19,12 +20,12 @@ const faqs = [
   {
     question: "What is Timing for Visit?",
     answer:
-      "Our Clinic Timings is Morning:09:00 AM-10:30 AM And Evening: 06:30 PM -08:00 PM.",
+      "Our Clinic Timings is Morning: 09:00 AM – 10:30 AM and Evening: 06:30 PM – 08:00 PM.",
   },
   {
     question: "When to visit a Cardiologist?",
     answer:
-      "When patient have symptoms such as shortness of breath, chest pain, syncope, palpitation, headache,uneaseiness, they can consult cardiologist",
+      "When patient have symptoms such as shortness of breath, chest pain, syncope, palpitation, headache, uneasiness, they can consult cardiologist.",
   },
 ];
 
@@ -36,27 +37,68 @@ const ClinicFAQAccordion = () => {
   };
 
   return (
-    <div className="max-w-3xl !mx-auto !px-4 !py-12">
-      <h2 className="text-3xl font-bold text-center !mb-8 text-gray-800">
-        Frequently Asked Questions
-      </h2>
-      <div className="space-y-4">
-        {faqs.map((faq, index) => (
-          <div key={index} className="border border-gray-300 rounded-md overflow-hidden">
-            <button
-              className="w-full !px-4 !py-3 text-left flex justify-between items-center bg-gray-100 hover:bg-gray-200 transition"
-              onClick={() => toggle(index)}
+    <div className="max-w-3xl !mx-auto !px-4 !py-16 sm:!py-20">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-center !mb-10"
+      >
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 !mb-3">
+          Frequently Asked <span className="text-[#3CAEA3]">Questions</span>
+        </h2>
+        <div className="w-20 h-1 bg-[#30638E] !mx-auto rounded-full"></div>
+      </motion.div>
+
+      <div className="space-y-3">
+        {faqs.map((faq, index) => {
+          const isOpen = openIndex === index;
+          return (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              viewport={{ once: true }}
+              className="border border-gray-200 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
             >
-              <span className="text-base font-medium text-gray-800">{faq.question}</span>
-              <span className="text-xl text-blue-600">{openIndex === index ? '-' : '+'}</span>
-            </button>
-            {openIndex === index && (
-              <div className="!px-4 !py-3 bg-white text-gray-700 transition-all duration-300">
-                {faq.answer}
-              </div>
-            )}
-          </div>
-        ))}
+              <button
+                className="w-full !px-5 !py-4 text-left flex justify-between items-center gap-3 hover:bg-gray-50 transition-colors duration-200"
+                onClick={() => toggle(index)}
+                aria-expanded={isOpen}
+              >
+                <span className="text-base font-medium text-gray-800 leading-relaxed">
+                  {faq.question}
+                </span>
+                <motion.span
+                  animate={{ rotate: isOpen ? 45 : 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="text-xl text-[#3CAEA3] font-bold flex-shrink-0 w-6 h-6 flex items-center justify-center"
+                >
+                  +
+                </motion.span>
+              </button>
+
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    key="content"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="overflow-hidden"
+                  >
+                    <div className="!px-5 !pb-4 !pt-1 text-gray-600 leading-relaxed border-t border-gray-100">
+                      {faq.answer}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );

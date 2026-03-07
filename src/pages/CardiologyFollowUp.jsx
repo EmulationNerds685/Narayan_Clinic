@@ -1,113 +1,90 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async'
+import { Helmet } from 'react-helmet-async';
+import { motion } from 'framer-motion';
+import { FaCheckCircle, FaCalendarCheck, FaHeartbeat, FaAppleAlt, FaCalendarAlt } from 'react-icons/fa';
+
+const features = [
+  { icon: <FaCheckCircle />, title: 'Progress Monitoring', text: 'Regular check-ins to track improvement and adjust medications.' },
+  { icon: <FaAppleAlt />, title: 'Lifestyle Guidance', text: 'Personalized diet and exercise recommendations for heart health.' },
+  { icon: <FaCalendarAlt />, title: 'Flexible Scheduling', text: 'Convenient appointment options for your follow-up visits.' },
+];
+
+const benefits = [
+  'Reduced risk of complications',
+  'Early detection of potential issues',
+  'Continuity of care with your cardiologist',
+  'Personalized treatment adjustments',
+];
+
 const CardiologyFollowUp = () => {
-  const followUpData = {
-    title: "Cardiology Follow-Up Care",
-    description: "Personalized ongoing care to monitor your heart health and adjust treatment plans as needed.",
-    features: [
-      {
-        icon: (
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        ),
-        title: "Progress Monitoring",
-        text: "Regular check-ins to track improvement and adjust medications"
-      },
-      {
-        icon: (
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-        ),
-        title: "Lifestyle Guidance",
-        text: "Personalized diet and exercise recommendations"
-      },
-      {
-        icon: (
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-        ),
-        title: "Appointment Scheduling",
-        text: "Flexible scheduling for your follow-up visits"
-      }
-    ],
-    benefits: [
-      "Reduced risk of complications",
-      "Early detection of potential issues",
-      "Continuity of care with your cardiologist",
-      "Personalized treatment adjustments"
-    ]
-  };
-
   return (
-    <div className=" !mx-auto !px-4 !py-12 sm:!px-6 lg:!px-8">
-     <Helmet>
-  <title>Cardiology Follow-Up Care | Dr. Sushant Kumar Pathak, Patna</title>
-  <meta
-    name="description"
-    content="Continue your heart treatment journey with regular follow-up consultations by Dr. Sushant Kumar Pathak at Narayan Heart & Maternity Centre, Patna."
-  />
-</Helmet>
+    <>
+      <Helmet>
+        <title>Cardiology Follow-Up Care | Dr. Sushant Kumar Pathak, Patna</title>
+        <meta name="description" content="Continue your heart treatment journey with regular follow-up consultations by Dr. Sushant Kumar Pathak at Narayan Heart & Maternity Centre, Patna." />
+      </Helmet>
 
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-        {/* Header Section */}
-        <div className="bg-[#3CAEA3] !px-6 !py-8 sm:!px-10 sm:!py-12 text-white">
-          <h2 className="text-3xl font-bold !mb-3">{followUpData.title}</h2>
-          <p className="text-white max-w-2xl">{followUpData.description}</p>
+      {/* Hero */}
+      <section className="relative bg-gradient-to-br from-[#30638E] to-[#1a3d5c] text-white !py-12 sm:!py-16 !px-4 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#3CAEA3] rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
         </div>
-        
-        {/* Main Content */}
-        <div className="!px-6 !py-8 sm:!px-10 sm:!py-12">
-          {/* Features Grid */}
-          <div className="grid gap-8 md:grid-cols-3 !mb-12">
-            {followUpData.features.map((feature, index) => (
-              <div key={index} className="bg-blue-50 rounded-lg !p-6 hover:shadow-md transition-shadow">
-                <div className="text-[#3CAEA3] !mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800 !mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.text}</p>
-              </div>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="relative max-w-4xl !mx-auto text-center">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold !mb-2">Cardiology Follow-Up Care</h1>
+          <p className="text-blue-100 text-sm sm:text-base max-w-2xl !mx-auto">Personalized ongoing care to monitor your heart health and adjust treatment plans as needed.</p>
+        </motion.div>
+      </section>
+
+      <section className="bg-gray-50 !py-10 sm:!py-14 !px-4 sm:!px-6">
+        <div className="max-w-5xl !mx-auto">
+          {/* Features */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 !mb-10">
+            {features.map((f, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.1 }} viewport={{ once: true }}
+                className="bg-white rounded-2xl shadow-sm border border-gray-100 !p-5 sm:!p-6 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-[#3CAEA3]/10 text-[#3CAEA3] flex items-center justify-center !mx-auto !mb-4 text-xl">{f.icon}</div>
+                <h3 className="font-bold text-gray-800 !mb-2">{f.title}</h3>
+                <p className="text-sm text-gray-500">{f.text}</p>
+              </motion.div>
             ))}
           </div>
-          
-          {/* Benefits and CTA */}
-          <div className="flex flex-col md:flex-row gap-8">
-            <div className="md:w-1/2">
-              <h3 className="text-2xl font-semibold text-gray-800 !mb-4">Benefits of Regular Follow-Ups</h3>
+
+          {/* Benefits + CTA */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 !p-5 sm:!p-7">
+              <h2 className="text-xl font-bold text-gray-800 !mb-4 flex items-center gap-2">
+                <FaHeartbeat className="text-[#30638E]" /> Benefits of Regular Follow-Ups
+              </h2>
               <ul className="!space-y-3">
-                {followUpData.benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <svg className="h-5 w-5 text-green-500 !mt-0.5 !mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-gray-700">{benefit}</span>
+                {benefits.map((b, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-sm text-gray-600">
+                    <FaCheckCircle className="text-[#3CAEA3] !mt-0.5 flex-shrink-0 text-xs" />
+                    <span>{b}</span>
                   </li>
                 ))}
               </ul>
-            </div>
-            
-            <div className="md:w-1/2 bg-gray-50 rounded-lg !p-6 border border-gray-200">
-              <h3 className="text-xl font-semibold text-gray-800 !mb-4">Schedule Your Follow-Up</h3>
-              <p className="text-gray-600 !mb-6">Maintain your heart health with regular check-ins tailored to your specific needs.</p>
-              <div className="!space-y-4">
-                <Link to='/book'>
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium !py-3 !px-6 rounded-lg transition-colors">
-                  Book Appointment
-                </button>
-                </Link>
-                
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 !p-5 sm:!p-7 flex flex-col justify-between">
+              <div>
+                <h2 className="text-xl font-bold text-gray-800 !mb-3">Schedule Your Follow-Up</h2>
+                <p className="text-sm text-gray-500 leading-relaxed !mb-5">
+                  Maintain your heart health with regular check-ins tailored to your specific needs. Our cardiologist will review your progress and guide next steps.
+                </p>
               </div>
-            </div>
+              <Link to="/book">
+                <button className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#3CAEA3] to-[#2F9E94] hover:from-[#2F9E94] hover:to-[#278A81] text-white font-semibold text-sm !py-3 rounded-xl shadow-sm hover:shadow-md active:scale-[0.98] transition-all">
+                  <FaCalendarCheck /> Book Appointment
+                </button>
+              </Link>
+            </motion.div>
           </div>
         </div>
-        
-      
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 

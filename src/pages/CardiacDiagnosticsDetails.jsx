@@ -1,127 +1,109 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async'
-const CardiacDiagnosticsDetails = ({ onClose }) => {
-  const diagnosticTests = [
-    {
-      name: 'Electrocardiogram (ECG)',
-      description: 'Records the electrical activity of your heart to detect abnormalities.',
-      duration: '10-15 minutes'
-    },
-    {
-      name: 'Echocardiogram (ECHO)',
-      description: 'Uses ultrasound waves to create images of your heart\'s structure and function.',
-      duration: '30-45 minutes'
-    },
-    {
-      name: 'Treadmill Test (TMT)',
-      description: 'Monitors your heart\'s activity during physical exercise to assess its performance under stress.',
-      duration: '45-60 minutes'
-    },
-    {
-      name: 'Holter Monitoring',
-      description: 'Continuous ECG recording for 24-48 hours to detect irregular heart rhythms.',
-      duration: '24-48 hours'
-    }
-  ];
+import { Helmet } from 'react-helmet-async';
+import { motion } from 'framer-motion';
+import { FaHeartbeat, FaStethoscope, FaRunning, FaClock, FaCalendarCheck, FaCheckCircle } from 'react-icons/fa';
 
+const diagnosticTests = [
+  { name: 'Electrocardiogram (ECG)', description: 'Records the electrical activity of your heart to detect abnormalities.', duration: '10–15 min', icon: <FaHeartbeat /> },
+  { name: 'Echocardiogram (ECHO)', description: "Uses ultrasound waves to create images of your heart's structure and function.", duration: '30–45 min', icon: <FaStethoscope /> },
+  { name: 'Treadmill Test (TMT)', description: "Monitors your heart's activity during physical exercise to assess performance under stress.", duration: '45–60 min', icon: <FaRunning /> },
+  { name: 'Holter Monitoring', description: 'Continuous ECG recording for 24–48 hours to detect irregular heart rhythms.', duration: '24–48 hrs', icon: <FaClock /> },
+];
+
+const whoShouldConsider = [
+  'Individuals with family history of heart disease',
+  'Patients experiencing chest pain or palpitations',
+  'Those with risk factors like diabetes or high blood pressure',
+  'People preparing for major surgeries',
+];
+
+const CardiacDiagnosticsDetails = () => {
   return (
-    <div className=" flex items-center justify-center !p-4">
+    <>
       <Helmet>
-  <title>Cardiac Diagnostics in Patna | Dr. Sushant Kumar Pathak</title>
-  <meta
-    name="description"
-    content="Narayan Heart & Maternity Centre offers advanced cardiac diagnostic tests in Patna, including ECG, ECHO, and TMT under the care of Dr. Sushant Kumar Pathak."
-  />
-</Helmet>
+        <title>Cardiac Diagnostics in Patna | Dr. Sushant Kumar Pathak</title>
+        <meta name="description" content="Narayan Heart & Maternity Centre offers advanced cardiac diagnostic tests in Patna, including ECG, ECHO, and TMT under the care of Dr. Sushant Kumar Pathak." />
+      </Helmet>
 
-      <div className="bg-white rounded-lg shadow-xl  w-full  overflow-y-auto">
-        {/* Header */}
-        <div className="bg-indigo-700 text-white !p-6 rounded-t-lg">
-          <div className="flex justify-between items-start">
-            <div>
-              <h2 className="text-2xl font-bold">Advanced Cardiac Diagnostics</h2>
-              <p className="!mt-2 opacity-90">Comprehensive heart health assessment for accurate diagnosis</p>
-            </div>
-            <button 
-              onClick={onClose}
-              className="text-white hover:text-gray-200 focus:outline-none"
-            >
-                        </button>
-          </div>
+      {/* Hero */}
+      <section className="relative bg-gradient-to-br from-[#30638E] to-[#1a3d5c] text-white !py-12 sm:!py-16 !px-4 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#3CAEA3] rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
         </div>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="relative max-w-4xl !mx-auto text-center">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold !mb-2">Advanced Cardiac Diagnostics</h1>
+          <p className="text-blue-100 text-sm sm:text-base max-w-2xl !mx-auto">Comprehensive heart health assessment for accurate diagnosis and early detection.</p>
+        </motion.div>
+      </section>
 
-        {/* Content */}
-        <div className="!p-6 md:!p-8">
-          {/* Image and intro */}
-          <div className="flex flex-col md:flex-row gap-8 !mb-8">
+      <section className="bg-gray-50 !py-10 sm:!py-14 !px-4 sm:!px-6">
+        <div className="max-w-5xl !mx-auto">
+          {/* Intro with image */}
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}
+            className="bg-white rounded-2xl shadow-sm border border-gray-100 !p-5 sm:!p-7 !mb-8 flex flex-col md:flex-row gap-6">
             <div className="md:w-1/3">
-              <img 
-              loading="lazy"
-                src="/ECGimage.webp" 
-                alt="Cardiac Diagnostics" 
-                className="w-full h-auto rounded-lg shadow-md"
-              />
+              <img src="/ECGimage.webp" alt="Cardiac Diagnostics" loading="lazy" className="w-full h-48 sm:h-56 object-cover rounded-xl" />
             </div>
             <div className="md:w-2/3">
-              <h3 className="text-xl font-semibold text-gray-800 !mb-4">Why Cardiac Diagnostics Matter</h3>
-              <p className="text-gray-600 !mb-4">
-                Early detection of heart conditions can significantly improve treatment outcomes. Our advanced diagnostic 
-                services provide accurate assessments to guide personalized care plans.
+              <h2 className="text-xl font-bold text-gray-800 !mb-3">Why Cardiac Diagnostics Matter</h2>
+              <p className="text-sm text-gray-600 !mb-4 leading-relaxed">
+                Early detection of heart conditions can significantly improve treatment outcomes. Our advanced diagnostic services provide accurate assessments to guide personalized care plans.
               </p>
-              <div className="bg-blue-50 !p-4 rounded-lg border border-blue-100">
-                <h4 className="font-medium text-blue-800 !mb-2">Who should consider these tests?</h4>
-                <ul className="list-disc list-inside text-blue-700 !space-y-1">
-                  <li>Individuals with family history of heart disease</li>
-                  <li>Patients experiencing chest pain or palpitations</li>
-                  <li>Those with risk factors like diabetes or high blood pressure</li>
-                  <li>People preparing for major surgeries</li>
+              <div className="bg-[#30638E]/5 !p-4 rounded-xl">
+                <h4 className="font-semibold text-[#30638E] text-sm !mb-2">Who should consider these tests?</h4>
+                <ul className="!space-y-1.5">
+                  {whoShouldConsider.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                      <FaCheckCircle className="text-[#3CAEA3] !mt-0.5 flex-shrink-0 text-xs" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
+          </motion.div>
+
+          {/* Tests Grid */}
+          <div className="text-center !mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Available <span className="text-[#30638E]">Diagnostic Tests</span></h2>
+            <div className="w-16 h-1 bg-[#3CAEA3] !mx-auto !mt-3 rounded-full"></div>
           </div>
 
-          {/* Tests list */}
-          <div className="!mb-8">
-            <h3 className="text-xl font-semibold text-gray-800 !mb-6 border-b !pb-2">Available Diagnostic Tests</h3>
-            <div className="grid gap-6 md:grid-cols-2">
-              {diagnosticTests.map((test, index) => (
-                <div key={index} className="border rounded-lg !p-5 hover:shadow-md transition-shadow">
-                  <div className="flex items-start !mb-3">
-                    <div className="bg-indigo-100 p-2 rounded-full !mr-4">
-                      <svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-800">{test.name}</h4>
-                      <p className="text-sm text-gray-600 !mt-1">{test.description}</p>
-                      <p className="text-xs text-gray-500 !mt-2">Duration: {test.duration}</p>
-                    </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 !mb-10">
+            {diagnosticTests.map((test, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.08 }} viewport={{ once: true }}
+                className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 !p-5 sm:!p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-[#30638E]/10 text-[#30638E] flex items-center justify-center flex-shrink-0 text-lg">
+                    {test.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-800 !mb-1">{test.name}</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed !mb-2">{test.description}</p>
+                    <span className="inline-block text-xs bg-[#3CAEA3]/10 text-[#3CAEA3] font-semibold !px-2.5 !py-1 rounded-full">⏱ {test.duration}</span>
                   </div>
                 </div>
-              ))}
-            </div>
+              </motion.div>
+            ))}
           </div>
 
           {/* CTA */}
-          <div className="bg-gray-50 !p-6 rounded-lg border border-gray-200 flex flex-col md:flex-row justify-between items-center">
-            <div className="!mb-4 md:!mb-0">
-              <h4 className="font-medium text-gray-800">Ready to schedule your test?</h4>
-              <p className="text-sm text-gray-600">Our cardiac specialists are here to help</p>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}
+            className="bg-gradient-to-br from-[#30638E] to-[#1a3d5c] rounded-2xl !p-6 sm:!p-8 text-white flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+              <h3 className="text-lg sm:text-xl font-bold !mb-1">Ready to schedule your test?</h3>
+              <p className="text-blue-100 text-sm">Our cardiac specialists are here to help.</p>
             </div>
-            <div className="flex !space-x-3">
-                <Link to='/book'>
-              <button className="!px-6 !py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors">
-                Book Appointment
+            <Link to="/book" className="flex-shrink-0">
+              <button className="flex items-center gap-2 bg-[#3CAEA3] hover:bg-[#2F9E94] text-white font-semibold text-sm !py-3 !px-6 rounded-xl shadow-md hover:shadow-lg active:scale-[0.98] transition-all">
+                <FaCalendarCheck /> Book Appointment
               </button>
-                </Link>
-              
-            </div>
-          </div>
+            </Link>
+          </motion.div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 
