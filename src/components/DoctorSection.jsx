@@ -107,6 +107,9 @@ const DoctorsSection = () => {
                         <img
                           src={doctor.image}
                           alt={doctor.name}
+                          loading="lazy"
+                          width={112}
+                          height={112}
                           className="w-full h-full object-cover"
                         />
                       </div>

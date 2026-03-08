@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { useInView } from 'react-intersection-observer';
 
 const slides = [
@@ -162,14 +162,14 @@ const HeroCarousel = () => {
         className="absolute top-1/2 left-2 sm:left-4 -translate-y-1/2 bg-black bg-opacity-40 hover:bg-opacity-70 text-white p-2 rounded-full z-10 focus:outline-none focus:ring-2 focus:ring-white"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+        <FaChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
       <button
         onClick={nextSlide}
         className="absolute top-1/2 right-2 sm:right-4 -translate-y-1/2 bg-black bg-opacity-40 hover:bg-opacity-70 text-white p-2 rounded-full z-10 focus:outline-none focus:ring-2 focus:ring-white"
         aria-label="Next slide"
       >
-        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+        <FaChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
       {/* Pagination Dots */}

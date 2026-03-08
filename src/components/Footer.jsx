@@ -14,7 +14,7 @@ const Footer = () => {
           {/* Clinic Info */}
           <div className="!space-y-4">
             <div className="flex items-center !space-x-2">
-              <img src="/nc.webp" alt="Narayan Heart & Maternity Centre Logo" className="h-9 w-auto" />
+              <img src="/nc.webp" alt="Narayan Heart & Maternity Centre Logo" loading="lazy" width={36} height={36} className="h-9 w-auto" />
               <h3 className="text-lg font-bold leading-snug">
                 Narayan Heart &<br className="sm:hidden" /> Maternity Centre
               </h3>

@@ -12,7 +12,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#30638E',           // Brand blue (Navbar, Footer, Headings)
-      contrastText: '#ffffff',   
+      contrastText: '#ffffff',
     },
     secondary: {
       main: '#3CAEA3',           // Teal/Green (CTAs, Buttons, Icons)
@@ -71,7 +71,7 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: '#30638E', 
+          backgroundColor: '#30638E',
         },
       },
     },
@@ -94,10 +94,25 @@ function App() {
     keepServerAlive();
 
     // Set interval to ping every 10 minutes (600,000 ms)
-    const interval = setInterval(keepServerAlive, 10 * 60 * 1000);
+    let interval = setInterval(keepServerAlive, 10 * 60 * 1000);
 
-    // Clean up interval on unmount
-    return () => clearInterval(interval);
+    // Pause pings when tab is hidden, resume when visible
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        clearInterval(interval);
+        interval = null;
+      } else {
+        keepServerAlive();
+        interval = setInterval(keepServerAlive, 10 * 60 * 1000);
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    // Clean up interval + listener on unmount
+    return () => {
+      if (interval) clearInterval(interval);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+    };
   }, []);
 
 
