@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
 
 const NotFound = () => {
@@ -11,10 +11,13 @@ const NotFound = () => {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center justify-center min-h-[70vh] !px-4 text-center"
         >
-            <Helmet>
-                <title>Page Not Found | Narayan Heart & Maternity Centre</title>
-                <meta name="description" content="The page you are looking for does not exist." />
-            </Helmet>
+            <SeoHead
+                title="Page Not Found | Narayan Heart & Maternity Centre"
+                description="The page you are looking for does not exist."
+                path="/404"
+            >
+                <meta name="robots" content="noindex, nofollow" />
+            </SeoHead>
 
             <h1 className="text-8xl font-bold text-[#30638E] !mb-4">404</h1>
             <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800 !mb-3">

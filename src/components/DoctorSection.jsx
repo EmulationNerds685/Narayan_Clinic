@@ -1,7 +1,42 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { FaUserMd, FaAward, FaBriefcase, FaClinicMedical, FaCalendarCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+
+// Physician JSON-LD — helps Google show doctor info in search
+const physicianSchemas = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "Physician",
+    name: "Dr. Sushant Kumar Pathak",
+    jobTitle: "Interventional Cardiologist",
+    url: "https://narayanheartandmaternitycentre.com/doctors",
+    image: "https://narayanheartandmaternitycentre.com/skp.webp",
+    description: "MBBS (Kolkata), MD (Medicine, PMCH Patna) - Gold Medalist, DM (Cardiology, IPGME&R). Senior Consultant at Ford Hospital, Patna.",
+    medicalSpecialty: "Cardiology",
+    worksFor: {
+      "@type": "MedicalClinic",
+      name: "Narayan Heart & Maternity Centre",
+    },
+    alumniOf: ["PMCH Patna", "IPGME&R", "Kolkata University"],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Physician",
+    name: "Dr. Jagriti Bhardwaj",
+    jobTitle: "Gynecologist & Obstetrician",
+    url: "https://narayanheartandmaternitycentre.com/doctors",
+    image: "https://narayanheartandmaternitycentre.com/jbp.webp",
+    description: "MBBS (SNMC, Agra), MS (OBG, PGIMS), DNB (OBG). Laparoscopic Surgeon & Infertility Specialist.",
+    medicalSpecialty: "Gynecology",
+    worksFor: {
+      "@type": "MedicalClinic",
+      name: "Narayan Heart & Maternity Centre",
+    },
+    alumniOf: ["SNMC Agra", "PGIMS", "National Board of Examinations"],
+  },
+]);
 
 const DoctorsSection = () => {
   const doctors = [
@@ -62,6 +97,9 @@ const DoctorsSection = () => {
 
   return (
     <div className="!py-16 sm:!py-20 !px-4 sm:!px-6 lg:!px-8 bg-white">
+      <Helmet>
+        <script type="application/ld+json">{physicianSchemas}</script>
+      </Helmet>
       <div className="max-w-6xl !mx-auto">
         {/* Section Header */}
         <motion.div

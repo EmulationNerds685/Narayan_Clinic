@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState, useRef } from "react";
-import { Helmet } from "react-helmet-async";
+import SeoHead from "./SeoHead";
 import {
   Dialog,
   DialogTitle,
@@ -75,8 +75,8 @@ const StepIndicator = ({ step }) => (
       <div key={s} className="flex items-center gap-2">
         <div
           className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 ${step >= s
-              ? 'bg-[#3CAEA3] text-white shadow-md'
-              : 'bg-gray-100 text-gray-400'
+            ? 'bg-[#3CAEA3] text-white shadow-md'
+            : 'bg-gray-100 text-gray-400'
             }`}
         >
           {step > s ? <FaCheckCircle className="text-xs" /> : s}
@@ -210,13 +210,11 @@ function Appointment() {
 
   return (
     <>
-      <Helmet>
-        <title>Book Appointment | Narayan Heart & Maternity Centre, Patna</title>
-        <meta
-          name="description"
-          content="Book an online appointment with Dr. Sushant Kumar Pathak (Cardiologist) or Dr. Jagriti Bhardwaj (Gynaecologist) at Narayan Heart & Maternity Centre, Patna."
-        />
-      </Helmet>
+      <SeoHead
+        title="Book Appointment | Narayan Heart & Maternity Centre, Patna"
+        description="Book an online appointment with Dr. Sushant Kumar Pathak (Cardiologist) or Dr. Jagriti Bhardwaj (Gynaecologist) at Narayan Heart & Maternity Centre, Patna."
+        path="/book"
+      />
 
       {/* Hero Banner */}
       <section className="relative bg-gradient-to-br from-[#30638E] to-[#1a3d5c] text-white !py-10 sm:!py-14 !px-4 overflow-hidden">
@@ -453,8 +451,8 @@ function Appointment() {
                             type="button"
                             onClick={() => setFormData({ ...formData, service: doc.value })}
                             className={`flex items-center gap-3 !p-3.5 rounded-xl border-2 transition-all duration-200 text-left ${formData.service === doc.value
-                                ? 'border-[#3CAEA3] bg-[#3CAEA3]/5 shadow-sm'
-                                : 'border-gray-100 hover:border-gray-200 bg-white'
+                              ? 'border-[#3CAEA3] bg-[#3CAEA3]/5 shadow-sm'
+                              : 'border-gray-100 hover:border-gray-200 bg-white'
                               }`}
                           >
                             <div className="w-11 h-11 rounded-lg overflow-hidden flex-shrink-0">
@@ -499,8 +497,8 @@ function Appointment() {
                             type="button"
                             onClick={() => setFormData({ ...formData, appointment_time: slot.value })}
                             className={`!py-2.5 !px-2 rounded-xl text-xs sm:text-sm font-medium border-2 transition-all duration-200 ${formData.appointment_time === slot.value
-                                ? 'border-[#3CAEA3] bg-[#3CAEA3] text-white shadow-sm'
-                                : 'border-gray-100 text-gray-600 hover:border-gray-200 bg-white'
+                              ? 'border-[#3CAEA3] bg-[#3CAEA3] text-white shadow-sm'
+                              : 'border-gray-100 text-gray-600 hover:border-gray-200 bg-white'
                               }`}
                           >
                             {slot.label}

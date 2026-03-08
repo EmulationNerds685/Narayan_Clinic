@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
 import { FaUserMd, FaCalendarCheck, FaAward, FaHospital } from 'react-icons/fa';
 
@@ -18,13 +18,11 @@ const stats = [
 const AboutUs = () => {
   return (
     <>
-      <Helmet>
-        <title>About Narayan Heart & Maternity Centre | Our Mission And Vision</title>
-        <meta
-          name="description"
-          content="Learn about Narayan Heart & Maternity Centre, a multi-speciality clinic in Patna led by Dr. Sushant Kumar Pathak and Dr. Jagriti Bhardwaj. Dedicated to compassionate and expert healthcare."
-        />
-      </Helmet>
+      <SeoHead
+        title="About Narayan Heart & Maternity Centre | Our Mission And Vision"
+        description="Learn about Narayan Heart & Maternity Centre, a multi-speciality clinic in Patna led by Dr. Sushant Kumar Pathak and Dr. Jagriti Bhardwaj. Dedicated to compassionate and expert healthcare."
+        path="/about"
+      />
 
       {/* Hero Banner */}
       <section className="relative bg-gradient-to-br from-[#30638E] to-[#1a3d5c] text-white !py-16 sm:!py-20 !px-4 sm:!px-6 overflow-hidden">

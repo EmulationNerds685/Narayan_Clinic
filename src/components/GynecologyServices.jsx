@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SeoHead from './SeoHead';
 import { motion } from 'framer-motion';
 import {
   FaChild, FaShieldAlt, FaHeart, FaTint, FaFlask,
@@ -31,10 +31,11 @@ const doctor = {
 const GynecologyServices = () => {
   return (
     <>
-      <Helmet>
-        <title>Dr. Jagriti Bhardwaj | Top Gynaecologist in Patna</title>
-        <meta name="description" content="Dr. Jagriti Bhardwaj offers advanced gynaecological care, pregnancy checkups, and women's health services in Patna. Book a consultation today." />
-      </Helmet>
+      <SeoHead
+        title="Dr. Jagriti Bhardwaj | Top Gynaecologist in Patna"
+        description="Dr. Jagriti Bhardwaj offers advanced gynaecological care, pregnancy checkups, and women's health services in Patna. Book a consultation today."
+        path="/Gynoservices"
+      />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-[#3CAEA3] to-[#2a8e85] text-white !py-12 sm:!py-16 !px-4 overflow-hidden">

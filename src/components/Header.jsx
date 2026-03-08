@@ -32,15 +32,15 @@ const Header = () => {
     <>
       <header
         className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
-            ? 'bg-[#30638E]/95 backdrop-blur-md shadow-lg'
-            : 'bg-[#30638E] shadow-md'
+          ? 'bg-[#30638E]/95 backdrop-blur-md shadow-lg'
+          : 'bg-[#30638E] shadow-md'
           }`}
       >
         <div className="max-w-7xl !mx-auto !px-4 sm:!px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo + Title */}
             <Link to="/" className="flex items-center gap-2.5 flex-shrink-0 no-underline">
-              <img src="/nc.webp" alt="NHMC Logo" className="h-10 w-auto" />
+              <img src="/nc.png" alt="NHMC Logo" className="h-10 w-auto" />
               <div className="leading-tight">
                 <span className="text-white font-bold text-sm sm:text-base block">
                   Narayan Heart
@@ -158,8 +158,8 @@ const Header = () => {
                 {...props}
                 onClick={() => setDrawerOpen(false)}
                 className={`flex items-center gap-3 !px-4 !py-3 rounded-xl text-sm font-medium no-underline transition-all duration-200 ${active
-                    ? 'bg-[#30638E] text-white shadow-sm'
-                    : 'text-gray-700 hover:bg-gray-100'
+                  ? 'bg-[#30638E] text-white shadow-sm'
+                  : 'text-gray-700 hover:bg-gray-100'
                   }`}
               >
                 {label === 'Reach Us' && <FaMapMarkerAlt className="text-xs text-gray-400" />}

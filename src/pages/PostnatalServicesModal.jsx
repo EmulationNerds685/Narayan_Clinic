@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
 import { FaCheckCircle, FaCalendarCheck, FaExclamationTriangle } from 'react-icons/fa';
 
@@ -38,10 +38,11 @@ const warnings = [
 const PostnatalServicesModal = () => {
   return (
     <>
-      <Helmet>
-        <title>Postnatal Care Services in Patna | Dr. Jagriti Bhardwaj</title>
-        <meta name="description" content="Get expert postnatal care for new mothers at Narayan Heart & Maternity Centre, Patna. Led by Dr. Jagriti Bhardwaj, our services ensure complete recovery and support." />
-      </Helmet>
+      <SeoHead
+        title="Postnatal Care Services in Patna | Dr. Jagriti Bhardwaj"
+        description="Get expert postnatal care for new mothers at Narayan Heart & Maternity Centre, Patna. Led by Dr. Jagriti Bhardwaj, our services ensure complete recovery and support."
+        path="/postnatal"
+      />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-[#3CAEA3] to-[#2a8e85] text-white !py-12 sm:!py-16 !px-4 overflow-hidden">

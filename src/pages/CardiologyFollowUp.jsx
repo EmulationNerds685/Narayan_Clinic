@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
 import { FaCheckCircle, FaCalendarCheck, FaHeartbeat, FaAppleAlt, FaCalendarAlt } from 'react-icons/fa';
 
@@ -20,10 +20,11 @@ const benefits = [
 const CardiologyFollowUp = () => {
   return (
     <>
-      <Helmet>
-        <title>Cardiology Follow-Up Care | Dr. Sushant Kumar Pathak, Patna</title>
-        <meta name="description" content="Continue your heart treatment journey with regular follow-up consultations by Dr. Sushant Kumar Pathak at Narayan Heart & Maternity Centre, Patna." />
-      </Helmet>
+      <SeoHead
+        title="Cardiology Follow-Up Care | Dr. Sushant Kumar Pathak, Patna"
+        description="Continue your heart treatment journey with regular follow-up consultations by Dr. Sushant Kumar Pathak at Narayan Heart & Maternity Centre, Patna."
+        path="/FollowUp"
+      />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-[#30638E] to-[#1a3d5c] text-white !py-12 sm:!py-16 !px-4 overflow-hidden">

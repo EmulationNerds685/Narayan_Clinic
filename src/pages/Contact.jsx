@@ -1,9 +1,47 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import FeedbackDialog from '../components/Feedback';
-import { Helmet } from 'react-helmet-async';
+import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
+
+const localBusinessSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Narayan Heart & Maternity Centre",
+  image: "https://narayanheartandmaternitycentre.com/nc.png",
+  url: "https://narayanheartandmaternitycentre.com",
+  telephone: ["+91-9708441467", "+91-9836197624"],
+  email: "narayanheartmaternitycentre@gmail.com",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "09:00",
+      closes: "10:30",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "18:30",
+      closes: "20:00",
+    },
+  ],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "MIG, 245, Lohia Nagar, Kankarbagh",
+    addressLocality: "Patna",
+    addressRegion: "Bihar",
+    postalCode: "800020",
+    addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 25.5945,
+    longitude: 85.1554,
+  },
+  sameAs: ["https://maps.app.goo.gl/tsKEg2pHUXZzp1STA"],
+});
 
 const Contact = () => {
   const backendURL = import.meta.env.VITE_BACKEND_URL;
@@ -71,13 +109,13 @@ const Contact = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Contact Narayan Heart & Maternity Centre | Best Cardiologist and Gynecologist Clinic in Patna</title>
-        <meta
-          name="description"
-          content="Get in touch with Dr. Sushant Kumar Pathak and Dr. Jagriti Bhardwaj. View clinic timings, address, and contact info for appointments in Patna."
-        />
-      </Helmet>
+      <SeoHead
+        title="Contact Narayan Heart & Maternity Centre | Best Cardiologist and Gynecologist Clinic in Patna"
+        description="Get in touch with Dr. Sushant Kumar Pathak and Dr. Jagriti Bhardwaj. View clinic timings, address, and contact info for appointments in Patna."
+        path="/contact"
+      >
+        <script type="application/ld+json">{localBusinessSchema}</script>
+      </SeoHead>
 
       {/* Hero Banner */}
       <section className="relative bg-gradient-to-br from-[#30638E] to-[#1a3d5c] text-white !py-14 sm:!py-18 !px-4 overflow-hidden">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SeoHead from './SeoHead';
 import { motion } from 'framer-motion';
 import {
   FaHeartbeat, FaStethoscope, FaRunning, FaClock, FaClipboardCheck,
@@ -35,10 +35,11 @@ const doctor = {
 const CardiologyServices = () => {
   return (
     <>
-      <Helmet>
-        <title>Cardiology Services | Dr. Sushant Kumar Pathak, Patna</title>
-        <meta name="description" content="Comprehensive cardiology services including ECG, ECHO, TMT, and interventional procedures at Narayan Heart & Maternity Centre, Patna." />
-      </Helmet>
+      <SeoHead
+        title="Cardiology Services | Dr. Sushant Kumar Pathak, Patna"
+        description="Comprehensive cardiology services including ECG, ECHO, TMT, and interventional procedures at Narayan Heart & Maternity Centre, Patna."
+        path="/Cardioservices"
+      />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-[#30638E] to-[#1a3d5c] text-white !py-12 sm:!py-16 !px-4 overflow-hidden">

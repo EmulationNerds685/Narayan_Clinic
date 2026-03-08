@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const faqs = [
@@ -29,6 +30,20 @@ const faqs = [
   },
 ];
 
+// FAQPage JSON-LD for Google rich results
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+});
+
 const ClinicFAQAccordion = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -38,18 +53,16 @@ const ClinicFAQAccordion = () => {
 
   return (
     <div className="max-w-3xl !mx-auto !px-4 !py-16 sm:!py-20">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="text-center !mb-10"
-      >
+      <Helmet>
+        <script type="application/ld+json">{faqSchema}</script>
+      </Helmet>
+
+      <div className="text-center !mb-10">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 !mb-3">
           Frequently Asked <span className="text-[#3CAEA3]">Questions</span>
         </h2>
         <div className="w-20 h-1 bg-[#30638E] !mx-auto rounded-full"></div>
-      </motion.div>
+      </div>
 
       <div className="space-y-3">
         {faqs.map((faq, index) => {
@@ -100,7 +113,7 @@ const ClinicFAQAccordion = () => {
           );
         })}
       </div>
-    </div>
+    </div >
   );
 };
 

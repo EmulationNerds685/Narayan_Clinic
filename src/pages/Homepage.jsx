@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Helmet } from "react-helmet-async";
+import SeoHead from "../components/SeoHead";
 import Herocarousel from "../components/Herocarousel";
 import FadeInSection from "../components/FadeInSection";
 
@@ -10,20 +10,53 @@ const WhyChooseUs = React.lazy(() => import("../components/ChooseUs"));
 const Testimonials = React.lazy(() => import("../components/Testimonials"));
 const ClinicFAQAccordion = React.lazy(() => import("../components/ClinicFAQAccordion"));
 
-// Static JSON-LD – computed once, no re-renders
-const schemaJsonLd = JSON.stringify({
+// ── Static JSON-LD schemas (computed once) ──
+
+const organizationSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Narayan Heart & Maternity Centre",
+  url: "https://narayanheartandmaternitycentre.com",
+  logo: "https://narayanheartandmaternitycentre.com/nc.png",
+  image: "https://narayanheartandmaternitycentre.com/nc.png",
+  sameAs: [
+    "https://maps.app.goo.gl/tsKEg2pHUXZzp1STA",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+91-9708441467",
+    contactType: "appointments",
+    areaServed: "IN",
+    availableLanguage: ["English", "Hindi"],
+  },
+});
+
+const clinicSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "MedicalClinic",
   name: "Narayan Heart & Maternity Centre",
   url: "https://narayanheartandmaternitycentre.com",
+  logo: "https://narayanheartandmaternitycentre.com/nc.png",
+  image: "https://narayanheartandmaternitycentre.com/nc.png",
+  telephone: ["+91-9708441467", "+91-9836197624"],
+  openingHours: ["Mo-Sa 09:00-10:30", "Mo-Sa 18:30-20:00"],
   address: {
     "@type": "PostalAddress",
+    streetAddress: "MIG, 245, Lohia Nagar, Kankarbagh",
     addressLocality: "Patna",
     addressRegion: "Bihar",
-    postalCode: "800001",
+    postalCode: "800020",
     addressCountry: "IN",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 25.5945,
+    longitude: 85.1554,
+  },
   medicalSpecialty: ["Cardiology", "Gynaecology"],
+  sameAs: [
+    "https://maps.app.goo.gl/tsKEg2pHUXZzp1STA",
+  ],
   employee: [
     {
       "@type": "Physician",
@@ -63,17 +96,14 @@ const SectionFallback = () => (
 const HomePage = () => {
   return (
     <div>
-      <Helmet>
-        <title>
-          Narayan Heart &amp; Maternity Centre | Best Cardiologist &amp; Gynaecologist
-          in Patna
-        </title>
-        <meta
-          name="description"
-          content="Narayan Heart & Maternity Centre in Patna offers expert cardiology by Dr. Sushant Kumar Pathak and maternity care by Dr. Jagriti Bhardwaj. Book your appointment today."
-        />
-        <script type="application/ld+json">{schemaJsonLd}</script>
-      </Helmet>
+      <SeoHead
+        title="Narayan Heart & Maternity Centre | Best Cardiologist & Gynaecologist in Patna"
+        description="Narayan Heart & Maternity Centre in Patna offers expert cardiology by Dr. Sushant Kumar Pathak and maternity care by Dr. Jagriti Bhardwaj. Book your appointment today."
+        path="/"
+      >
+        <script type="application/ld+json">{organizationSchema}</script>
+        <script type="application/ld+json">{clinicSchema}</script>
+      </SeoHead>
 
       {/* Hero Carousel — no extra padding, full bleed */}
       <Herocarousel />

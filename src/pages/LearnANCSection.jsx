@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
 import { FaCheckCircle, FaCalendarCheck, FaChild, FaAppleAlt, FaClipboardCheck } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -23,10 +23,11 @@ const highlights = [
 const LearnANCSection = () => {
   return (
     <>
-      <Helmet>
-        <title>Antenatal Care (ANC) in Patna | Dr. Jagriti Bhardwaj</title>
-        <meta name="description" content="Learn about Antenatal Care (ANC) services offered at Narayan Heart & Maternity Centre, Patna by Dr. Jagriti Bhardwaj. Ensure a healthy pregnancy with expert checkups and guidance." />
-      </Helmet>
+      <SeoHead
+        title="Antenatal Care (ANC) in Patna | Dr. Jagriti Bhardwaj"
+        description="Learn about Antenatal Care (ANC) services offered at Narayan Heart & Maternity Centre, Patna by Dr. Jagriti Bhardwaj. Ensure a healthy pregnancy with expert checkups and guidance."
+        path="/anc"
+      />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-[#3CAEA3] to-[#2a8e85] text-white !py-12 sm:!py-16 !px-4 overflow-hidden">

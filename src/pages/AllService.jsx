@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import SeoHead from "../components/SeoHead";
 import {
   FaHeartbeat, FaStethoscope, FaRunning, FaClock, FaClipboardCheck,
   FaProcedures, FaAppleAlt, FaPlug, FaHospitalAlt,
@@ -102,12 +102,11 @@ const AllService = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Clinic Services | Cardiologist & Gynecologist Services in Patna</title>
-        <meta
-          name="description"
-          content="Explore the medical services at Narayan Heart & Maternity Centre in Patna, including expert cardiology by Dr. Sushant Kumar Pathak and gynaecological care by Dr. Jagriti Bhardwaj."
-        />
+      <SeoHead
+        title="Clinic Services | Cardiologist & Gynecologist Services in Patna"
+        description="Explore the medical services at Narayan Heart & Maternity Centre in Patna, including expert cardiology by Dr. Sushant Kumar Pathak and gynaecological care by Dr. Jagriti Bhardwaj."
+        path="/services"
+      >
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -122,7 +121,7 @@ const AllService = () => {
             medicalSpecialty: ["Cardiology", "Gynaecology"],
           })}
         </script>
-      </Helmet>
+      </SeoHead>
 
       {/* Hero Banner */}
       <section className="relative bg-gradient-to-br from-[#30638E] to-[#1a3d5c] text-white !py-14 sm:!py-18 !px-4 overflow-hidden">
@@ -153,8 +152,8 @@ const AllService = () => {
               key={cat.id}
               onClick={() => setActiveTab(cat.id)}
               className={`flex-1 flex items-center justify-center gap-2 !py-4 text-sm sm:text-base font-semibold transition-all duration-200 border-b-3 ${activeTab === cat.id
-                  ? 'border-current text-[' + cat.color + ']'
-                  : 'border-transparent text-gray-400 hover:text-gray-600'
+                ? 'border-current text-[' + cat.color + ']'
+                : 'border-transparent text-gray-400 hover:text-gray-600'
                 }`}
               style={activeTab === cat.id ? { color: cat.color, borderBottomColor: cat.color } : {}}
             >
