@@ -7,6 +7,7 @@ import HomePage from '../pages/Homepage';
 
 // Lazy-load all other routes for better initial load performance
 const Aboutus = React.lazy(() => import('../pages/Aboutus'));
+const HeartHealthVideos = React.lazy(() => import('../pages/HeartHealthVideos'));
 const Contact = React.lazy(() => import('../pages/Contact'));
 const Appointment = React.lazy(() => import('../components/Appointment'));
 const CardiologyServices = React.lazy(() => import('../components/CardiologyServices'));
@@ -15,6 +16,7 @@ const LearnANCSection = React.lazy(() => import('../pages/LearnANCSection'));
 const DoctorsSection = React.lazy(() => import('../components/DoctorSection'));
 const AllService = React.lazy(() => import('../pages/AllService'));
 const CardiacDiagnosticsDetails = React.lazy(() => import('../pages/CardiacDiagnosticsDetails'));
+const EcgDetails = React.lazy(() => import('../pages/EcgDetails'));
 const CardiologyFollowUp = React.lazy(() => import('../pages/CardiologyFollowUp'));
 const PostnatalServicesModal = React.lazy(() => import('../pages/PostnatalServicesModal'));
 const TermsAndConditions = React.lazy(() => import('../pages/TermsAndConditions'));
@@ -45,6 +47,7 @@ const Approutes = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<Aboutus />} />
+                <Route path="/heart-health-videos" element={<HeartHealthVideos />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/services" element={<AllService />} />
                 <Route path="/Cardioservices" element={<CardiologyServices />} />
@@ -53,6 +56,7 @@ const Approutes = () => {
                 <Route path="/doctors" element={<DoctorsSection />} />
                 <Route path="/book" element={<Appointment />} />
                 <Route path="/cdd" element={<CardiacDiagnosticsDetails />} />
+                <Route path="/services/cardiology/ecg" element={<EcgDetails />} />
                 <Route path="/FollowUp" element={<CardiologyFollowUp />} />
                 <Route path="/postnatal" element={<PostnatalServicesModal />} />
                 <Route path="/terms" element={<TermsAndConditions />} />

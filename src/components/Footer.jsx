@@ -31,6 +31,7 @@ const Footer = () => {
             <nav className="!space-y-2 text-sm">
               <Link to="/" className="block text-blue-100 hover:text-white transition-colors duration-200">Home</Link>
               <Link to="/services" className="block text-blue-100 hover:text-white transition-colors duration-200">Services</Link>
+              <Link to="/heart-health-videos" className="block text-blue-100 hover:text-white transition-colors duration-200">Heart Health Videos</Link>
               <Link to="/doctors" className="block text-blue-100 hover:text-white transition-colors duration-200">Our Doctors</Link>
               <Link to="/contact" className="block text-blue-100 hover:text-white transition-colors duration-200">Contact</Link>
               <a href="https://maps.app.goo.gl/tsKEg2pHUXZzp1STA" target="_blank" rel="noopener noreferrer" className="block text-blue-100 hover:text-white transition-colors duration-200">

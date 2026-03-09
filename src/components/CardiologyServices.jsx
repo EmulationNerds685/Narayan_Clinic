@@ -84,16 +84,45 @@ const CardiologyServices = () => {
 
           {/* Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 !mb-10">
-            {cardiologyServices.map((service, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.05 }} viewport={{ once: true }}
-                whileHover={{ y: -4 }} className="group h-full">
-                <div className="bg-white rounded-2xl shadow-sm hover:shadow-lg border border-gray-100 hover:border-gray-200 transition-all duration-300 h-full !p-5 sm:!p-6 flex flex-col">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-lg !mb-4 bg-[#30638E]/10 text-[#30638E]">{service.icon}</div>
-                  <h3 className="text-base sm:text-lg font-bold text-gray-800 !mb-2 leading-snug">{service.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed flex-grow">{service.description}</p>
-                </div>
-              </motion.div>
-            ))}
+            {cardiologyServices.map((service, i) => {
+              const isEcg = service.title.startsWith('Electrocardiogram');
+              const CardWrapper = isEcg ? Link : 'div';
+              const cardProps = isEcg ? { to: '/services/cardiology/ecg' } : {};
+
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -4 }}
+                  className="group h-full"
+                >
+                  <CardWrapper
+                    {...cardProps}
+                    className={isEcg ? 'no-underline' : undefined}
+                  >
+                    <div className="bg-white rounded-2xl shadow-sm hover:shadow-lg border border-gray-100 hover:border-gray-200 transition-all duration-300 h-full !p-5 sm:!p-6 flex flex-col">
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center text-lg !mb-4 bg-[#30638E]/10 text-[#30638E]">
+                        {service.icon}
+                      </div>
+                      <h3 className="text-base sm:text-lg font-bold text-gray-800 !mb-2 leading-snug">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 leading-relaxed flex-grow">
+                        {service.description}
+                      </p>
+                      {isEcg && (
+                        <span className="mt-3 inline-flex text-xs font-semibold text-[#30638E]">
+                          Learn more about ECG →
+                        </span>
+                      )}
+                    </div>
+                  </CardWrapper>
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* CTA */}

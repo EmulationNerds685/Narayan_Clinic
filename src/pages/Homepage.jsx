@@ -115,6 +115,50 @@ const HomePage = () => {
         </Suspense>
       </FadeInSection>
 
+      {/* Heart Health Videos Preview */}
+      <FadeInSection>
+        <section className="bg-white !py-12 sm:!py-16 !px-4 sm:!px-6 lg:!px-8 border-t border-gray-100">
+          <div className="max-w-6xl !mx-auto grid grid-cols-1 lg:grid-cols-[1.6fr,1.4fr] gap-10 items-center">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#30638E] !mb-3">
+                Learn About Your Heart With Short Videos
+              </h2>
+              <p className="text-gray-600 text-sm sm:text-base !mb-4">
+                Watch cardiology and heart health videos recorded by
+                {" "}Dr. Sushant Kumar Pathak to better understand symptoms, tests and treatment options.
+              </p>
+              <p className="text-gray-600 text-sm sm:text-base !mb-5">
+                These educational videos and reels help you and your family make informed decisions
+                about heart care.
+              </p>
+              <a
+                href="/heart-health-videos"
+                className="inline-flex items-center justify-center rounded-full bg-[#3CAEA3] hover:bg-[#2F9E94] text-white text-sm font-semibold !px-6 !py-3 no-underline shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200"
+              >
+                View heart health videos
+              </a>
+            </div>
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-lg bg-black aspect-video">
+              <img
+                src="/ECGimage.webp"
+                alt="Heart health education"
+                className="w-full h-full object-cover opacity-80"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center !px-4">
+                <span className="text-white text-sm sm:text-base font-semibold !mb-2">
+                  Heart Health Video Library
+                </span>
+                <span className="text-white/80 text-xs sm:text-sm max-w-xs">
+                  Short, easy-to-understand videos on cardiac health, risk factors and lifestyle tips.
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </FadeInSection>
+
       {/* Doctors Section */}
       <FadeInSection>
         <Suspense fallback={<SectionFallback />}>
