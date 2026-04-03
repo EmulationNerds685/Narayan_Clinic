@@ -50,12 +50,13 @@ const HeartHealthVideos = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     const fetchShorts = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:5000/api/shorts');
+        const response = await fetch(`${backendURL}/api/shorts`);
         if (!response.ok) throw new Error('Failed to fetch shorts');
         const data = await response.json();
         setShorts(data.shorts || []);
@@ -106,7 +107,7 @@ const HeartHealthVideos = () => {
       {/* Main Content */}
       <section className="bg-gradient-to-b from-gray-50 to-white !py-10 sm:!py-16 !px-4 sm:!px-6 lg:!px-8">
         <div className="max-w-7xl !mx-auto !space-y-10 sm:!space-y-16">
-          
+
           {/* Header Section */}
           <div className="text-center !mb-8 sm:!mb-10">
             <h2 className="text-xl sm:text-3xl font-bold text-[#30638E] !mb-3 flex items-center justify-center gap-3">
@@ -147,8 +148,8 @@ const HeartHealthVideos = () => {
                   className="group relative aspect-[9/16] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg cursor-pointer bg-black"
                   onClick={() => setSelectedVideo(video)}
                 >
-                  <img 
-                    src={video.thumbnail} 
+                  <img
+                    src={video.thumbnail}
                     alt={video.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
