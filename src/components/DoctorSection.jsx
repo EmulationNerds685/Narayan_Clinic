@@ -69,7 +69,8 @@ const DoctorsSection = () => {
       ],
       experience: [
         'SIR Ganga Ram Hospital, New Delhi',
-        'Ex. Senior, PGIMS New Delhi',
+        'Ex. Senior, ESIC PGIMSR New Delhi',
+        'FMAS',
         'Ex. Assistant Professor, HIMS, Dehradun',
       ],
       specializations: 'Laparoscopic Surgeon, Infertility Specialist',

@@ -6,7 +6,8 @@ const menuItems = [
   { label: 'Home', path: '/' },
   { label: 'About Us', path: '/about' },
   { label: 'Services', path: '/services' },
-  { label: 'Heart Health Videos', path: '/heart-health-videos' },
+  { label: 'Health Tips & Videos', path: '/heart-health-videos' },
+  { label: 'Patient Reviews', path: '/patient-reviews' },
   { label: 'Contact', path: '/contact' },
   { label: 'Reach Us', path: 'https://maps.app.goo.gl/tsKEg2pHUXZzp1STA' },
 ];

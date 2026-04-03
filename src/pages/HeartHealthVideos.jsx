@@ -1,20 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import SeoHead from '../components/SeoHead';
-import { motion } from 'framer-motion';
-import { FaYoutube, FaInstagram } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaYoutube, FaTimes, FaPlay } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
-const FEATURED_YOUTUBE_VIDEO_URL = 'https://www.youtube.com/embed/216IH8hKvKo';
 
 const videoSchema = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
-  name: 'Understanding Heart Disease and Prevention | Dr. Sushant Kumar Pathak',
+  name: 'Health Education Videos | Narayan Heart & Maternity Centre',
   description:
-    'Cardiology education video by Dr. Sushant Kumar Pathak from Narayan Heart & Maternity Centre, Patna, explaining heart disease risk factors, symptoms and prevention.',
-  thumbnailUrl: ['https://i.ytimg.com/vi/216IH8hKvKo/hqdefault.jpg'],
+    'Health education videos by Dr. Sushant Kumar Pathak (Cardiologist) and Dr. Jagriti Bhardwaj (Gynaecologist) from Narayan Heart & Maternity Centre, Patna, covering heart health and maternity care.',
+  thumbnailUrl: ['https://narayanheartandmaternitycentre.com/nc.png'],
   uploadDate: '2025-01-01',
-  duration: 'PT10M',
   publisher: {
     '@type': 'Organization',
     name: 'Narayan Heart & Maternity Centre',
@@ -23,8 +20,6 @@ const videoSchema = JSON.stringify({
       url: 'https://narayanheartandmaternitycentre.com/nc.png',
     },
   },
-  contentUrl: 'https://www.youtube.com/watch?v=216IH8hKvKo',
-  embedUrl: FEATURED_YOUTUBE_VIDEO_URL,
 });
 
 const faqSchema = JSON.stringify({
@@ -33,29 +28,53 @@ const faqSchema = JSON.stringify({
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'When should I see a cardiologist in Patna?',
+      name: 'When should I see a cardiologist or a gynaecologist?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'You should see a cardiologist if you have chest pain, shortness of breath, palpitations, a history of heart attack, or risk factors like high blood pressure, diabetes, high cholesterol or a strong family history of heart disease.',
+        text: 'You should see Dr. Sushant Kumar Pathak (Cardiologist) for chest pain, palpitations, or heart risk factors. See Dr. Jagriti Bhardwaj (Gynaecologist) for pregnancy care, menstrual issues, or routine women\'s health checkups.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Can heart disease be prevented?',
+      name: 'How does patient education help in treatment?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Many heart problems can be delayed or prevented with regular check-ups, keeping blood pressure, sugar and cholesterol under control, not smoking, staying active and eating a balanced diet.',
+        text: 'Education helps patients understand their conditions, leading to better compliance with treatment, early detection of warning signs, and improved health outcomes.',
       },
     },
   ],
 });
 
 const HeartHealthVideos = () => {
+  const [shorts, setShorts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
+  useEffect(() => {
+    const fetchShorts = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('http://localhost:5000/api/shorts');
+        if (!response.ok) throw new Error('Failed to fetch shorts');
+        const data = await response.json();
+        setShorts(data.shorts || []);
+      } catch (err) {
+        console.error('Fetch error:', err);
+        setError('Failed to fetch latest videos. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchShorts();
+  }, []);
+
   return (
     <>
       <SeoHead
-        title="Heart Health Videos by Dr. Sushant Kumar Pathak | Cardiologist in Patna"
-        description="Heart health and cardiology videos by Dr. Sushant Kumar Pathak, Interventional Cardiologist at Narayan Heart & Maternity Centre, Patna. Learn about heart disease prevention, hypertension, cholesterol and warning signs."
+        title="Health Education Videos | Dr. Sushant & Dr. Jagriti | Patna"
+        description="Health education videos by Dr. Sushant Kumar Pathak (Cardiologist) and Dr. Jagriti Bhardwaj (Gynaecologist) at Narayan Heart & Maternity Centre, Patna. Learn about heart health and pregnancy tips."
         path="/heart-health-videos"
         type="video.other"
       >
@@ -63,8 +82,8 @@ const HeartHealthVideos = () => {
         <script type="application/ld+json">{faqSchema}</script>
       </SeoHead>
 
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-[#30638E] to-[#1a3d5c] text-white !py-16 sm:!py-20 !px-4 sm:!px-6 overflow-hidden">
+      {/* Hero - Optimized Padding for Mobile */}
+      <section className="relative bg-gradient-to-br from-[#30638E] to-[#1a3d5c] text-white !py-12 sm:!py-16 md:!py-20 !px-4 sm:!px-6 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#3CAEA3] rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#3CAEA3] rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
@@ -75,188 +94,182 @@ const HeartHealthVideos = () => {
           transition={{ duration: 0.7 }}
           className="relative max-w-4xl !mx-auto text-center"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold !mb-4 leading-tight">
-            Heart Health Video Library for Patients
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold !mb-4 leading-tight">
+            Patient Education Video Library
           </h1>
-          <p className="text-base sm:text-lg text-blue-100 max-w-2xl !mx-auto leading-relaxed">
-            Learn about heart disease prevention, blood pressure, cholesterol and more from
-            Dr. Sushant Kumar Pathak, Interventional Cardiologist at Narayan Heart &amp; Maternity
-            Centre, Patna.
+          <p className="text-sm sm:text-lg text-blue-100 max-w-2xl !mx-auto leading-relaxed px-2">
+            Expert insights on heart health and maternity care from Dr. Sushant Kumar Pathak and Dr. Jagriti Bhardwaj at Narayan Heart &amp; Maternity Centre, Patna.
           </p>
         </motion.div>
       </section>
 
       {/* Main Content */}
-      <section className="bg-gradient-to-b from-gray-50 to-white !py-16 sm:!py-20 !px-4 sm:!px-6 lg:!px-8">
-        <div className="max-w-6xl !mx-auto !space-y-16 sm:!space-y-20">
-          {/* Featured YouTube Playlist */}
+      <section className="bg-gradient-to-b from-gray-50 to-white !py-10 sm:!py-16 !px-4 sm:!px-6 lg:!px-8">
+        <div className="max-w-7xl !mx-auto !space-y-10 sm:!space-y-16">
+          
+          {/* Header Section */}
+          <div className="text-center !mb-8 sm:!mb-10">
+            <h2 className="text-xl sm:text-3xl font-bold text-[#30638E] !mb-3 flex items-center justify-center gap-3">
+              <FaYoutube className="text-red-600 scale-90 sm:scale-100" />
+              Latest Health Shorts
+            </h2>
+            <p className="text-gray-600 text-sm sm:text-base max-w-3xl !mx-auto px-4">
+              Quick, informative clips recorded by our specialists to help you lead a healthier life.
+            </p>
+          </div>
+
+          {/* Loading State */}
+          {loading && (
+            <div className="flex flex-col items-center justify-center !py-20">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 border-4 border-[#3CAEA3] border-t-transparent rounded-full animate-spin !mb-4"></div>
+              <p className="text-[#30638E] font-medium text-sm sm:text-base">Fetching latest videos...</p>
+            </div>
+          )}
+
+          {/* Error State */}
+          {error && !loading && (
+            <div className="text-center !py-20 px-4">
+              <p className="text-red-600 font-medium text-sm sm:text-base">{error}</p>
+            </div>
+          )}
+
+          {/* Shorts Grid - Optimized Gaps for Mobile */}
+          {!loading && !error && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+              {shorts.map((video) => (
+                <motion.div
+                  key={video.id}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative aspect-[9/16] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg cursor-pointer bg-black"
+                  onClick={() => setSelectedVideo(video)}
+                >
+                  <img 
+                    src={video.thumbnail} 
+                    alt={video.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  {/* Overlay - Centered Play Button (Consistent size on touch) */}
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-red-600/90 sm:bg-red-600 text-white rounded-full flex items-center justify-center shadow-2xl transform transition-transform group-active:scale-95">
+                      <FaPlay className="ml-1 text-lg sm:text-xl" />
+                    </div>
+                  </div>
+                  {/* Fixed Title Bar for Mobile, Hover for Desktop */}
+                  <div className="absolute bottom-0 inset-x-0 !p-3 sm:!p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent lg:transform lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-white text-[10px] sm:text-sm font-semibold leading-tight line-clamp-2">
+                      {video.title}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
+
+          {/* Why Videos Matter - More Compact on Mobile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-[2fr,1.2fr] gap-10 items-start"
+            className="bg-white rounded-2xl sm:rounded-3xl shadow-sm border border-gray-100 !p-6 sm:!p-12"
           >
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#30638E] !mb-3 flex items-center gap-3">
-                <FaYoutube className="text-red-600" />
-                Cardiology Videos on YouTube
-              </h2>
-              <p className="text-gray-600 text-base sm:text-lg !mb-5">
-                This curated playlist includes detailed cardiology talks and short heart health
-                tips recorded by Dr. Sushant Kumar Pathak. You can watch directly here or open in
-                YouTube for the full list.
-              </p>
-              <div className="relative w-full overflow-hidden rounded-2xl shadow-lg bg-black aspect-video">
-                <iframe
-                  src={FEATURED_YOUTUBE_VIDEO_URL}
-                  title="Featured heart health video - Dr Sushant Kumar Pathak"
-                  loading="lazy"
-                  className="w-full h-full border-0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
+            <h2 className="text-xl sm:text-3xl font-bold text-[#30638E] !mb-6 sm:!mb-8 text-center sm:text-left">
+              Why Education Matters
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
+              <div className="flex gap-4 sm:!space-y-4 sm:flex-col items-start">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-[#30638E]/10 rounded-lg sm:rounded-xl flex items-center justify-center text-[#30638E]">
+                  <FaYoutube className="text-xl sm:text-2xl" />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-xl font-bold text-[#30638E] !mb-1 sm:!mb-3">Cardiology Care</h3>
+                  <p className="text-gray-700 text-xs sm:text-base leading-relaxed">
+                    Heart conditions like hypertension can be managed better with knowledge. Dr. Sushant Kumar Pathak shares these videos to highlight cardiac warning signs.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-4 sm:!space-y-4 sm:flex-col items-start">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-[#3CAEA3]/10 rounded-lg sm:rounded-xl flex items-center justify-center text-[#3CAEA3]">
+                  <FaYoutube className="text-xl sm:text-2xl" />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-xl font-bold text-[#30638E] !mb-1 sm:!mb-3">Maternity Care</h3>
+                  <p className="text-gray-700 text-xs sm:text-base leading-relaxed">
+                    Pregnancy requires careful guidance. Dr. Jagriti Bhardwaj shares maternity tips and wellness advice through these shorts for expectant mothers.
+                  </p>
+                </div>
               </div>
             </div>
-
-            <div className="bg-white rounded-2xl shadow-md border border-gray-100 !p-6 !space-y-4">
-              <h3 className="text-xl font-semibold text-[#30638E]">
-                About These Videos
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                Videos are created to educate patients and families about common heart problems,
-                risk factors, warning signs, and treatment options. They are for educational
-                purposes and do not replace a personal consultation.
-              </p>
-              <ul className="list-disc !pl-5 text-gray-600 text-sm sm:text-base !space-y-1.5">
-                <li>Understand symptoms like chest pain, breathlessness and palpitations.</li>
-                <li>Learn how blood pressure, diabetes and cholesterol affect your heart.</li>
-                <li>Know when to seek urgent medical help.</li>
-                <li>Get practical lifestyle tips to protect your heart.</li>
-              </ul>
-              <a
-                href="https://youtube.com/playlist?list=PLVq0ptpa6PFZFMJ_Ay81gtkSPTL6QfkWi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-lg bg-[#FF0000] hover:bg-red-700 text-white text-sm font-semibold !px-4 !py-2.5 shadow-sm hover:shadow-md transition-all duration-200"
-              >
-                Watch full playlist on YouTube
-              </a>
-            </div>
+            <p className="text-gray-500 text-[11px] sm:text-sm !mt-8 italic border-l-3 border-[#3CAEA3] !pl-3">
+              At Narayan Heart &amp; Maternity Centre Patna, we believe informed patients lead to better health outcomes.
+            </p>
           </motion.div>
 
-          {/* Instagram Reels Section */}
+          {/* Call to Action - Touch Optimized */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="grid grid-cols-1 lg:grid-cols-[1.2fr,1.8fr] gap-10 items-start"
+            transition={{ duration: 0.6 }}
+            className="text-center bg-[#30638E] text-white rounded-2xl sm:rounded-3xl !p-8 sm:!p-16 shadow-xl"
           >
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#30638E] !mb-3 flex items-center gap-3">
-                <FaInstagram className="text-pink-500" />
-                Quick Heart Tips on Instagram
-              </h2>
-              <p className="text-gray-600 text-base sm:text-lg !mb-4">
-                Follow short reels for quick heart health reminders, myths vs facts, and simple
-                lifestyle tips to keep your heart healthy.
-              </p>
-              <p className="text-gray-600 text-sm sm:text-base !mb-4">
-                New reels are posted regularly on the cardiology insights page. Tap the button
-                below to watch the latest clips.
-              </p>
-              <a
-                href="https://www.instagram.com/cardiology.insights?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-[#F56040] via-[#E1306C] to-[#5851DB] text-white text-sm font-semibold !px-4 !py-2.5 shadow-sm hover:shadow-md transition-all duration-200"
-              >
-                View reels on Instagram
-              </a>
-            </div>
-            <div className="bg-white rounded-2xl shadow-md border border-gray-100 !p-6 !space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {['DVYy2CaAbdU', 'DU3QTISAdJC', 'DVnBjY1ARtJ'].map((code) => (
-                  <div
-                    key={code}
-                    className="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-black"
-                  >
-                    <iframe
-                      src={`https://www.instagram.com/reel/${code}/embed`}
-                      title={`Instagram reel ${code}`}
-                      loading="lazy"
-                      className="w-full h-full border-0"
-                      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                    />
-                  </div>
-                ))}
-              </div>
-              <p className="text-gray-600 text-xs sm:text-sm">
-                Instagram reels may open controls or links in the Instagram app or website for the
-                best viewing experience. For any symptoms or concerns discussed, please consult
-                Dr. Sushant Kumar Pathak or your nearest cardiologist. Do not start or stop any
-                medicines without medical advice.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* SEO-friendly FAQ / Text */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="bg-white rounded-2xl shadow-sm border border-gray-100 !p-6 sm:!p-8"
-          >
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#30638E] !mb-4">
-              Why Patient Education Videos Matter
+            <h2 className="text-xl sm:text-3xl font-bold !mb-3">
+              Book a Consultation
             </h2>
-            <p className="text-gray-700 text-sm sm:text-base !mb-3">
-              Many heart conditions such as hypertension, coronary artery disease, heart failure
-              and rhythm problems can be prevented or detected early when people understand the
-              warning signs and risk factors. Video education helps patients and families remember
-              information better and reduces fear around tests and procedures.
-            </p>
-            <p className="text-gray-700 text-sm sm:text-base !mb-3">
-              At Narayan Heart &amp; Maternity Centre in Patna, we believe in explaining every
-              step of your heart care journey. These videos are an extension of that effort so you
-              can revisit important concepts at home and share them with your loved ones.
-            </p>
-            <p className="text-gray-700 text-sm sm:text-base">
-              If you have specific questions after watching these videos, you can book an
-              appointment with our cardiology team for a personalised consultation.
-            </p>
-          </motion.div>
-
-          {/* Call to action */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-center"
-          >
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#30638E] !mb-3">
-              Need to Discuss Your Heart Health?
-            </h2>
-            <p className="text-gray-600 text-sm sm:text-base !mb-5 max-w-2xl !mx-auto">
-              Videos and reels are for general education. If you are experiencing symptoms or have
-              concerns about your heart, please schedule a consultation so we can evaluate you in
-              detail.
+            <p className="text-blue-100 text-xs sm:text-lg !mb-6 sm:!mb-8 max-w-xl !mx-auto">
+              Schedule a visit with Dr. Sushant or Dr. Jagriti for personalized medical evaluation in Patna.
             </p>
             <Link
               to="/book"
-              className="inline-flex items-center justify-center rounded-full bg-[#3CAEA3] hover:bg-[#2F9E94] text-white text-sm font-semibold !px-6 !py-3 shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200"
+              className="inline-flex items-center justify-center rounded-full bg-[#3CAEA3] hover:bg-white hover:text-[#30638E] text-white text-sm sm:text-base font-bold !px-8 sm:!px-12 !py-3.5 sm:!py-4 shadow-lg active:scale-95 transition-all w-full sm:w-auto"
             >
-              Book cardiology appointment
+              Book Now
             </Link>
           </motion.div>
         </div>
       </section>
+
+      {/* Lightbox / Video Modal - Responsive Sizing */}
+      <AnimatePresence>
+        {selectedVideo && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[10000] flex items-center justify-center !p-2 sm:!p-4 bg-black/95 backdrop-blur-md"
+            onClick={() => setSelectedVideo(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative w-full max-w-[420px] max-h-[85vh] aspect-[9/16] bg-black rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className="absolute top-3 right-3 sm:top-5 sm:right-5 z-[10001] w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-black/50 hover:bg-black/80 text-white rounded-full transition-all border border-white/20 active:scale-90"
+                onClick={() => setSelectedVideo(null)}
+                aria-label="Close video"
+              >
+                <FaTimes size={18} className="sm:scale-110" />
+              </button>
+              <iframe
+                src={`${selectedVideo.embedUrl}?autoplay=1&rel=0`}
+                title={selectedVideo.title}
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
 
 export default HeartHealthVideos;
-

@@ -61,7 +61,7 @@ const LearnANCSection = () => {
               </ul>
             </div>
             <div className="md:w-1/3">
-              <img src="/gyno.webp" alt="Antenatal Care" loading="lazy" className="w-full h-48 sm:h-full object-cover rounded-xl" />
+              <img src="/gyno.png" alt="Antenatal Care" loading="lazy" className="w-full h-48 sm:h-full object-cover rounded-xl" />
             </div>
           </motion.div>
 

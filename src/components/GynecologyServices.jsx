@@ -25,7 +25,7 @@ const doctor = {
   name: 'Dr. Jagriti Bhardwaj',
   specialty: 'Gynecologist & Obstetrician',
   image: 'jbp.webp',
-  qualifications: ['MBBS (SNMC, Agra)', 'MS (OBG, PGIMS)', 'DNB (OBG)', 'Laparoscopic Surgeon & Infertility Specialist'],
+  qualifications: ['MBBS (SNMC, Agra)', 'MS (OBG, ESIC PGIMSR', 'FMAS', 'DNB (OBG)', 'Laparoscopic Surgeon & Infertility Specialist'],
 };
 
 const GynecologyServices = () => {

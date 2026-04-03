@@ -8,6 +8,7 @@ import HomePage from '../pages/Homepage';
 // Lazy-load all other routes for better initial load performance
 const Aboutus = React.lazy(() => import('../pages/Aboutus'));
 const HeartHealthVideos = React.lazy(() => import('../pages/HeartHealthVideos'));
+const PatientReviews = React.lazy(() => import('../pages/PatientReviews'));
 const Contact = React.lazy(() => import('../pages/Contact'));
 const Appointment = React.lazy(() => import('../components/Appointment'));
 const CardiologyServices = React.lazy(() => import('../components/CardiologyServices'));
@@ -48,6 +49,7 @@ const Approutes = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<Aboutus />} />
                 <Route path="/heart-health-videos" element={<HeartHealthVideos />} />
+                <Route path="/patient-reviews" element={<PatientReviews />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/services" element={<AllService />} />
                 <Route path="/Cardioservices" element={<CardiologyServices />} />

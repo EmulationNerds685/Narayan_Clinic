@@ -130,10 +130,12 @@ function Appointment() {
         email: formData.email,
       });
       setOtpSent(true);
-      setResponse(res.data.message);
+      // The backend now returns { success, message, data }
+      setResponse(res.data.message || "OTP sent successfully");
     } catch (error) {
       console.error(error);
-      alert("Failed to send OTP. Try again.");
+      const msg = error.response?.data?.message || "Failed to send OTP. Try again.";
+      alert(msg);
     } finally {
       setOtpLoading(false);
     }
@@ -152,7 +154,8 @@ function Appointment() {
       });
       setOtpVerified(true);
     } catch (error) {
-      alert("Invalid or expired OTP.");
+      const msg = error.response?.data?.message || "Invalid or expired OTP.";
+      alert(msg);
     }
   };
 
@@ -170,12 +173,14 @@ function Appointment() {
       setResponse(result.data.message || "Appointment booked successfully!");
       setIsError(false);
     } catch (err) {
-      setResponse("Error booking appointment. Please try again.");
+      const msg = err.response?.data?.message || "Error booking appointment. Please try again.";
+      setResponse(msg);
       setIsError(true);
     } finally {
       setProcessingDialogOpen(false);
       setDialogOpen(true);
       setLoading(false);
+
       setFormData({
         name: "", email: "", ph_number: "", address: "",
         service: "", appointment_date: "", appointment_time: "",

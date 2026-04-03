@@ -3,7 +3,7 @@ import axios from 'axios';
 import FeedbackDialog from '../components/Feedback';
 import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaInstagram, FaFacebook } from 'react-icons/fa';
 
 const localBusinessSchema = JSON.stringify({
   "@context": "https://schema.org",
@@ -140,12 +140,14 @@ const Contact = () => {
 
       {/* Quick Contact Cards */}
       <section className="bg-white !py-6 sm:!py-8 !px-4 shadow-sm border-b border-gray-100">
-        <div className="max-w-5xl !mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="max-w-6xl !mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
           {[
             { icon: <FaPhone />, title: 'Call Us', value: '+91 97084 41467', href: 'tel:+919708441467' },
             { icon: <FaPhone />, title: 'Alternate', value: '+91 98361 97624', href: 'tel:+919836197624' },
             { icon: <FaEnvelope />, title: 'Email', value: 'narayanhmc@gmail.com', href: 'mailto:narayanheartmaternitycentre@gmail.com' },
             { icon: <FaClock />, title: 'Timings', value: '9-10:30 AM, 6:30-8 PM', href: null },
+            { icon: <FaInstagram />, title: 'Instagram', value: 'Follow Us', href: 'https://www.instagram.com/doctors.insights?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' },
+            { icon: <FaFacebook />, title: 'Facebook', value: 'Like Page', href: 'https://www.facebook.com/people/Doctorsinsights/61587136179791/' },
           ].map((item, i) => (
             <motion.div
               key={i}

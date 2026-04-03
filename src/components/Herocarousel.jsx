@@ -23,7 +23,7 @@ const slides = [
     title: 'Comprehensive Antenatal Care',
     subtitle: 'Safe and personalized pregnancy monitoring with expert support.',
     buttonText: 'Learn About ANC',
-    image: '/maternity_img.webp',
+    image: '/maternity_img.png',
     link: '/anc',
   },
   {
@@ -37,7 +37,7 @@ const slides = [
     title: 'Expert Gynaecological Services',
     subtitle: 'From menstrual issues to menopause — care for every stage.',
     buttonText: 'Explore Gynae Care',
-    image: '/gyno.webp',
+    image: '/gyno.png',
     link: '/Gynoservices',
   },
   {
