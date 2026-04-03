@@ -66,11 +66,11 @@ const DoctorsSection = () => {
         'MBBS (SNMC, Agra)',
         'MS (OBG, PGIMS)',
         'DNB (OBG)',
+        'FMAS'
       ],
       experience: [
         'SIR Ganga Ram Hospital, New Delhi',
         'Ex. Senior, ESIC PGIMSR New Delhi',
-        'FMAS',
         'Ex. Assistant Professor, HIMS, Dehradun',
       ],
       specializations: 'Laparoscopic Surgeon, Infertility Specialist',
