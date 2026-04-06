@@ -1,5 +1,4 @@
 import Header from "./components/Header";
-import HomePage from "./pages/Homepage";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router } from "react-router-dom";
 import Approutes from "./Routes/AppRoutes";
@@ -7,7 +6,9 @@ import ScrollToTop from "./Routes/ScrollToTop";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useEffect } from "react";
-import axios from 'axios'
+import axios from 'axios';
+import QuickConnectBar from "./components/QuickConnectBar";
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -77,7 +78,9 @@ const theme = createTheme({
     },
   },
 });
+
 const backendURL = import.meta.env.VITE_BACKEND_URL;
+
 function App() {
 
   useEffect(() => {
@@ -124,6 +127,7 @@ function App() {
         <Header />
         <Approutes />
         <Footer />
+        <QuickConnectBar />
       </Router>
     </ThemeProvider>
   );

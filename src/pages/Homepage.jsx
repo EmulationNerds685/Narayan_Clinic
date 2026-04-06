@@ -6,6 +6,9 @@ import FadeInSection from "../components/FadeInSection";
 // Lazy-load all below-the-fold sections
 const ServicesSection = React.lazy(() => import("./Services"));
 const DoctorsSection = React.lazy(() => import("../components/DoctorSection"));
+const PatientJourney = React.lazy(() => import("../components/PatientJourney"));
+const ClinicGallery = React.lazy(() => import("../components/ClinicGallery"));
+const HealthTips = React.lazy(() => import("../components/HealthTips"));
 const WhyChooseUs = React.lazy(() => import("../components/ChooseUs"));
 const Testimonials = React.lazy(() => import("../components/Testimonials"));
 const ClinicFAQAccordion = React.lazy(() => import("../components/ClinicFAQAccordion"));
@@ -115,6 +118,13 @@ const HomePage = () => {
         </Suspense>
       </FadeInSection>
 
+      {/* Patient Journey */}
+      <FadeInSection>
+        <Suspense fallback={<SectionFallback />}>
+          <PatientJourney />
+        </Suspense>
+      </FadeInSection>
+
       {/* Heart Health Videos Preview */}
       <FadeInSection>
         <section className="bg-white !py-12 sm:!py-16 !px-4 sm:!px-6 lg:!px-8 border-t border-gray-100">
@@ -166,6 +176,13 @@ const HomePage = () => {
         </Suspense>
       </FadeInSection>
 
+      {/* Gallery */}
+      <FadeInSection>
+        <Suspense fallback={<SectionFallback />}>
+          <ClinicGallery />
+        </Suspense>
+      </FadeInSection>
+
       {/* Why Choose Us */}
       <FadeInSection>
         <Suspense fallback={<SectionFallback />}>
@@ -177,6 +194,13 @@ const HomePage = () => {
       <FadeInSection>
         <Suspense fallback={<SectionFallback />}>
           <Testimonials />
+        </Suspense>
+      </FadeInSection>
+
+      {/* Health Tips */}
+      <FadeInSection>
+        <Suspense fallback={<SectionFallback />}>
+          <HealthTips />
         </Suspense>
       </FadeInSection>
 
