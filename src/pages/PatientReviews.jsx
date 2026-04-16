@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
-import { FaHeart, FaBaby, FaQuoteLeft, FaStar } from 'react-icons/fa';
+import { FaHeart, FaBaby, FaQuoteLeft, FaStar, FaUserCircle } from 'react-icons/fa';
 
 const cardiologyReviews = [
   {
-    id: 1,
+    id: 'c1',
     name: 'Ramesh Verma',
     feedback: 'Excellent cardiac care services! Dr. Shushant Kumar saved my father\'s life. Thank you for the compassionate treatment.',
     image: '/Ramesh.webp',
   },
   {
-    id: 2,
+    id: 'c2',
     name: 'Vikram Singh',
     feedback: 'I was diagnosed with a heart condition, and Dr. Shushant Kumar explained everything with clarity and care. I feel much better now thanks to his treatment.',
     image: '/Vikram.webp',
   },
   {
-    id: 3,
+    id: 'c3',
     name: 'Manoj Rathi',
     feedback: 'Narayan Heart & Maternity Centre is the best place for cardiac care. The staff is supportive, and Dr. Shushant Kumar is incredibly skilled and kind.',
     image: '/Manoj.webp',
@@ -26,19 +27,19 @@ const cardiologyReviews = [
 
 const gynaecologyReviews = [
   {
-    id: 1,
+    id: 'g1',
     name: 'Anjali Sharma',
     feedback: 'The doctors and nurses at Narayan Heart & Maternity Centre took great care of me during my pregnancy. Highly recommended!',
     image: '/Anjali.webp',
   },
   {
-    id: 2,
+    id: 'g2',
     name: 'Sneha Patel',
     feedback: 'Very hygienic environment and friendly staff. My delivery experience here was smooth and reassuring. Dr. Jagriti Bhardwaj was amazing throughout.',
     image: '/Sneha.webp',
   },
   {
-    id: 3,
+    id: 'g3',
     name: 'Pooja Desai',
     feedback: 'Dr. Jagriti Bhardwaj is a wonderful gynaecologist. She made my entire pregnancy journey stress-free and was always available for any concerns.',
     image: '/Pooja.webp',
@@ -58,12 +59,16 @@ const ReviewCard = ({ review }) => (
     <div className="relative mb-6">
       <FaQuoteLeft className="absolute -top-2 -left-2 text-gray-100 text-4xl -z-0" />
       <p className="text-gray-700 italic relative z-10 text-sm sm:text-base leading-relaxed">
-        "{review.feedback}"
+        "{review.feedback || review.comment}"
       </p>
     </div>
     <div className="mt-auto flex items-center gap-4 pt-4 border-t border-gray-50">
-      <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-[#3CAEA3]/20">
-        <img src={review.image} alt={review.name} className="h-full w-full object-cover" />
+      <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-[#3CAEA3]/20 flex items-center justify-center bg-gray-50 text-gray-300">
+        {review.image ? (
+          <img src={review.image} alt={review.name} className="h-full w-full object-cover" />
+        ) : (
+          <FaUserCircle size={40} />
+        )}
       </div>
       <div>
         <h4 className="text-[#30638E] font-bold text-sm sm:text-base">{review.name}</h4>
@@ -74,6 +79,21 @@ const ReviewCard = ({ review }) => (
 );
 
 const PatientReviews = () => {
+  const [dynamicReviews, setDynamicReviews] = useState([]);
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const response = await axios.get(`${backendURL}/api/feedback-contact/feedback/approved`);
+        setDynamicReviews(response.data.data || []);
+      } catch (err) {
+        console.error("Failed to fetch reviews:", err);
+      }
+    };
+    fetchReviews();
+  }, [backendURL]);
+
   return (
     <>
       <SeoHead
@@ -97,6 +117,28 @@ const PatientReviews = () => {
           </p>
         </div>
       </section>
+
+      {/* Dynamic/Recent Reviews */}
+      {dynamicReviews.length > 0 && (
+        <section className="py-12 sm:py-16 bg-white px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-center gap-3 mb-10 border-b border-gray-200 pb-4">
+              <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center">
+                <FaStar size={24} />
+              </div>
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#30638E]">Recent Patient Experiences</h2>
+                <p className="text-gray-500 text-sm sm:text-base">Latest feedback from our visitors</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {dynamicReviews.map((review) => (
+                <ReviewCard key={review._id} review={review} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Cardiology Reviews */}
       <section className="py-12 sm:py-16 bg-gray-50 px-4">

@@ -47,7 +47,7 @@ const Contact = () => {
   const backendURL = import.meta.env.VITE_BACKEND_URL;
   const [feedbackData, setFeedbackData] = useState({
     name: '',
-    feedback: '',
+    comment: '',
   });
 
   const [formData, setFormData] = useState({
@@ -73,7 +73,7 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmittingMessage(true);
     try {
-      const result = await axios.post(`${backendURL}/contact`, formData);
+      const result = await axios.post(`${backendURL}/api/feedback-contact/contact`, formData);
       setResponse(result.data.message || 'Message sent successfully!');
       setIsError(false);
     } catch (err) {
@@ -91,7 +91,7 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmittingFeedback(true);
     try {
-      const result = await axios.post(`${backendURL}/feedback`, feedbackData);
+      const result = await axios.post(`${backendURL}/api/feedback-contact/feedback`, feedbackData);
       setResponse(result.data.message || 'Feedback submitted successfully!');
       setIsError(false);
     } catch (err) {
@@ -100,7 +100,7 @@ const Contact = () => {
       setIsError(true);
     } finally {
       setDialogOpen(true);
-      setFeedbackData({ name: '', feedback: '' });
+      setFeedbackData({ name: '', comment: '' });
       setIsSubmittingFeedback(false);
     }
   };
@@ -279,9 +279,9 @@ const Contact = () => {
                   <div>
                     <label htmlFor="feedback-text" className="block text-sm font-medium text-gray-600 !mb-1.5">Your Feedback</label>
                     <textarea
-                      id="feedback-text" name="feedback" rows="3" required
-                      value={feedbackData.feedback}
-                      onChange={(e) => setFeedbackData({ ...feedbackData, feedback: e.target.value })}
+                      id="feedback-text" name="comment" rows="3" required
+                      value={feedbackData.comment}
+                      onChange={(e) => setFeedbackData({ ...feedbackData, comment: e.target.value })}
                       className={inputClasses}
                       placeholder="Share your experience with us..."
                     />
