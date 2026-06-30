@@ -9,7 +9,6 @@ const menuItems = [
   { label: 'Health Tips & Videos', path: '/heart-health-videos' },
   { label: 'Patient Reviews', path: '/patient-reviews' },
   { label: 'Contact', path: '/contact' },
-  { label: 'Reach Us', path: 'https://maps.app.goo.gl/tsKEg2pHUXZzp1STA' },
 ];
 
 const Header = () => {
@@ -32,84 +31,91 @@ const Header = () => {
 
   return (
     <>
-      <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
-          ? 'bg-[#30638E]/95 backdrop-blur-md shadow-lg'
-          : 'bg-[#30638E] shadow-md'
-          }`}
-      >
-        <div className="max-w-7xl !mx-auto !px-4 sm:!px-6">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo + Title */}
-            <Link to="/" className="flex items-center gap-2.5 flex-shrink-0 no-underline">
-              <img src="/nc.png" alt="NHMC Logo" className="h-10 w-auto" />
-              <div className="leading-tight">
-                <span className="text-white font-bold text-sm sm:text-base block">
-                  Narayan Heart
-                </span>
-                <span className="text-white/80 font-medium text-xs sm:text-sm block">
-                  & Maternity Centre
-                </span>
-              </div>
-            </Link>
-
-            {/* Desktop: Phone Numbers */}
-            <div className="hidden md:flex items-center gap-1.5 text-white/90 text-sm">
-              <FaPhone className="text-xs" />
-              <a href="tel:+919708441467" className="text-white/90 hover:text-white no-underline transition-colors">
-                +91 97084 41467
-              </a>
-              <span className="text-white/40 !mx-1">|</span>
-              <a href="tel:+919836197624" className="text-white/90 hover:text-white no-underline transition-colors">
-                +91 98361 97624
-              </a>
+      <header className="sticky top-0 z-50 w-full">
+        {/* Top utility bar */}
+        <div className="bg-[#1a4a6e] hidden md:block">
+          <div className="max-w-7xl mx-auto px-6 py-1.5 flex justify-between items-center">
+            <div className="flex items-center gap-1.5 text-white/70 text-xs">
+              <FaPhone className="text-[10px]" />
+              <a href="tel:+919708441467" className="text-white/70 hover:text-white no-underline transition-colors">+91 97084 41467</a>
+              <span className="text-white/30 mx-1">|</span>
+              <a href="tel:+919836197624" className="text-white/70 hover:text-white no-underline transition-colors">+91 98361 97624</a>
             </div>
+            <a href="https://maps.app.goo.gl/tsKEg2pHUXZzp1STA" target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-1 text-white/70 hover:text-white text-xs no-underline transition-colors">
+              <FaMapMarkerAlt className="text-[10px]" /> Reach Us
+            </a>
+          </div>
+        </div>
 
-            {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-1">
-              {menuItems.map(({ label, path }) => {
-                const isExternal = path.startsWith('http');
-                const active = !isExternal && isActive(path);
-                const linkProps = isExternal
-                  ? { href: path, target: '_blank', rel: 'noopener noreferrer' }
-                  : {};
-
-                const Comp = isExternal ? 'a' : Link;
-                const toProps = isExternal ? {} : { to: path };
-
-                return (
-                  <Comp
-                    key={label}
-                    {...linkProps}
-                    {...toProps}
-                    className={`relative !px-3 !py-1.5 text-sm font-medium no-underline transition-colors rounded-lg group ${active ? 'text-[#3CAEA3]' : 'text-white/90 hover:text-white'
-                      }`}
-                  >
-                    {label}
-                    {/* Underline animation */}
-                    <span
-                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-[#3CAEA3] rounded-full transition-all duration-300 ${active ? 'w-3/5' : 'w-0 group-hover:w-3/5'
-                        }`}
-                    />
-                  </Comp>
-                );
-              })}
-              <Link
-                to="/book"
-                className="!ml-2 flex items-center gap-1.5 bg-[#3CAEA3] hover:bg-[#2F9E94] text-white text-sm font-semibold !px-4 !py-2 rounded-full no-underline shadow-sm hover:shadow-md active:scale-[0.97] transition-all duration-200"
-              >
-                Book Appointment
+        {/* Main nav — remove phones and Reach Us from menuItems */}
+        <div
+          className={`transition-all duration-300 ${scrolled
+            ? 'bg-[#30638E]/95 backdrop-blur-md shadow-lg'
+            : 'bg-[#30638E] shadow-md'
+            }`}
+        >
+          <div className="max-w-7xl !mx-auto !px-4 sm:!px-6">
+            <div className="flex items-center justify-between h-16">
+              {/* Logo + Title */}
+              <Link to="/" className="flex items-center gap-2.5 flex-shrink-0 no-underline">
+                <img src="/nc.png" alt="NHMC Logo" className="h-10 w-auto" />
+                <div className="leading-tight">
+                  <span className="text-white font-bold text-sm sm:text-base block">
+                    Narayan Heart
+                  </span>
+                  <span className="text-white/80 font-medium text-xs sm:text-sm block">
+                    & Maternity Centre
+                  </span>
+                </div>
               </Link>
-            </nav>
 
-            {/* Mobile: Hamburger */}
-            <button
-              onClick={() => setDrawerOpen(true)}
-              className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10 transition-colors"
-              aria-label="Open menu"
-            >
-              <FaBars className="text-xl" />
-            </button>
+              {/* Desktop Nav */}
+              <nav className="hidden md:flex items-center gap-1">
+                {menuItems.map(({ label, path }) => {
+                  const isExternal = path.startsWith('http');
+                  const active = !isExternal && isActive(path);
+                  const linkProps = isExternal
+                    ? { href: path, target: '_blank', rel: 'noopener noreferrer' }
+                    : {};
+
+                  const Comp = isExternal ? 'a' : Link;
+                  const toProps = isExternal ? {} : { to: path };
+
+                  return (
+                    <Comp
+                      key={label}
+                      {...linkProps}
+                      {...toProps}
+                      className={`relative !px-3 !py-1.5 text-sm font-medium no-underline transition-colors rounded-lg group ${active ? 'text-[#3CAEA3]' : 'text-white/90 hover:text-white'
+                        }`}
+                    >
+                      {label}
+                      {/* Underline animation */}
+                      <span
+                        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-[#3CAEA3] rounded-full transition-all duration-300 ${active ? 'w-3/5' : 'w-0 group-hover:w-3/5'
+                          }`}
+                      />
+                    </Comp>
+                  );
+                })}
+                <Link
+                  to="/book"
+                  className="!ml-2 flex items-center gap-1.5 bg-[#3CAEA3] hover:bg-[#2F9E94] text-white text-sm font-semibold !px-4 !py-2 rounded-full no-underline shadow-sm hover:shadow-md active:scale-[0.97] transition-all duration-200"
+                >
+                  Book Appointment
+                </Link>
+              </nav>
+
+              {/* Mobile: Hamburger */}
+              <button
+                onClick={() => setDrawerOpen(true)}
+                className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10 transition-colors"
+                aria-label="Open menu"
+              >
+                <FaBars className="text-xl" />
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -164,11 +170,21 @@ const Header = () => {
                   : 'text-gray-700 hover:bg-gray-100'
                   }`}
               >
-                {label === 'Reach Us' && <FaMapMarkerAlt className="text-xs text-gray-400" />}
                 {label}
               </Comp>
             );
           })}
+          {/* Reach Us for Mobile */}
+          <a
+            href="https://maps.app.goo.gl/tsKEg2pHUXZzp1STA"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setDrawerOpen(false)}
+            className="flex items-center gap-3 !px-4 !py-3 rounded-xl text-sm font-medium no-underline text-gray-700 hover:bg-gray-100 transition-all duration-200"
+          >
+            <FaMapMarkerAlt className="text-xs text-gray-400" />
+            Reach Us
+          </a>
         </nav>
 
         <div className="!px-3 !mt-2">
