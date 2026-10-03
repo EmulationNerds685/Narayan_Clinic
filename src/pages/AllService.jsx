@@ -114,8 +114,10 @@ const AllService = () => {
             name: "Narayan Heart & Maternity Centre",
             address: {
               "@type": "PostalAddress",
+              streetAddress: "Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh",
               addressLocality: "Patna",
               addressRegion: "Bihar",
+              postalCode: "800020",
               addressCountry: "IN",
             },
             medicalSpecialty: ["Cardiology", "Gynaecology"],

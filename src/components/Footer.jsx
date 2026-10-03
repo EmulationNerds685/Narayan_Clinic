@@ -16,7 +16,7 @@ const Footer = () => {
           {/* Clinic Info */}
           <div className="!space-y-4">
             <div className="flex items-center !space-x-2">
-              <img src="/nc.webp" alt="Narayan Heart & Maternity Centre Logo" loading="lazy" width={36} height={36} className="h-9 w-auto" />
+              <img src="/nhmc_logo.png" alt="Narayan Heart & Maternity Centre Logo" loading="lazy" width={36} height={36} className="h-9 w-auto" />
               <h3 className="text-lg font-bold leading-snug">
                 Narayan Heart &<br className="sm:hidden" /> Maternity Centre
               </h3>
@@ -53,7 +53,7 @@ const Footer = () => {
             <address className="not-italic !space-y-3 text-blue-100 text-sm">
               <div className="flex items-start !space-x-2">
                 <FaMapMarkerAlt className="!mt-0.5 flex-shrink-0 text-[#3CAEA3]" />
-                <span>MIG, 245, Lohia Nagar, Kankarbagh, Patna-800020</span>
+                <span>Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh, Patna-800020</span>
               </div>
               <div className="flex items-center !space-x-2">
                 <FaPhone className="flex-shrink-0 text-[#3CAEA3]" />

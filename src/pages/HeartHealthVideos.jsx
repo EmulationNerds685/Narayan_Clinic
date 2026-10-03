@@ -10,14 +10,14 @@ const videoSchema = JSON.stringify({
   name: 'Health Education Videos | Narayan Heart & Maternity Centre',
   description:
     'Health education videos by Dr. Sushant Kumar Pathak (Cardiologist) and Dr. Jagriti Bhardwaj (Gynaecologist) from Narayan Heart & Maternity Centre, Patna, covering heart health and maternity care.',
-  thumbnailUrl: ['https://narayanheartandmaternitycentre.com/nc.png'],
+  thumbnailUrl: ['https://narayanheartandmaternitycentre.com/nhmc_logo.png'],
   uploadDate: '2025-01-01',
   publisher: {
     '@type': 'Organization',
     name: 'Narayan Heart & Maternity Centre',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://narayanheartandmaternitycentre.com/nc.png',
+      url: 'https://narayanheartandmaternitycentre.com/nhmc_logo.png',
     },
   },
 });

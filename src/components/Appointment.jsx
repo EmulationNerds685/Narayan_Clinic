@@ -276,7 +276,7 @@ function Appointment() {
 
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 !p-6">
               <h3 className="font-bold text-gray-800 !mb-3">📍 Location</h3>
-              <p className="text-sm text-gray-600">MIG, 245, Lohia Nagar, Kankarbagh, Patna-800020</p>
+              <p className="text-sm text-gray-600">Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh, Patna-800020</p>
             </div>
           </aside>
 

@@ -59,7 +59,7 @@ const Header = () => {
             <div className="flex items-center justify-between h-16">
               {/* Logo + Title */}
               <Link to="/" className="flex items-center gap-2.5 flex-shrink-0 no-underline">
-                <img src="/nc.png" alt="NHMC Logo" className="h-10 w-auto" />
+                <img src="/nhmc_logo.png" alt="Narayan Heart & Maternity Centre Logo" className="h-10 w-auto" />
                 <div className="leading-tight">
                   <span className="text-white font-bold text-sm sm:text-base block">
                     Narayan Heart
@@ -135,7 +135,7 @@ const Header = () => {
         {/* Drawer Header */}
         <div className="bg-gradient-to-r from-[#30638E] to-[#1a4a6e] !p-4 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <img src="/nc.webp" alt="NHMC" className="h-9 w-auto" />
+            <img src="/nhmc_logo.png" alt="Narayan Heart & Maternity Centre Logo" className="h-9 w-auto" />
             <div className="leading-tight">
               <span className="text-white font-bold text-sm block">Narayan Heart</span>
               <span className="text-white/70 text-xs block">& Maternity Centre</span>

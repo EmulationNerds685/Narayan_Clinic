@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
 const SITE_URL = 'https://narayanheartandmaternitycentre.com';
-const DEFAULT_OG_IMAGE = `${SITE_URL}/nc.png`;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/nhmc_logo.png`;
 const SITE_NAME = 'Narayan Heart & Maternity Centre';
 
 /**

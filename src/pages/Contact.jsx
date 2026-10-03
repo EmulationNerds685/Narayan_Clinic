@@ -9,7 +9,7 @@ const localBusinessSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "Narayan Heart & Maternity Centre",
-  image: "https://narayanheartandmaternitycentre.com/nc.png",
+  image: "https://narayanheartandmaternitycentre.com/nhmc_logo.png",
   url: "https://narayanheartandmaternitycentre.com",
   telephone: ["+91-9708441467", "+91-9836197624"],
   email: "narayanheartmaternitycentre@gmail.com",
@@ -29,7 +29,7 @@ const localBusinessSchema = JSON.stringify({
   ],
   address: {
     "@type": "PostalAddress",
-    streetAddress: "MIG, 245, Lohia Nagar, Kankarbagh",
+    streetAddress: "Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh",
     addressLocality: "Patna",
     addressRegion: "Bihar",
     postalCode: "800020",
@@ -200,7 +200,7 @@ const Contact = () => {
                   <h3 className="text-lg font-bold text-[#30638E]">Our Clinic</h3>
                   <div className="flex items-start gap-2 text-sm text-gray-600">
                     <FaMapMarkerAlt className="text-[#3CAEA3] !mt-0.5 flex-shrink-0" />
-                    <span>MIG, 245, Lohia Nagar, Kankarbagh, Patna-800020</span>
+                    <span>Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh, Patna-800020</span>
                   </div>
                 </div>
               </div>
