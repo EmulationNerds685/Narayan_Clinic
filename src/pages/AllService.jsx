@@ -10,28 +10,27 @@ import {
 } from "react-icons/fa";
 
 const cardiologyServices = [
-  { title: 'Electrocardiogram (ECG)', description: 'Records the electrical activity of your heart.', icon: <FaHeartbeat /> },
-  { title: 'Echocardiogram', description: 'Ultrasound of the heart to assess structure and function.', icon: <FaStethoscope /> },
-  { title: 'Stress Test (TMT)', description: 'Measures heart function under physical stress.', icon: <FaRunning /> },
-  { title: '24-Hour Holter Monitoring', description: 'Continuous heart rhythm monitoring for 24 hours.', icon: <FaClock /> },
-  { title: 'Heart Disease Risk Assessment', description: 'Evaluates your risk of developing heart disease.', icon: <FaClipboardCheck /> },
-  { title: 'Interventional Cardiology', description: 'Angioplasty, pacemaker, TAVI, EVAR, and more.', icon: <FaProcedures /> },
-  { title: 'Lifestyle & Nutrition Counseling', description: 'Heart-healthy lifestyle and diet plans.', icon: <FaAppleAlt /> },
-  { title: 'Device Monitoring', description: 'Ongoing management of pacemakers and implanted devices.', icon: <FaPlug /> },
-  { title: 'BP, Diabetes & Lipid Management', description: 'Monitoring and treatment of hypertension, diabetes & cholesterol.', icon: <FaHospitalAlt /> },
+  { title: 'Electrocardiogram (ECG)', description: 'Instant 12-lead digital ECG recording electrical conduction and acute ischemic changes.', icon: <FaHeartbeat /> },
+  { title: '2D Echocardiogram with Color Doppler', description: 'Advanced cardiac ultrasound evaluating ventricular ejection fraction, valve dynamics, and wall motion.', icon: <FaStethoscope /> },
+  { title: 'Stress Treadmill Test (TMT)', description: 'Evaluates coronary reserve and exercise tolerance under monitored cardiac workload protocols.', icon: <FaRunning /> },
+  { title: '24 to 48-Hour Holter Monitoring', description: 'Continuous ambulatory ECG capture detecting occult arrhythmias, pauses, and palpitations.', icon: <FaClock /> },
+  { title: 'Imaging-Guided Precision Angioplasty', description: 'Mastery in IVUS and OCT optical guidance, Rotablation, and IVL lithotripsy for complex calcified lesions.', icon: <FaProcedures /> },
+  { title: 'Complex Coronary Interventions (PCI)', description: 'Left Main stenting, DK-crush bifurcation techniques, and Chronic Total Occlusion (CTO) revascularization.', icon: <FaHospitalAlt /> },
+  { title: 'Physiological Pacing (LBBAP) & Devices', description: 'Left Bundle Branch Area Pacing, dual-chamber pacemakers, AICD defibrillators, and CRT heart failure devices.', icon: <FaPlug /> },
+  { title: 'Structural Defect Closures & Valvuloplasty', description: 'Catheter-based ASD, VSD, and PDA device closures and Balloon Mitral Valvuloplasty (BMV) without open-heart surgery.', icon: <FaClipboardCheck /> },
+  { title: 'Hypertension, Diabetes & Lipid Clinic', description: 'Aggressive preventive cardiometabolic care to protect arterial endothelium and halt cardiovascular progression.', icon: <FaAppleAlt /> },
 ];
 
 const gynecologyServices = [
-  { title: 'Prenatal & Postnatal Care', description: 'Comprehensive care before and after childbirth.', icon: <FaChild /> },
-  { title: 'Pelvic Exam & Pap Smear', description: 'Routine screening for reproductive health.', icon: <FaShieldAlt /> },
-  { title: 'Fertility Assessment', description: 'Evaluation and assistance for conception.', icon: <FaHeart /> },
-  { title: 'Menstrual Disorder Management', description: 'Treatment for irregular or painful periods.', icon: <FaTint /> },
-  { title: 'PCOS Support', description: 'Diagnosis and management of Polycystic Ovary Syndrome.', icon: <FaFlask /> },
-  { title: 'Birth Control Counseling', description: 'Guidance on contraceptive methods.', icon: <FaCheckCircle /> },
-  { title: 'Menopause & Hormone Therapy', description: 'Support through hormonal changes.', icon: <FaHeartbeat /> },
-  { title: 'Minimally Invasive Surgery', description: 'Laparoscopic surgical solutions with minimal downtime.', icon: <FaUserNurse /> },
-  { title: 'STD Testing', description: 'Confidential and accurate screening.', icon: <FaEye /> },
-  { title: 'Ultrasound & Imaging', description: 'Diagnostic imaging and monitoring.', icon: <FaStethoscope /> },
+  { title: 'Antenatal & High-Risk Pregnancy Care', description: 'Comprehensive trimester care, fetal monitoring, Gestational Diabetes, and PIH management.', icon: <FaChild /> },
+  { title: 'Pelvic Examination & Pap Smear', description: 'Cervical cancer screening (Pap Smear & HPV DNA) and routine pelvic health assessments.', icon: <FaShieldAlt /> },
+  { title: 'Preconception & Infertility Assessment', description: 'FOGSI-certified ovulation induction, fertility evaluations, and compassionate couple counseling.', icon: <FaHeart /> },
+  { title: 'Adolescent Menstrual & PCOS Clinic', description: 'Gentle, empathetic care for pubertal changes, irregular periods, heavy bleeding, and PCOS/PCOD.', icon: <FaTint /> },
+  { title: 'Minimally Invasive Laparoscopy', description: 'Advanced keyhole surgeries for ovarian cysts, fibroids, endometriosis, and diagnostic hysteroscopy.', icon: <FaUserNurse /> },
+  { title: 'Postpartum Care & 4th Trimester Support', description: 'Maternal healing, surgical wound monitoring, lactation support, and pelvic floor rehabilitation.', icon: <FaCheckCircle /> },
+  { title: 'Perimenopause & Menopause Vitality', description: 'Support for hot flashes, night sweats, bone mineral density preservation, and healthy hormonal balance.', icon: <FaHeartbeat /> },
+  { title: 'Ultrasound & Fetal Well-being Imaging', description: 'In-house obstetric and pelvic ultrasound for precise fetal tracking and pelvic assessment.', icon: <FaStethoscope /> },
+  { title: 'Confidential Sanctuary Consultations', description: '100% judgment-free, confidential reproductive health, contraception, and wellness counseling.', icon: <FaEye /> },
 ];
 
 const categories = [
@@ -44,9 +43,9 @@ const categories = [
     services: cardiologyServices,
     doctor: {
       name: 'Dr. Sushant Kumar Pathak',
-      specialty: 'Interventional Cardiologist',
+      specialty: 'Senior Consultant Interventional Cardiologist',
       image: 'skp.webp',
-      qualifications: ['MBBS (Kolkata)', 'MD (Medicine, PMCH Patna) — Gold Medalist', 'DM (Cardiology, IPGME&R)'],
+      qualifications: ['DM (Cardiology) — IPGME&R Kolkata', 'MD (Medicine) — PMCH (Gold Medalist)', 'MBBS (Kolkata)', 'FESC'],
     },
   },
   {
@@ -58,9 +57,9 @@ const categories = [
     services: gynecologyServices,
     doctor: {
       name: 'Dr. Jagriti Bhardwaj',
-      specialty: 'Gynecologist & Obstetrician',
+      specialty: 'Consultant Gynecologist, Obstetrician & Laparoscopic Surgeon',
       image: 'jbp.webp',
-      qualifications: ['MBBS (SNMC, Agra)', 'MS (OBG, PGIMS)', 'DNB (OBG)', 'Laparoscopic Surgeon & Infertility Specialist'],
+      qualifications: ['MS (OBG) — PGIMS Rohtak', 'DNB (OBG) — NBE New Delhi', 'FMAS', 'FOGSI Infertility (Sir Ganga Ram Hospital)'],
     },
   },
 ];

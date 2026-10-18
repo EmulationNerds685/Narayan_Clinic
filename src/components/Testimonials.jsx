@@ -11,7 +11,7 @@ const testimonials = [
   {
     id: 2,
     name: 'Ramesh Verma',
-    feedback: 'Excellent cardiac care services! Dr. Shushant Kumar saved my father\'s life. Thank you for the compassionate treatment.',
+    feedback: 'Excellent cardiac care services! Dr. Sushant Kumar Pathak saved my father\'s life. Thank you for the compassionate treatment.',
     image: '/Ramesh.webp',
   },
   {
@@ -23,19 +23,19 @@ const testimonials = [
   {
     id: 4,
     name: 'Vikram Singh',
-    feedback: 'I was diagnosed with a heart condition, and Dr. Shushant Kumar explained everything with clarity and care. I feel much better now thanks to his treatment.',
+    feedback: 'I was diagnosed with a complex heart condition, and Dr. Sushant Kumar Pathak explained the angioplasty procedure with complete clarity and reassurance. I feel much better now thanks to his expertise.',
     image: '/Vikram.webp',
   },
   {
     id: 5,
     name: 'Pooja Desai',
-    feedback: 'Dr. Jagriti Bhardwaj is a wonderful gynaecologist. She made my entire pregnancy journey stress-free and was always available for any concerns.',
+    feedback: 'Dr. Jagriti Bhardwaj is a wonderful gynaecologist and obstetrician. She made my entire high-risk pregnancy journey stress-free and was always accessible for any concerns.',
     image: '/Pooja.webp',
   },
   {
     id: 6,
     name: 'Manoj Rathi',
-    feedback: 'Narayan Heart & Maternity Centre is the best place for cardiac care. The staff is supportive, and Dr. Shushant Kumar is incredibly skilled and kind.',
+    feedback: 'Narayan Heart & Maternity Centre is the premier place for cardiac and maternity care in Patna. The diagnostic tests like Echo and ECG were done swiftly, and Dr. Sushant Kumar Pathak is incredibly skilled and humble.',
     image: '/Manoj.webp',
   },
 ];

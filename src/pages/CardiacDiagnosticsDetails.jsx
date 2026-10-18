@@ -2,20 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
-import { FaHeartbeat, FaStethoscope, FaRunning, FaClock, FaCalendarCheck, FaCheckCircle } from 'react-icons/fa';
+import { FaHeartbeat, FaStethoscope, FaRunning, FaClock, FaCalendarCheck, FaCheckCircle, FaVial, FaChartLine } from 'react-icons/fa';
 
 const diagnosticTests = [
-  { name: 'Electrocardiogram (ECG)', description: 'Records the electrical activity of your heart to detect abnormalities.', duration: '10–15 min', icon: <FaHeartbeat /> },
-  { name: 'Echocardiogram (ECHO)', description: "Uses ultrasound waves to create images of your heart's structure and function.", duration: '30–45 min', icon: <FaStethoscope /> },
-  { name: 'Treadmill Test (TMT)', description: "Monitors your heart's activity during physical exercise to assess performance under stress.", duration: '45–60 min', icon: <FaRunning /> },
-  { name: 'Holter Monitoring', description: 'Continuous ECG recording for 24–48 hours to detect irregular heart rhythms.', duration: '24–48 hrs', icon: <FaClock /> },
+  { name: '12-Lead Electrocardiogram (ECG)', description: 'Instant digital tracing of cardiac electrical rhythm and acute ischemic changes.', duration: '10–15 min', icon: <FaHeartbeat /> },
+  { name: '2D Echocardiogram with Color Doppler', description: "High-definition ultrasound assessing heart valves, ejection fraction, and wall motion dynamics.", duration: '30–45 min', icon: <FaStethoscope /> },
+  { name: 'Treadmill Stress Test (TMT)', description: "Monitors continuous ECG and blood pressure under graded exercise workload to uncover inducible ischemia.", duration: '30–45 min', icon: <FaRunning /> },
+  { name: '24 to 48-Hour Holter Monitoring', description: 'Continuous ambulatory digital recording to diagnose silent arrhythmias, pauses, and syncopal episodes.', duration: '24–48 hrs', icon: <FaClock /> },
+  { name: 'Cardiometabolic Biomarkers Panel', description: 'Rapid analysis of Troponin-I, NT-proBNP, Lipid Profile, HbA1c, and renal/hepatic markers.', duration: '15–30 min', icon: <FaVial /> },
+  { name: 'Ambulatory Blood Pressure Monitoring (ABPM)', description: '24-hour periodic blood pressure tracking to unmask nocturnal hypertension and white-coat spikes.', duration: '24 hrs', icon: <FaChartLine /> },
 ];
 
 const whoShouldConsider = [
-  'Individuals with family history of heart disease',
-  'Patients experiencing chest pain or palpitations',
-  'Those with risk factors like diabetes or high blood pressure',
-  'People preparing for major surgeries',
+  'Individuals with family history of premature heart attack or sudden cardiac death',
+  'Patients experiencing chest discomfort, breathlessness, dizziness, or unprovoked palpitations',
+  'Individuals with diabetes mellitus, chronic hypertension, or elevated LDL cholesterol',
+  'Pre-operative cardiac risk clearance prior to major surgical procedures',
+  'Post-angioplasty and post-bypass (CABG) regular longitudinal surveillance',
 ];
 
 const CardiacDiagnosticsDetails = () => {

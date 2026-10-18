@@ -23,25 +23,25 @@ const Services = () => {
       id: 'cardiology',
       link: '/Cardioservices',
       highlights: [
-        'Electrocardiogram (ECG)',
-        'Echocardiogram',
-        'Stress Test',
-        '24-Hour Holter Monitoring',
-        'Interventional Procedures'
+        '12-Lead ECG & 2D Echo Color Doppler',
+        'Stress Treadmill Test (TMT)',
+        '24 to 48-Hour Holter Monitoring',
+        'Complex Coronary PCI & LBBAP Pacing',
+        'Catheter Defect Closures (ASD/VSD/PDA)'
       ]
     },
     {
-      title: 'Gynecology',
+      title: 'Gynecology & Maternity',
       icon: <FaFemale className="w-12 h-12" />,
-      description: 'We offer a full spectrum of women\'s health services, including routine exams, prenatal care, fertility evaluation, and menopause management. Our team is dedicated to providing compassionate, confidential care.',
+      description: 'We offer a full spectrum of compassionate women\'s healthcare across all life stages — from adolescence and PCOS to high-risk pregnancy, normal/caesarean delivery planning, and menopause support.',
       id: 'gynecology',
       link: '/Gynoservices',
       highlights: [
-        'Prenatal & Postnatal Care',
-        'Annual Pelvic Exams',
-        'Fertility Assessment',
-        'PCOS Support',
-        'Minimally Invasive Surgery'
+        'Antenatal & High-Risk Pregnancy Care',
+        'Adolescent Health & PCOS Support',
+        'FOGSI Infertility Assessments',
+        'Minimally Invasive Laparoscopy',
+        'Pap Smear Screening & Menopause Clinic'
       ]
     },
   ];

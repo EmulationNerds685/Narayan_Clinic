@@ -10,31 +10,33 @@ const physicianSchemas = JSON.stringify([
     "@context": "https://schema.org",
     "@type": "Physician",
     name: "Dr. Sushant Kumar Pathak",
-    jobTitle: "Interventional Cardiologist",
+    jobTitle: "Senior Consultant Interventional Cardiologist",
     url: "https://narayanheartandmaternitycentre.com/doctors",
     image: "https://narayanheartandmaternitycentre.com/skp.webp",
-    description: "MBBS (Kolkata), MD (Medicine, PMCH Patna) - Gold Medalist, DM (Cardiology, IPGME&R). Senior Consultant at Ford Hospital, Patna.",
+    description: "MBBS (Kolkata), MD Medicine (PMCH Patna) - Gold Medalist, DM Cardiology (IPGME&R Kolkata), FESC. Assistant Director at IGIC and Senior Consultant at Ford Hospital & NHMC Patna. Reg: BCMR-43700.",
     medicalSpecialty: "Cardiology",
+    identifier: "BCMR-43700",
     worksFor: {
       "@type": "MedicalClinic",
       name: "Narayan Heart & Maternity Centre",
     },
-    alumniOf: ["PMCH Patna", "IPGME&R", "Kolkata University"],
+    alumniOf: ["IPGMER & SSKM Hospital, Kolkata", "PMCH Patna", "R.G. Kar Medical College, Kolkata"],
   },
   {
     "@context": "https://schema.org",
     "@type": "Physician",
     name: "Dr. Jagriti Bhardwaj",
-    jobTitle: "Gynecologist & Obstetrician",
+    jobTitle: "Consultant Gynecologist, Obstetrician & Laparoscopic Surgeon",
     url: "https://narayanheartandmaternitycentre.com/doctors",
     image: "https://narayanheartandmaternitycentre.com/jbp.webp",
-    description: "MBBS (SNMC, Agra), MS (OBG, PGIMS), DNB (OBG). Laparoscopic Surgeon & Infertility Specialist.",
+    description: "MBBS (SNMC Agra), MS OBG (PGIMS Rohtak), DNB OBG (NBE New Delhi), FMAS, FOGSI Infertility (Sir Ganga Ram Hospital). Consultant at NHMC & Ford Hospital Patna. Reg: 58388.",
     medicalSpecialty: "Gynecology",
+    identifier: "58388",
     worksFor: {
       "@type": "MedicalClinic",
       name: "Narayan Heart & Maternity Centre",
     },
-    alumniOf: ["SNMC Agra", "PGIMS", "National Board of Examinations"],
+    alumniOf: ["Pt. B.D. Sharma PGIMS Rohtak", "National Board of Examinations", "Sir Ganga Ram Hospital", "SNMC Agra"],
   },
 ]);
 
@@ -42,38 +44,57 @@ const DoctorsSection = () => {
   const doctors = [
     {
       name: 'Dr. Sushant Kumar Pathak',
-      specialty: 'Interventional Cardiologist',
+      specialty: 'Senior Consultant Interventional Cardiologist',
+      specializations: 'Complex PCI, IVUS/OCT Guided Angioplasty, LBBAP Pacing',
+      regNo: 'Bihar Medical Council Reg. No. BCMR-43700 · NMC 43700',
       image: 'skp.webp',
       link: '/book',
       qualifications: [
-        'MBBS (Kolkata)',
-        'MD (Medicine, PMCH Patna) — Gold Medalist',
-        'DM (Cardiology, IPGME&R)',
+        'DM (Cardiology) — IPGMER & SSKM Hospital, Kolkata',
+        'MD (General Medicine) — Patna Medical College (Institutional Gold Medalist)',
+        'MBBS — R.G. Kar Medical College and Hospital, Kolkata',
+        'Fellow of the European Society of Cardiology (FESC)',
       ],
       experience: [
-        'Senior Consultant, Ford Hospital, Patna',
-        'Assistant Director, IGIC, PMCH',
+        'Assistant Director & Interventional Cardiologist — IGIC, Patna',
+        'Senior Consultant — Ford Hospital & Research Center, Patna',
+        'Senior Consultant & Director — Narayan Heart & Maternity Centre, Patna',
+      ],
+      keyHighlights: [
+        '10,000+ Angiographies & 5,000+ PCIs',
+        '2,000+ Pacemakers & LBBAP Pacing',
+        'Emergency 24/7 Primary PCI Reperfusion',
+        'Catheter Defect Closures (ASD/VSD/PDA)',
       ],
       accentColor: '#30638E',
       accentLight: '#30638E10',
     },
     {
       name: 'Dr. Jagriti Bhardwaj',
-      specialty: 'Gynecologist & Obstetrician',
+      specialty: 'Consultant Gynecologist & Obstetrician',
+      specializations: 'Laparoscopic Surgeon, Infertility Specialist & High-Risk Pregnancy',
+      regNo: 'State Medical Council Reg. No. 58388',
       image: 'jbp.webp',
       link: '/book',
       qualifications: [
-        'MBBS (SNMC, Agra)',
-        'MS (OBG, PGIMS)',
-        'DNB (OBG)',
-        'FMAS'
+        'MS (Obstetrics & Gynaecology) — Pt. B.D. Sharma PGIMS, Rohtak',
+        'DNB (Obstetrics & Gynaecology) — National Board of Examinations, New Delhi',
+        'FMAS — Fellowship in Minimal Access Surgery',
+        'FOGSI-Certified Infertility Training — Sir Ganga Ram Hospital, New Delhi',
+        'MBBS — S.N. Medical College, Agra',
       ],
       experience: [
-        'SIR Ganga Ram Hospital, New Delhi',
-        'Ex. Senior, ESIC PGIMSR New Delhi',
-        'Ex. Assistant Professor, HIMS, Dehradun',
+        'Consultant Gynecologist & Obstetrician — Narayan Heart & Maternity Centre',
+        'Senior Consultant — Ford Hospital & Research Center, Patna',
+        'Ex-Assistant Professor — Himalayan Institute of Medical Sciences (HIMS), Dehradun',
+        'Ex-Senior Resident — ESIC PGIMSR, New Delhi',
       ],
-      specializations: 'Laparoscopic Surgeon, Infertility Specialist',
+      keyHighlights: [
+        'Comprehensive Antenatal & Postnatal Care',
+        'High-Risk Pregnancy, PIH & Gestational Diabetes',
+        'Minimally Invasive Laparoscopy & Hysteroscopy',
+        'PCOS Management & Advanced Infertility Protocols',
+      ],
       accentColor: '#3CAEA3',
       accentLight: '#3CAEA310',
     },
@@ -169,14 +190,19 @@ const DoctorsSection = () => {
                       {doctor.specializations && (
                         <div className="flex items-center justify-center sm:justify-start gap-1.5 !mt-2">
                           <FaClinicMedical className="text-white/60 text-xs" />
-                          <span className="text-white/70 text-xs sm:text-sm">{doctor.specializations}</span>
+                          <span className="text-white/80 text-xs sm:text-sm font-medium">{doctor.specializations}</span>
+                        </div>
+                      )}
+                      {doctor.regNo && (
+                        <div className="!mt-2 inline-block bg-white/15 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/20 text-[11px] font-mono text-white/90">
+                          {doctor.regNo}
                         </div>
                       )}
                     </div>
                   </div>
                 </div>
 
-                {/* Middle: Qualifications & Experience */}
+                {/* Middle: Qualifications, Experience & Clinical Highlights */}
                 <div className="!p-5 sm:!p-7 flex-1 !space-y-5">
                   {/* Qualifications */}
                   <div>
@@ -184,13 +210,13 @@ const DoctorsSection = () => {
                       <div className="w-7 h-7 rounded-lg bg-[#30638E]/10 flex items-center justify-center flex-shrink-0">
                         <FaAward className="text-[#30638E] text-xs" />
                       </div>
-                      <h4 className="font-semibold text-gray-800 text-sm">Qualifications</h4>
+                      <h4 className="font-semibold text-gray-800 text-sm">Academic Qualifications</h4>
                     </div>
                     <div className="!ml-9 !space-y-1.5">
                       {doctor.qualifications.map((q, i) => (
                         <div key={i} className="flex items-start gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-[#3CAEA3] !mt-1.5 flex-shrink-0"></span>
-                          <span className="text-gray-600 text-sm leading-relaxed">{q}</span>
+                          <span className="text-gray-700 text-sm leading-relaxed">{q}</span>
                         </div>
                       ))}
                     </div>
@@ -202,17 +228,36 @@ const DoctorsSection = () => {
                       <div className="w-7 h-7 rounded-lg bg-[#3CAEA3]/10 flex items-center justify-center flex-shrink-0">
                         <FaBriefcase className="text-[#3CAEA3] text-xs" />
                       </div>
-                      <h4 className="font-semibold text-gray-800 text-sm">Experience</h4>
+                      <h4 className="font-semibold text-gray-800 text-sm">Hospital Affiliations & Clinical Experience</h4>
                     </div>
                     <div className="!ml-9 !space-y-1.5">
                       {doctor.experience.map((line, i) => (
                         <div key={i} className="flex items-start gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-[#30638E] !mt-1.5 flex-shrink-0"></span>
-                          <span className="text-gray-600 text-sm leading-relaxed">{line}</span>
+                          <span className="text-gray-700 text-sm leading-relaxed">{line}</span>
                         </div>
                       ))}
                     </div>
                   </div>
+
+                  {/* Key Highlights */}
+                  {doctor.keyHighlights && (
+                    <div>
+                      <h4 className="font-semibold text-gray-800 text-xs uppercase tracking-wider !mb-2 text-slate-500">
+                        Clinical Focus & Milestones
+                      </h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {doctor.keyHighlights.map((highlight, i) => (
+                          <span
+                            key={i}
+                            className="text-xs bg-slate-50 border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md font-medium"
+                          >
+                            ✓ {highlight}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Bottom: CTA */}

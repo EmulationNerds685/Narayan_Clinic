@@ -64,30 +64,41 @@ const clinicSchema = JSON.stringify({
     {
       "@type": "Physician",
       name: "Dr. Sushant Kumar Pathak",
-      jobTitle: "Interventional Cardiologist",
+      jobTitle: "Senior Consultant Interventional Cardiologist",
+      identifier: "BCMR-43700",
       description:
-        "MBBS (Kolkata), MD (Medicine, PMCH Patna) - Gold Medalist, DM (Cardiology, IPGME&R)",
-      affiliation: {
-        "@type": "Hospital",
-        name: "Ford Hospital, Patna",
-      },
-      alumniOf: ["PMCH Patna", "IPGME&R", "Kolkata University"],
+        "MBBS (Kolkata), MD Medicine (PMCH Patna) - Gold Medalist, DM Cardiology (IPGMER Kolkata), FESC. Assistant Director at IGIC and Senior Consultant at Ford Hospital & NHMC Patna.",
+      affiliation: [
+        {
+          "@type": "Hospital",
+          name: "Ford Hospital & Research Center, Patna",
+        },
+        {
+          "@type": "Hospital",
+          name: "Indira Gandhi Institute of Cardiology (IGIC), Patna",
+        },
+      ],
+      alumniOf: ["IPGMER & SSKM Hospital Kolkata", "PMCH Patna", "R.G. Kar Medical College Kolkata"],
     },
     {
       "@type": "Physician",
       name: "Dr. Jagriti Bhardwaj",
-      jobTitle: "Gynecologist & Obstetrician",
+      jobTitle: "Consultant Gynecologist, Obstetrician & Laparoscopic Surgeon",
+      identifier: "58388",
       description:
-        "MBBS (SNMC, Agra), MS (OBG, PGIMS), DNB (OBG), Laparoscopic Surgeon, Infertility Specialist",
+        "MBBS (SNMC Agra), MS OBG (PGIMS Rohtak), DNB OBG (NBE New Delhi), FMAS, FOGSI Infertility (Sir Ganga Ram Hospital). Consultant at NHMC & Ford Hospital Patna.",
       alumniOf: [
+        "Pt. B.D. Sharma PGIMS Rohtak",
+        "National Board of Examinations, New Delhi",
+        "Sir Ganga Ram Hospital, New Delhi",
         "SNMC Agra",
-        "PGIMS",
-        "National Board of Examinations",
       ],
-      affiliation: {
-        "@type": "Hospital",
-        name: "Sir Ganga Ram Hospital, New Delhi",
-      },
+      affiliation: [
+        {
+          "@type": "Hospital",
+          name: "Ford Hospital & Research Center, Patna",
+        },
+      ],
     },
   ],
 });

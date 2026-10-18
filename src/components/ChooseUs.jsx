@@ -11,23 +11,23 @@ const WhyChooseUs = () => {
   const features = [
     {
       icon: <FaUserMd className="w-10 h-10 sm:w-12 sm:h-12" />,
-      title: 'Specialized Expertise',
-      description: 'Care from top specialists — an Interventional Cardiologist and an Infertility & Laparoscopic Surgeon.',
+      title: 'Apex & Tertiary Specialists',
+      description: 'Consultations led by Assistant Director at IGIC (DM IPGME&R, Gold Medalist PMCH) and Infertility & Laparoscopic Consultant from Sir Ganga Ram Hospital.',
     },
     {
       icon: <FaHeartbeat className="w-10 h-10 sm:w-12 sm:h-12" />,
-      title: 'Advanced Diagnostic Tools',
-      description: 'ECG, ECHO, TMT, Holter, ABPM, and ultrasound services available in one place.',
+      title: 'Complete On-Site Diagnostics',
+      description: 'Instant 12-lead ECG, 2D Echo with Color Doppler, Stress TMT, 24/48-hr Holter, and Ultrasound under one dedicated roof.',
     },
     {
       icon: <FaHeart className="w-10 h-10 sm:w-12 sm:h-12" />,
-      title: 'Compassionate Women & Heart Care',
-      description: 'From pregnancy to post-CABG follow-up — care that\'s empathetic and personalized.',
+      title: 'Confidential Sanctuary Promise',
+      description: 'Dignified, 100% judgment-free care for women across adolescence, PCOS, fertility workups, high-risk maternity, and menopause.',
     },
     {
       icon: <FaClock className="w-10 h-10 sm:w-12 sm:h-12" />,
-      title: 'Continuity of Care',
-      description: 'Long-term follow-ups, lifestyle counseling, and preventive screening built into your care.',
+      title: '24/7 Tertiary Emergency Backup',
+      description: 'Integrated emergency pathways with Ford Hospital (105 beds, Digital Cath Lab, ICCU) for immediate Golden Hour primary angioplasty.',
     },
   ];
 

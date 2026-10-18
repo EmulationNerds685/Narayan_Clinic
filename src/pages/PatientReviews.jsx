@@ -8,19 +8,19 @@ const cardiologyReviews = [
   {
     id: 'c1',
     name: 'Ramesh Verma',
-    feedback: 'Excellent cardiac care services! Dr. Shushant Kumar saved my father\'s life. Thank you for the compassionate treatment.',
+    feedback: 'Excellent cardiac care services! Dr. Sushant Kumar Pathak saved my father\'s life during an emergency. Thank you for the compassionate and prompt treatment.',
     image: '/Ramesh.webp',
   },
   {
     id: 'c2',
     name: 'Vikram Singh',
-    feedback: 'I was diagnosed with a heart condition, and Dr. Shushant Kumar explained everything with clarity and care. I feel much better now thanks to his treatment.',
+    feedback: 'I was diagnosed with a severe coronary blockage, and Dr. Sushant Kumar Pathak explained the angioplasty procedure with complete clarity and reassurance. I feel much better now thanks to his clinical expertise.',
     image: '/Vikram.webp',
   },
   {
     id: 'c3',
     name: 'Manoj Rathi',
-    feedback: 'Narayan Heart & Maternity Centre is the best place for cardiac care. The staff is supportive, and Dr. Shushant Kumar is incredibly skilled and kind.',
+    feedback: 'Narayan Heart & Maternity Centre is the premier place for cardiac diagnostics and consultations. The staff is supportive, and Dr. Sushant Kumar Pathak is incredibly skilled, attentive, and kind.',
     image: '/Manoj.webp',
   },
 ];
@@ -29,19 +29,19 @@ const gynaecologyReviews = [
   {
     id: 'g1',
     name: 'Anjali Sharma',
-    feedback: 'The doctors and nurses at Narayan Heart & Maternity Centre took great care of me during my pregnancy. Highly recommended!',
+    feedback: 'The doctors and nurses at Narayan Heart & Maternity Centre took great care of me throughout my pregnancy and antenatal checkups. Highly recommended for every expecting mother!',
     image: '/Anjali.webp',
   },
   {
     id: 'g2',
     name: 'Sneha Patel',
-    feedback: 'Very hygienic environment and friendly staff. My delivery experience here was smooth and reassuring. Dr. Jagriti Bhardwaj was amazing throughout.',
+    feedback: 'Very hygienic environment and caring staff. My delivery experience here was smooth, dignified, and reassuring. Dr. Jagriti Bhardwaj was amazing throughout.',
     image: '/Sneha.webp',
   },
   {
     id: 'g3',
     name: 'Pooja Desai',
-    feedback: 'Dr. Jagriti Bhardwaj is a wonderful gynaecologist. She made my entire pregnancy journey stress-free and was always available for any concerns.',
+    feedback: 'Dr. Jagriti Bhardwaj is an exceptional gynaecologist. She handled my high-risk pregnancy with incredible precision and empathy, and was always available for any concerns.',
     image: '/Pooja.webp',
   },
 ];

@@ -9,31 +9,43 @@ import {
 } from 'react-icons/fa';
 
 const gynecologyServices = [
-  { title: 'Prenatal & Postnatal Care', description: 'Comprehensive care before and after childbirth.', icon: <FaChild /> },
-  { title: 'Pelvic Exam & Pap Smear', description: 'Routine screening for reproductive health.', icon: <FaShieldAlt /> },
-  { title: 'Fertility Assessment', description: 'Evaluation and assistance for conception.', icon: <FaHeart /> },
-  { title: 'Menstrual Disorder Management', description: 'Treatment for irregular or painful periods.', icon: <FaTint /> },
-  { title: 'PCOS Support', description: 'Diagnosis and management of Polycystic Ovary Syndrome.', icon: <FaFlask /> },
-  { title: 'Birth Control Counseling', description: 'Guidance on contraceptive methods.', icon: <FaCheckCircle /> },
-  { title: 'Menopause & Hormone Therapy', description: 'Support through hormonal changes.', icon: <FaHeartbeat /> },
-  { title: 'Minimally Invasive Surgery', description: 'Laparoscopic surgical solutions with minimal downtime.', icon: <FaUserNurse /> },
-  { title: 'STD Testing', description: 'Confidential and accurate screening.', icon: <FaEye /> },
-  { title: 'Ultrasound & Imaging', description: 'Diagnostic imaging and monitoring.', icon: <FaStethoscope /> },
+  { title: 'Antenatal & High-Risk Pregnancy Care', description: 'Comprehensive trimester care, fetal monitoring, Gestational Diabetes, and PIH management.', icon: <FaChild /> },
+  { title: 'Pelvic Examination & Pap Smear', description: 'Cervical cancer screening (Pap Smear & HPV DNA) and routine pelvic health assessments.', icon: <FaShieldAlt /> },
+  { title: 'Preconception & Infertility Assessment', description: 'FOGSI-certified ovulation induction, fertility evaluations, and compassionate couple counseling.', icon: <FaHeart /> },
+  { title: 'Adolescent Menstrual & PCOS Clinic', description: 'Gentle, empathetic care for pubertal changes, irregular periods, heavy bleeding, and PCOS/PCOD.', icon: <FaTint /> },
+  { title: 'Minimally Invasive Laparoscopy', description: 'Advanced keyhole surgeries for ovarian cysts, fibroids, endometriosis, and diagnostic hysteroscopy.', icon: <FaUserNurse /> },
+  { title: 'Postpartum Care & 4th Trimester Support', description: 'Maternal healing, surgical wound monitoring, lactation support, and pelvic floor rehabilitation.', icon: <FaCheckCircle /> },
+  { title: 'Perimenopause & Menopause Vitality', description: 'Support for hot flashes, night sweats, bone mineral density preservation, and healthy hormonal balance.', icon: <FaHeartbeat /> },
+  { title: 'Ultrasound & Fetal Well-being Imaging', description: 'In-house obstetric and pelvic ultrasound for precise fetal tracking and pelvic assessment.', icon: <FaStethoscope /> },
+  { title: 'Confidential Sanctuary Consultations', description: '100% judgment-free, confidential reproductive health, contraception, and wellness counseling.', icon: <FaEye /> },
 ];
 
 const doctor = {
   name: 'Dr. Jagriti Bhardwaj',
-  specialty: 'Gynecologist & Obstetrician',
+  specialty: 'Consultant Gynecologist, Obstetrician & Laparoscopic Surgeon',
   image: 'jbp.webp',
-  qualifications: ['MBBS (SNMC, Agra)', 'MS (OBG, ESIC PGIMSR', 'FMAS', 'DNB (OBG)', 'Laparoscopic Surgeon & Infertility Specialist'],
+  regNo: 'State Medical Council Reg. No. 58388',
+  qualifications: [
+    'MS (Obstetrics & Gynaecology) — Pt. B.D. Sharma PGIMS, Rohtak',
+    'DNB (Obstetrics & Gynaecology) — National Board of Examinations, New Delhi',
+    'FMAS — Fellowship in Minimal Access Surgery',
+    'FOGSI-Certified Infertility Training — Sir Ganga Ram Hospital, New Delhi',
+    'MBBS — S.N. Medical College, Agra',
+  ],
+  experience: [
+    'Consultant Gynecologist & Obstetrician — Narayan Heart & Maternity Centre',
+    'Senior Consultant — Ford Hospital & Research Center, Patna',
+    'Ex-Assistant Professor — Himalayan Institute of Medical Sciences (HIMS), Dehradun',
+    'Ex-Senior Resident — ESIC PGIMSR, New Delhi',
+  ],
 };
 
 const GynecologyServices = () => {
   return (
     <>
       <SeoHead
-        title="Dr. Jagriti Bhardwaj | Top Gynaecologist in Patna"
-        description="Dr. Jagriti Bhardwaj offers advanced gynaecological care, pregnancy checkups, and women's health services in Patna. Book a consultation today."
+        title="Dr. Jagriti Bhardwaj | Consultant Gynaecologist & Obstetrician in Patna"
+        description="Dr. Jagriti Bhardwaj (MS, DNB, FMAS, FOGSI Infertility) offers advanced gynaecological care, pregnancy checkups, and women's health services in Patna."
         path="/Gynoservices"
       />
 
@@ -43,8 +55,8 @@ const GynecologyServices = () => {
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
         </div>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="relative max-w-4xl !mx-auto text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold !mb-2">Gynecology Services</h1>
-          <p className="text-teal-50 text-sm sm:text-base max-w-2xl !mx-auto">Expert women's health care — from routine checkups to specialized treatments.</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold !mb-2">Gynecology & Maternity Services</h1>
+          <p className="text-teal-50 text-sm sm:text-base max-w-2xl !mx-auto">Specialized, compassionate healthcare for every phase of a woman's life — from adolescence to motherhood and beyond.</p>
         </motion.div>
       </section>
 
@@ -59,6 +71,11 @@ const GynecologyServices = () => {
             <div className="text-center sm:text-left flex-1 min-w-0">
               <h3 className="text-lg sm:text-xl font-bold text-gray-800">{doctor.name}</h3>
               <p className="text-sm font-medium text-[#3CAEA3] !mt-0.5">{doctor.specialty}</p>
+              {doctor.regNo && (
+                <p className="text-[11px] font-mono text-gray-500 !mt-0.5">
+                  Reg: {doctor.regNo}
+                </p>
+              )}
               <div className="flex flex-wrap gap-2 !mt-2 justify-center sm:justify-start">
                 {doctor.qualifications.map((q, i) => (
                   <span key={i} className="text-xs bg-gray-100 text-gray-600 !px-2.5 !py-1 rounded-full">{q}</span>

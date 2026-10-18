@@ -5,19 +5,29 @@ import { FaCheckCircle, FaCalendarCheck, FaChild, FaAppleAlt, FaClipboardCheck }
 import { Link } from 'react-router-dom';
 
 const whyImportant = [
-  'Monitors the health of both mother and baby',
-  'Detects and prevents complications early',
-  'Offers vaccinations and supplements',
-  'Provides guidance on diet and exercise',
-  'Prepares the mother for delivery and newborn care',
+  'Continuous monitoring of fetal cardiac activity and growth milestones across all three trimesters',
+  'Early detection and protocol-guided management of Gestational Diabetes and Pre-eclampsia',
+  'Prevention and prompt treatment of maternal gestational anaemia and micronutrient deficiencies',
+  'Evidence-based evaluation for couples with prior caesarean deliveries (counseling regarding safe VBAC)',
+  'Complete birth planning, lactation guidance, and post-delivery maternal recovery readiness',
 ];
 
 const highlights = [
   {
-    icon: <FaClipboardCheck />, title: 'Regular Check-Ups', desc: "Track fetal growth and monitor mother's health throughout pregnancy."
+    icon: <FaClipboardCheck />,
+    title: 'Trimester-Specific Monitoring',
+    desc: 'Regular antenatal checkups, blood investigations, blood pressure profiling, and continuous fetal growth tracking.'
   },
-  { icon: <FaAppleAlt />, title: 'Nutritional Guidance', desc: 'Customized diet plans to support a healthy pregnancy and fetal development.' },
-  { icon: <FaChild />, title: 'Birth Planning', desc: 'Preparation for delivery and counseling for labor and postpartum care.' },
+  {
+    icon: <FaAppleAlt />,
+    title: 'Nutritional & Micronutrient Support',
+    desc: 'Personalized dietary guidance, folic acid, calcium, and iron optimization to nourish both mother and baby.'
+  },
+  {
+    icon: <FaChild />,
+    title: 'High-Risk Obstetrics & Birth Planning',
+    desc: 'Specialized management for multiple pregnancies, thyroid imbalances, maternal hypertension, and planned safe deliveries.'
+  },
 ];
 
 const LearnANCSection = () => {

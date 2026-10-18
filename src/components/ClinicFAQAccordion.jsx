@@ -4,29 +4,44 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const faqs = [
   {
-    question: "What services are offered at Narayan Heart and Maternity Centre?",
+    question: "What cardiac treatments and interventional procedures does Dr. Sushant Kumar Pathak specialize in?",
     answer:
-      "We provide comprehensive cardiology and maternity services including ECG, echocardiograms, stress testing, prenatal care, delivery, and postnatal support.",
+      "Dr. Sushant Kumar Pathak specializes in imaging-guided complex coronary angioplasty (utilizing IVUS and OCT for millimetric accuracy), 24/7 emergency primary PCI during acute heart attacks, physiological pacing (Left Bundle Branch Area Pacing — LBBAP), AICD defibrillators, CRT heart failure devices, Balloon Mitral Valvuloplasty (BMV), catheter structural defect closures (ASD/VSD/PDA), and complete non-invasive diagnostics (2D Echo Color Doppler, TMT, 24/48-hr Holter).",
   },
   {
-    question: "Do I need a referral to see a cardiologist?",
+    question: "What are the clinic outpatient (OPD) consultation hours and working days?",
     answer:
-      "While referrals are helpful, they are not mandatory. You can directly book an appointment with our cardiologist.",
+      "Regular outpatient consultation at Narayan Heart & Maternity Centre operates Monday through Saturday in two daily slots: Morning Session from 09:00 AM to 10:30 AM, and Evening Session from 06:30 PM to 08:00 PM. Prior appointment booking via phone (+91 97084 41467, +91 98361 97624) or our online portal is recommended.",
   },
   {
-    question: "What should I bring for my first maternity consultation?",
+    question: "What is Left Bundle Branch Area Pacing (LBBAP) and why is it recommended?",
     answer:
-      "Please bring any prior medical reports, prescriptions, and a valid ID. If you're already pregnant, bring your previous scan or test results if available.",
+      "LBBAP is a state-of-the-art physiological pacing technique that directly captures the heart's natural electrical conduction bundle rather than pacing the heart muscle itself. This maintains physiological ventricular synchrony, significantly reducing the long-term risk of pacemaker-induced cardiomyopathy and heart failure.",
   },
   {
-    question: "What is Timing for Visit?",
+    question: "How do I get an expert second opinion on Angioplasty (stenting) vs. Bypass Surgery (CABG)?",
     answer:
-      "Our Clinic Timings is Morning: 09:00 AM – 10:30 AM and Evening: 06:30 PM – 08:00 PM.",
+      "You can bring your existing coronary angiogram CD/pen drive, recent ECG, and 2D Echocardiography reports to the clinic. Dr. Pathak conducts a detailed anatomical evaluation to determine whether optimal medical therapy, complex multi-vessel stenting, or surgical bypass offers the safest and most durable long-term outcome.",
   },
   {
-    question: "When to visit a Cardiologist?",
+    question: "What maternity, pregnancy, and gynaecological care pathways does Dr. Jagriti Bhardwaj provide?",
     answer:
-      "When patient have symptoms such as shortness of breath, chest pain, syncope, palpitation, headache, uneasiness, they can consult cardiologist.",
+      "Dr. Jagriti Bhardwaj provides complete life-stage care: adolescent menstrual disorder & PCOS/PCOD clinic, FOGSI-certified preconception and fertility assessments, high-risk antenatal care (Gestational Diabetes, hypertension, twin pregnancies, recurrent pregnancy loss), safe normal and caesarean delivery planning, minimally invasive laparoscopic surgery, cervical cancer screening (Pap Smear & HPV DNA), and menopause wellness.",
+  },
+  {
+    question: "What diagnostic investigations can be performed directly on-site at the clinic?",
+    answer:
+      "Our in-house diagnostic suite is equipped for instant 12-lead digital ECG, 2D Echocardiography with Color Doppler, Stress Treadmill Test (TMT), 24 to 48-Hour Holter monitoring, Obstetric and Pelvic Ultrasound, Non-Stress Test (NST) for fetal monitoring, and comprehensive blood pathology (CBC, Blood Sugar, HbA1c, Lipid Profile, Troponin-I, BNP).",
+  },
+  {
+    question: "What is the clinic's Sanctuary Promise regarding confidentiality in women's healthcare?",
+    answer:
+      "Consultations with Dr. Jagriti Bhardwaj are guarded under absolute medical discretion and privacy. Whether you are an adolescent seeking guidance on irregular cycles, an unmarried woman with PCOS or contraception queries, or a couple seeking fertility support, care is delivered with total dignity, empathy, and zero judgment.",
+  },
+  {
+    question: "How should I prepare for my first appointment?",
+    answer:
+      "Please bring your past medical prescriptions, recent blood investigation reports, ECG strips, angiogram CDs, or ultrasound scans. For cardiology follow-ups, bring a record of your daily blood pressure readings if available; for obstetrics, bring your last menstrual period (LMP) date and prior ultrasound reports.",
   },
 ];
 

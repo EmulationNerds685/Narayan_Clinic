@@ -11,10 +11,11 @@ const features = [
 ];
 
 const benefits = [
-  'Reduced risk of complications',
-  'Early detection of potential issues',
-  'Continuity of care with your cardiologist',
-  'Personalized treatment adjustments',
+  'Post-PCI & stenting longitudinal surveillance and antiplatelet therapy titration',
+  'Pacemaker, AICD, and LBBAP electronic device interrogation and threshold optimization',
+  'Strict guideline-driven blood pressure, blood glucose, and LDL cholesterol management',
+  'Early detection of recurrent angina, stent re-stenosis, or cardiac decompensation',
+  'Continuous clinical continuity with Senior Consultant Interventional Cardiologist',
 ];
 
 const CardiologyFollowUp = () => {

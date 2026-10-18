@@ -35,12 +35,13 @@ const GynecologyServices = () => {
 
   const jagriti = {
     name: 'Dr. Jagriti Bhardwaj',
-    specialty: 'Gynecologist & Obstetrician',
+    specialty: 'Consultant Gynecologist, Obstetrician & Laparoscopic Surgeon',
     image: 'jbp.webp',
     link: '/book',
-    qualifications: 'MBBS (SNMC, Agra), MS (OBG, PGIMS), DNB (OBG)',
-    experience: 'SIR Ganga Ram Hospital, New Delhi\nEx. Senior, PGIMS New Delhi\nEx. Assistant Professor, HIMS, Dehradun',
-    specializations: 'Laparoscopic Surgeon, Infertility Specialist',
+    regNo: 'State Medical Council Reg. No. 58388',
+    qualifications: 'MS (OBG, Pt. B.D. Sharma PGIMS Rohtak), DNB (OBG, NBE New Delhi), FMAS, FOGSI Infertility (Sir Ganga Ram Hospital), MBBS (SNMC Agra)',
+    experience: 'Sir Ganga Ram Hospital, New Delhi\nSenior Consultant, Ford Hospital, Patna\nEx. Assistant Professor, HIMS, Dehradun\nEx. Senior Resident, ESIC PGIMSR, New Delhi',
+    specializations: 'Laparoscopic Surgeon, Infertility Specialist & High-Risk Pregnancy',
   };
 
   return (

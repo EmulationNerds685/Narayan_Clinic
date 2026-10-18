@@ -8,22 +8,33 @@ import {
 } from 'react-icons/fa';
 
 const cardiologyServices = [
-  { title: 'Electrocardiogram (ECG)', description: 'Records the electrical activity of your heart.', icon: <FaHeartbeat /> },
-  { title: 'Echocardiogram', description: 'Ultrasound of the heart to assess structure and function.', icon: <FaStethoscope /> },
-  { title: 'Stress Test (TMT)', description: 'Measures heart function under physical stress.', icon: <FaRunning /> },
-  { title: '24-Hour Holter Monitoring', description: 'Continuous heart rhythm monitoring for 24 hours.', icon: <FaClock /> },
-  { title: 'Heart Disease Risk Assessment', description: 'Evaluates your risk of developing heart disease.', icon: <FaClipboardCheck /> },
-  { title: 'Interventional Cardiology', description: 'Angioplasty, pacemaker, TAVI, EVAR, electrophysiology, and more.', icon: <FaProcedures /> },
-  { title: 'Lifestyle & Nutrition Counseling', description: 'Heart-healthy lifestyle and diet plans.', icon: <FaAppleAlt /> },
-  { title: 'Pacemaker & Device Monitoring', description: 'Ongoing management of implanted heart devices.', icon: <FaPlug /> },
-  { title: 'BP, Diabetes & Lipid Management', description: 'Treatment and monitoring of high BP and cholesterol.', icon: <FaHospitalAlt /> },
+  { title: 'Electrocardiogram (ECG)', description: 'Instant 12-lead digital ECG recording electrical conduction and acute ischemic changes.', icon: <FaHeartbeat /> },
+  { title: '2D Echocardiogram with Color Doppler', description: 'Advanced cardiac ultrasound evaluating ventricular ejection fraction, valve dynamics, and wall motion.', icon: <FaStethoscope /> },
+  { title: 'Stress Treadmill Test (TMT)', description: 'Evaluates coronary reserve and exercise tolerance under monitored cardiac workload protocols.', icon: <FaRunning /> },
+  { title: '24 to 48-Hour Holter Monitoring', description: 'Continuous ambulatory ECG capture detecting occult arrhythmias, pauses, and palpitations.', icon: <FaClock /> },
+  { title: 'Imaging-Guided Precision Angioplasty', description: 'Mastery in IVUS and OCT optical guidance, Rotablation, and IVL lithotripsy for complex calcified lesions.', icon: <FaProcedures /> },
+  { title: 'Complex Coronary Interventions (PCI)', description: 'Left Main stenting, DK-crush bifurcation techniques, and Chronic Total Occlusion (CTO) revascularization.', icon: <FaHospitalAlt /> },
+  { title: 'Physiological Pacing (LBBAP) & Devices', description: 'Left Bundle Branch Area Pacing, dual-chamber pacemakers, AICD defibrillators, and CRT heart failure devices.', icon: <FaPlug /> },
+  { title: 'Structural Defect Closures & Valvuloplasty', description: 'Catheter-based ASD, VSD, and PDA device closures and Balloon Mitral Valvuloplasty (BMV) without open-heart surgery.', icon: <FaClipboardCheck /> },
+  { title: 'Hypertension, Diabetes & Lipid Clinic', description: 'Aggressive preventive cardiometabolic care to protect arterial endothelium and halt cardiovascular progression.', icon: <FaAppleAlt /> },
 ];
 
 const doctor = {
   name: 'Dr. Sushant Kumar Pathak',
-  specialty: 'Interventional Cardiologist',
+  specialty: 'Senior Consultant Interventional Cardiologist',
   image: 'skp.webp',
-  qualifications: ['MBBS (Kolkata)', 'MD (Medicine, PMCH Patna) — Gold Medalist', 'DM (Cardiology, IPGME&R)'],
+  regNo: 'BCMR-43700 · NMC 43700',
+  qualifications: [
+    'DM (Cardiology) — IPGMER & SSKM Hospital, Kolkata',
+    'MD (Medicine) — PMCH Patna (Institutional Gold Medalist)',
+    'MBBS — R.G. Kar Medical College, Kolkata',
+    'Fellow of European Society of Cardiology (FESC)',
+  ],
+  experience: [
+    'Assistant Director & Cardiologist, IGIC Patna',
+    'Senior Consultant, Ford Hospital & Research Center, Patna',
+    'Senior Consultant & Director, Narayan Heart & Maternity Centre',
+  ],
 };
 
 const Cardiology = () => {

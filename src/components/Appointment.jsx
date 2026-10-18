@@ -23,19 +23,19 @@ function isValidEmail(email) {
 }
 
 const timeSlots = [
-  { value: "09:00 AM - 10:00 AM", label: "9 – 10 AM" },
-  { value: "10:00 AM - 11:00 AM", label: "10 – 11 AM" },
-  { value: "11:00 AM - 12:00 PM", label: "11 – 12 PM" },
-  { value: "12:00 PM - 01:00 PM", label: "12 – 1 PM" },
-  { value: "04:00 PM - 05:00 PM", label: "4 – 5 PM" },
-  { value: "05:00 PM - 06:00 PM", label: "5 – 6 PM" },
+  { value: "09:00 AM - 10:30 AM", label: "Morning OPD: 09:00 AM – 10:30 AM" },
+  { value: "11:00 AM - 01:00 PM", label: "Midday (Maternity/Gynae): 11:00 AM – 01:00 PM" },
+  { value: "05:00 PM - 06:30 PM", label: "Evening Slot 1: 05:00 PM – 06:30 PM" },
+  { value: "06:30 PM - 08:00 PM", label: "Evening Slot 2: 06:30 PM – 08:00 PM" },
 ];
 
 const specialists = [
   {
     value: "Cardiologist",
     name: "Dr. Sushant Kumar Pathak",
-    title: "Interventional Cardiologist",
+    title: "Senior Consultant Interventional Cardiologist",
+    qualifications: "DM (IPGME&R), MD Gold Medalist (PMCH), FESC",
+    regNo: "BCMR-43700",
     image: "skp.webp",
     icon: <FaHeartbeat />,
     color: "#30638E",
@@ -43,7 +43,9 @@ const specialists = [
   {
     value: "Gynaecologist",
     name: "Dr. Jagriti Bhardwaj",
-    title: "Gynecologist & Obstetrician",
+    title: "Consultant Gynecologist, Obstetrician & Laparoscopic Surgeon",
+    qualifications: "MS OBG (PGIMS), DNB OBG, FMAS, FOGSI Infertility",
+    regNo: "Reg. 58388",
     image: "jbp.webp",
     icon: <FaFemale />,
     color: "#3CAEA3",
@@ -251,11 +253,11 @@ function Appointment() {
               </h3>
               <ul className="!space-y-3 text-sm text-gray-600">
                 {[
-                  'Instant email confirmation',
-                  'No registration fee',
-                  'Secure OTP-verified booking',
-                  '1000+ patients served',
-                  'Expert cardiologist & gynecologist',
+                  'Instant email confirmation & appointment token',
+                  'Apex & Tertiary hospital consultants',
+                  '10,000+ cardiac procedures & interventions managed',
+                  'FOGSI-certified advanced maternity care',
+                  'In-house ECG, 2D Echo, TMT, Holter & Ultrasound',
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <FaCheckCircle className="text-[#3CAEA3] !mt-0.5 flex-shrink-0 text-xs" />
@@ -266,17 +268,19 @@ function Appointment() {
             </div>
 
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 !p-6">
-              <h3 className="font-bold text-gray-800 !mb-3">🕐 Clinic Timings</h3>
+              <h3 className="font-bold text-gray-800 !mb-3">🕐 Clinic OPD Timings</h3>
               <div className="text-sm text-gray-600 !space-y-1.5">
-                <p><strong>Morning:</strong> 9:00 AM – 1:00 PM</p>
-                <p><strong>Evening:</strong> 4:00 PM – 6:00 PM</p>
-                <p className="text-xs text-gray-400 !mt-2">Sunday: Closed</p>
+                <p><strong>Morning Session:</strong> 09:00 AM – 10:30 AM</p>
+                <p><strong>Evening Session:</strong> 06:30 PM – 08:00 PM</p>
+                <p><strong>Gynae Special Hours:</strong> 10:00 AM – 02:00 PM</p>
+                <p className="text-xs text-gray-400 !mt-2">Monday – Saturday (Sunday: Emergency Only)</p>
               </div>
             </div>
 
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 !p-6">
-              <h3 className="font-bold text-gray-800 !mb-3">📍 Location</h3>
-              <p className="text-sm text-gray-600">Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh, Patna-800020</p>
+              <h3 className="font-bold text-gray-800 !mb-3">📍 Location & Amenities</h3>
+              <p className="text-sm text-gray-600 !mb-2">Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh, Patna-800020</p>
+              <p className="text-xs text-[#3CAEA3] font-medium">✓ Ground-level parking & zero-step ramp access</p>
             </div>
           </aside>
 
@@ -465,7 +469,10 @@ function Appointment() {
                             </div>
                             <div className="min-w-0">
                               <p className="text-sm font-bold text-gray-800 truncate">{doc.name}</p>
-                              <p className="text-xs text-gray-500 truncate">{doc.title}</p>
+                              <p className="text-xs text-[#30638E] font-medium truncate">{doc.title}</p>
+                              {doc.qualifications && (
+                                <p className="text-[11px] text-gray-500 truncate">{doc.qualifications}</p>
+                              )}
                             </div>
                             {formData.service === doc.value && (
                               <FaCheckCircle className="text-[#3CAEA3] text-sm flex-shrink-0 !ml-auto" />
