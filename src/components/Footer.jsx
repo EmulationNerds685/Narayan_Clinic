@@ -72,9 +72,14 @@ const Footer = () => {
 
               {/* Ara Branch */}
               <div className="!space-y-1.5">
-                <p className="text-xs font-bold uppercase tracking-wider text-[#3CAEA3]">
-                  Ara Branch
-                </p>
+                <div className="flex items-center justify-between">
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#3CAEA3]">
+                    Ara Branch
+                  </p>
+                  <span className="text-[11px] font-semibold text-amber-300">
+                    Sundays Only
+                  </span>
+                </div>
                 <div className="flex items-start !space-x-2">
                   <FaMapMarkerAlt className="!mt-0.5 flex-shrink-0 text-[#3CAEA3]" />
                   <span>Sahay Ram Ji Complex, In Front of Kedia Hospital, North Mahavir Tola, Ara-802301</span>
@@ -87,6 +92,7 @@ const Footer = () => {
                     <a href="tel:+917546824226" className="hover:text-white transition-colors duration-200">+91 75468 24226</a>
                   </div>
                 </div>
+                <p className="text-[11px] text-amber-200/90 font-medium">🗓️ Clinic Open: Every Sunday Only</p>
               </div>
 
               {/* Email */}

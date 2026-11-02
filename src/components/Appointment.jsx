@@ -292,13 +292,14 @@ function Appointment() {
               </div>
 
               <div>
-                <span className="inline-block px-2 py-0.5 bg-amber-500/10 text-amber-700 rounded text-[11px] font-bold uppercase tracking-wider mb-1.5">
-                  Ara Branch
+                <span className="inline-block px-2 py-0.5 bg-amber-500/15 text-amber-900 border border-amber-300 rounded text-[11px] font-bold uppercase tracking-wider mb-1.5">
+                  Ara Branch · Open Every Sunday Only
                 </span>
                 <p className="text-sm text-gray-600 mb-1">
                   Sahay Ram Ji Complex, In Front of Kedia Hospital, North Mahavir Tola, Ara-802301
                 </p>
-                <p className="text-xs text-amber-700 font-medium">✓ Consultation fee valid for 15 days</p>
+                <p className="text-xs text-amber-900 font-bold">🗓️ Clinic Open: Every Sunday Only</p>
+                <p className="text-xs text-gray-500 mt-1">✓ Consultation fee valid for 15 days</p>
                 <p className="text-xs text-gray-500 mt-1">Ph: +91 97084 41467 | +91 75468 24226</p>
               </div>
             </div>

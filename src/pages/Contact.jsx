@@ -51,6 +51,14 @@ const localBusinessSchema = JSON.stringify([
     url: "https://narayanheartandmaternitycentre.com",
     telephone: ["+91-9708441467", "+91-7546824226"],
     email: "narayanheartmaternitycentre@gmail.com",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Sunday"],
+        opens: "09:00",
+        closes: "17:00",
+      },
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: "Sahay Ram Ji Complex, In Front of Kedia Hospital, North Mahavir Tola",
@@ -172,8 +180,8 @@ const Contact = () => {
             { icon: <FaPhone />, title: 'Ara Branch', value: '+91 75468 24226', href: 'tel:+917546824226' },
             { icon: <FaPhone />, title: 'Patna Alt', value: '+91 98361 97624', href: 'tel:+919836197624' },
             { icon: <FaEnvelope />, title: 'Email Us', value: 'narayanhmc@gmail.com', href: 'mailto:narayanheartmaternitycentre@gmail.com' },
-            { icon: <FaClock />, title: 'Patna Timings', value: '9-10:30 AM, 6:30-8 PM', href: null },
-            { icon: <FaClock />, title: 'Ara OPD', value: 'Regular OPD (15d Fee)', href: null },
+            { icon: <FaClock />, title: 'Patna Timings', value: 'Mon-Sat (9-10:30, 6:30-8)', href: null },
+            { icon: <FaClock />, title: 'Ara OPD', value: 'Every Sunday Only', href: null },
           ].map((item, i) => (
             <motion.div
               key={i}
@@ -234,7 +242,7 @@ const Contact = () => {
                     }`}
                 >
                   <FaMapMarkerAlt className={activeBranch === 'ara' ? 'text-[#3CAEA3]' : 'text-gray-400'} />
-                  <span>Ara Branch</span>
+                  <span>Ara Branch (Sundays Only)</span>
                 </button>
               </div>
 
@@ -301,8 +309,8 @@ const Contact = () => {
                   ></iframe>
                   <div className="!p-5 !space-y-4">
                     <div className="flex items-center justify-between">
-                      <div className="inline-block px-2.5 py-1 bg-amber-500/10 text-amber-700 rounded-md text-xs font-bold uppercase tracking-wider">
-                        Ara Branch · OPD &amp; Follow-up
+                      <div className="inline-block px-2.5 py-1 bg-amber-500/15 text-amber-900 border border-amber-300 rounded-md text-xs font-bold uppercase tracking-wider">
+                        Ara Branch · Open Every Sunday Only
                       </div>
                       <a
                         href="https://maps.google.com/?q=Sahay+Ram+Ji+Complex+North+Mahavir+Tola+Ara+Bihar"
@@ -328,11 +336,12 @@ const Contact = () => {
                         <a href="tel:+917546824226" className="font-semibold text-[#30638E] hover:underline">+91 75468 24226</a>
                       </div>
                     </div>
-                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-600 bg-amber-50/60 p-3 rounded-xl border border-amber-100">
-                      <FaClock className="text-amber-600 !mt-0.5 flex-shrink-0" />
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-700 bg-amber-50 p-3.5 rounded-xl border border-amber-200">
+                      <FaClock className="text-amber-700 !mt-0.5 flex-shrink-0" />
                       <div>
-                        <p><strong>OPD Schedule:</strong> Regular OPD Consultations &amp; Routine Follow-ups</p>
-                        <p className="text-amber-800 font-semibold !mt-0.5">✦ Consultation fee valid for 15 days.</p>
+                        <p><strong className="text-amber-950">Operating Days:</strong> <span className="font-bold text-amber-900 bg-amber-100 px-1.5 py-0.5 rounded">Every Sunday Only</span></p>
+                        <p className="text-gray-600 !mt-1">Dedicated Sunday Outpatient Consultations &amp; Routine Follow-ups.</p>
+                        <p className="text-amber-900 font-semibold !mt-1">✦ Consultation fee valid for 15 days.</p>
                       </div>
                     </div>
                   </div>
@@ -354,7 +363,8 @@ const Contact = () => {
                   >
                     <span className="font-bold text-[#30638E] block mb-1">📍 Patna (Main Clinic)</span>
                     <p className="text-gray-600 line-clamp-2">Metro Pillar 4, MIG-245, Lohia Nagar, Kankarbagh</p>
-                    <p className="font-semibold text-gray-800 mt-1.5">+91 97084 41467</p>
+                    <p className="text-blue-900 font-medium mt-1 text-[11px]">Mon – Sat: 9-10:30 AM &amp; 6:30-8 PM</p>
+                    <p className="font-semibold text-gray-800 mt-1">+91 97084 41467</p>
                   </div>
                   <div
                     role="button"
@@ -365,7 +375,8 @@ const Contact = () => {
                   >
                     <span className="font-bold text-[#30638E] block mb-1">📍 Ara Branch</span>
                     <p className="text-gray-600 line-clamp-2">Sahay Ram Ji Complex, North Mahavir Tola, Ara</p>
-                    <p className="font-semibold text-gray-800 mt-1.5">+91 75468 24226</p>
+                    <p className="text-amber-800 font-bold mt-1 text-[11px]">🗓️ Open Every Sunday Only</p>
+                    <p className="font-semibold text-gray-800 mt-1">+91 75468 24226</p>
                   </div>
                 </div>
               </div>
