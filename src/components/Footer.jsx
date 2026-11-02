@@ -23,7 +23,7 @@ const Footer = () => {
             </div>
             <p className="text-blue-100 text-sm leading-relaxed">
               Providing compassionate care with a specialized team in cardiology
-              and gynecology in Patna.
+              and gynecology across Patna and Ara branches.
             </p>
             <div className="flex gap-4">
               <a href="https://www.instagram.com/doctors.insights?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#3CAEA3] transition-colors"><FaInstagram size={20} /></a>
@@ -49,21 +49,48 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="!space-y-4">
-            <h3 className="text-lg font-bold">Contact Us</h3>
-            <address className="not-italic !space-y-3 text-blue-100 text-sm">
-              <div className="flex items-start !space-x-2">
-                <FaMapMarkerAlt className="!mt-0.5 flex-shrink-0 text-[#3CAEA3]" />
-                <span>Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh, Patna-800020</span>
-              </div>
-              <div className="flex items-center !space-x-2">
-                <FaPhone className="flex-shrink-0 text-[#3CAEA3]" />
-                <div className="flex flex-wrap gap-x-2">
-                  <a href="tel:+919708441467" className="hover:text-white transition-colors duration-200">+91 97084 41467</a>
-                  <span className="opacity-50">|</span>
-                  <a href="tel:+919836197624" className="hover:text-white transition-colors duration-200">+91 98361 97624</a>
+            <h3 className="text-lg font-bold">Our Branches</h3>
+            <address className="not-italic !space-y-4 text-blue-100 text-sm">
+              {/* Patna Branch */}
+              <div className="!space-y-1.5 pb-2 border-b border-blue-400/20">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#3CAEA3]">
+                  Patna Branch (Main Clinic)
+                </p>
+                <div className="flex items-start !space-x-2">
+                  <FaMapMarkerAlt className="!mt-0.5 flex-shrink-0 text-[#3CAEA3]" />
+                  <span>Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh, Patna-800020</span>
+                </div>
+                <div className="flex items-center !space-x-2">
+                  <FaPhone className="flex-shrink-0 text-[#3CAEA3]" />
+                  <div className="flex flex-wrap gap-x-2">
+                    <a href="tel:+919708441467" className="hover:text-white transition-colors duration-200">+91 97084 41467</a>
+                    <span className="opacity-50">|</span>
+                    <a href="tel:+919836197624" className="hover:text-white transition-colors duration-200">+91 98361 97624</a>
+                  </div>
                 </div>
               </div>
-              <div className="flex items-center !space-x-2">
+
+              {/* Ara Branch */}
+              <div className="!space-y-1.5">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#3CAEA3]">
+                  Ara Branch
+                </p>
+                <div className="flex items-start !space-x-2">
+                  <FaMapMarkerAlt className="!mt-0.5 flex-shrink-0 text-[#3CAEA3]" />
+                  <span>Sahay Ram Ji Complex, In Front of Kedia Hospital, North Mahavir Tola, Ara-802301</span>
+                </div>
+                <div className="flex items-center !space-x-2">
+                  <FaPhone className="flex-shrink-0 text-[#3CAEA3]" />
+                  <div className="flex flex-wrap gap-x-2">
+                    <a href="tel:+919708441467" className="hover:text-white transition-colors duration-200">+91 97084 41467</a>
+                    <span className="opacity-50">|</span>
+                    <a href="tel:+917546824226" className="hover:text-white transition-colors duration-200">+91 75468 24226</a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="flex items-center !space-x-2 pt-1">
                 <FaEnvelope className="flex-shrink-0 text-[#3CAEA3]" />
                 <a href="mailto:narayanheartmaternitycentre@gmail.com" className="hover:text-white transition-colors duration-200 break-all text-xs sm:text-sm">
                   narayanheartmaternitycentre@gmail.com

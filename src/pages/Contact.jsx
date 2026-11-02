@@ -5,46 +5,72 @@ import SeoHead from '../components/SeoHead';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaInstagram, FaFacebook } from 'react-icons/fa';
 
-const localBusinessSchema = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Narayan Heart & Maternity Centre",
-  image: "https://narayanheartandmaternitycentre.com/nhmc_logo.png",
-  url: "https://narayanheartandmaternitycentre.com",
-  telephone: ["+91-9708441467", "+91-9836197624"],
-  email: "narayanheartmaternitycentre@gmail.com",
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      opens: "09:00",
-      closes: "10:30",
+const localBusinessSchema = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    name: "Narayan Heart & Maternity Centre - Patna Branch (Main Clinic)",
+    image: "https://narayanheartandmaternitycentre.com/nhmc_logo.png",
+    url: "https://narayanheartandmaternitycentre.com",
+    telephone: ["+91-9708441467", "+91-9836197624"],
+    email: "narayanheartmaternitycentre@gmail.com",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "09:00",
+        closes: "10:30",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "18:30",
+        closes: "20:00",
+      },
+    ],
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh",
+      addressLocality: "Patna",
+      addressRegion: "Bihar",
+      postalCode: "800020",
+      addressCountry: "IN",
     },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      opens: "18:30",
-      closes: "20:00",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 25.5945,
+      longitude: 85.1554,
     },
-  ],
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh",
-    addressLocality: "Patna",
-    addressRegion: "Bihar",
-    postalCode: "800020",
-    addressCountry: "IN",
+    sameAs: ["https://maps.app.goo.gl/tsKEg2pHUXZzp1STA"],
   },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 25.5945,
-    longitude: 85.1554,
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    name: "Narayan Heart & Maternity Centre - Ara Branch",
+    image: "https://narayanheartandmaternitycentre.com/nhmc_logo.png",
+    url: "https://narayanheartandmaternitycentre.com",
+    telephone: ["+91-9708441467", "+91-7546824226"],
+    email: "narayanheartmaternitycentre@gmail.com",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Sahay Ram Ji Complex, In Front of Kedia Hospital, North Mahavir Tola",
+      addressLocality: "Ara",
+      addressRegion: "Bihar",
+      postalCode: "802301",
+      addressCountry: "IN",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 25.556,
+      longitude: 84.6603,
+    },
+    sameAs: ["https://maps.google.com/?q=Sahay+Ram+Ji+Complex+North+Mahavir+Tola+Ara+Bihar"],
   },
-  sameAs: ["https://maps.app.goo.gl/tsKEg2pHUXZzp1STA"],
-});
+]);
 
 const Contact = () => {
   const backendURL = import.meta.env.VITE_BACKEND_URL;
+  const [activeBranch, setActiveBranch] = useState('patna');
   const [feedbackData, setFeedbackData] = useState({
     name: '',
     comment: '',
@@ -110,8 +136,8 @@ const Contact = () => {
   return (
     <>
       <SeoHead
-        title="Contact Narayan Heart & Maternity Centre | Best Cardiologist and Gynecologist Clinic in Patna"
-        description="Get in touch with Dr. Sushant Kumar Pathak and Dr. Jagriti Bhardwaj. View clinic timings, address, and contact info for appointments in Patna."
+        title="Contact Narayan Heart & Maternity Centre | Patna & Ara Clinics"
+        description="Get in touch with Dr. Sushant Kumar Pathak and Dr. Jagriti Bhardwaj. View clinic timings, addresses, and contact info for appointments in Patna and Ara branches."
         path="/contact"
       >
         <script type="application/ld+json">{localBusinessSchema}</script>
@@ -142,12 +168,12 @@ const Contact = () => {
       <section className="bg-white !py-6 sm:!py-8 !px-4 shadow-sm border-b border-gray-100">
         <div className="max-w-6xl !mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
           {[
-            { icon: <FaPhone />, title: 'Call Us', value: '+91 97084 41467', href: 'tel:+919708441467' },
-            { icon: <FaPhone />, title: 'Alternate', value: '+91 98361 97624', href: 'tel:+919836197624' },
-            { icon: <FaEnvelope />, title: 'Email', value: 'narayanhmc@gmail.com', href: 'mailto:narayanheartmaternitycentre@gmail.com' },
-            { icon: <FaClock />, title: 'Timings', value: '9-10:30 AM, 6:30-8 PM', href: null },
-            { icon: <FaInstagram />, title: 'Instagram', value: 'Follow Us', href: 'https://www.instagram.com/doctors.insights?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' },
-            { icon: <FaFacebook />, title: 'Facebook', value: 'Like Page', href: 'https://www.facebook.com/people/Doctorsinsights/61587136179791/' },
+            { icon: <FaPhone />, title: 'Patna Clinic', value: '+91 97084 41467', href: 'tel:+919708441467' },
+            { icon: <FaPhone />, title: 'Ara Branch', value: '+91 75468 24226', href: 'tel:+917546824226' },
+            { icon: <FaPhone />, title: 'Patna Alt', value: '+91 98361 97624', href: 'tel:+919836197624' },
+            { icon: <FaEnvelope />, title: 'Email Us', value: 'narayanhmc@gmail.com', href: 'mailto:narayanheartmaternitycentre@gmail.com' },
+            { icon: <FaClock />, title: 'Patna Timings', value: '9-10:30 AM, 6:30-8 PM', href: null },
+            { icon: <FaClock />, title: 'Ara OPD', value: 'Regular OPD (15d Fee)', href: null },
           ].map((item, i) => (
             <motion.div
               key={i}
@@ -186,21 +212,160 @@ const Contact = () => {
               viewport={{ once: true }}
               className="!space-y-5"
             >
-              <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
-                <iframe
-                  title="Clinic Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3598.312158118437!2d85.15537607415408!3d25.594541477457266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed59001b844559%3A0xc68a23d3c5f4ed77!2sNarayan%20Heart%20%26%20Maternity%20Centre!5e0!3m2!1sen!2sin!4v1747651924946!5m2!1sen!2sin"
-                  width="100%"
-                  height="300"
-                  className="border-0"
-                  allowFullScreen=""
-                  loading="lazy"
-                ></iframe>
-                <div className="!p-5 !space-y-3">
-                  <h3 className="text-lg font-bold text-[#30638E]">Our Clinic</h3>
-                  <div className="flex items-start gap-2 text-sm text-gray-600">
-                    <FaMapMarkerAlt className="text-[#3CAEA3] !mt-0.5 flex-shrink-0" />
-                    <span>Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh, Patna-800020</span>
+              {/* Branch Selector Tabs */}
+              <div className="bg-white p-2 rounded-2xl border border-gray-100 shadow-xs flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => setActiveBranch('patna')}
+                  className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 ${activeBranch === 'patna'
+                      ? 'bg-[#30638E] text-white shadow-sm'
+                      : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                    }`}
+                >
+                  <FaMapMarkerAlt className={activeBranch === 'patna' ? 'text-[#3CAEA3]' : 'text-gray-400'} />
+                  <span>Patna Main Branch</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveBranch('ara')}
+                  className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 ${activeBranch === 'ara'
+                      ? 'bg-[#30638E] text-white shadow-sm'
+                      : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                    }`}
+                >
+                  <FaMapMarkerAlt className={activeBranch === 'ara' ? 'text-[#3CAEA3]' : 'text-gray-400'} />
+                  <span>Ara Branch</span>
+                </button>
+              </div>
+
+              {/* Active Branch Card */}
+              {activeBranch === 'patna' ? (
+                <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
+                  <iframe
+                    title="Patna Clinic Location"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3598.312158118437!2d85.15537607415408!3d25.594541477457266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed59001b844559%3A0xc68a23d3c5f4ed77!2sNarayan%20Heart%20%26%20Maternity%20Centre!5e0!3m2!1sen!2sin!4v1747651924946!5m2!1sen!2sin"
+                    width="100%"
+                    height="280"
+                    className="border-0"
+                    allowFullScreen=""
+                    loading="lazy"
+                  ></iframe>
+                  <div className="!p-5 !space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="inline-block px-2.5 py-1 bg-[#30638E]/10 text-[#30638E] rounded-md text-xs font-bold uppercase tracking-wider">
+                        Main Branch &amp; Diagnostic Lab
+                      </div>
+                      <a
+                        href="https://maps.app.goo.gl/tsKEg2pHUXZzp1STA"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-semibold text-[#3CAEA3] hover:underline"
+                      >
+                        Open in Google Maps →
+                      </a>
+                    </div>
+                    <h3 className="text-xl font-bold text-[#30638E]">
+                      Narayan Heart &amp; Maternity Centre (Patna)
+                    </h3>
+                    <div className="flex items-start gap-2.5 text-sm text-gray-700">
+                      <FaMapMarkerAlt className="text-[#3CAEA3] !mt-1 flex-shrink-0" />
+                      <span>Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh, Patna, Bihar - 800020</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-sm text-gray-700">
+                      <FaPhone className="text-[#3CAEA3] flex-shrink-0" />
+                      <div className="flex flex-wrap gap-x-2">
+                        <a href="tel:+919708441467" className="font-semibold text-[#30638E] hover:underline">+91 97084 41467</a>
+                        <span className="text-gray-400">|</span>
+                        <a href="tel:+919836197624" className="font-semibold text-[#30638E] hover:underline">+91 98361 97624</a>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-600 bg-gray-50 p-3 rounded-xl">
+                      <FaClock className="text-[#3CAEA3] !mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p><strong>OPD Timings:</strong> 09:00 AM – 10:30 AM &amp; 06:30 PM – 08:00 PM</p>
+                        <p><strong>Gynae Special Hours:</strong> 10:00 AM – 02:00 PM (Mon – Sat)</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
+                  <iframe
+                    title="Ara Clinic Location"
+                    src="https://maps.google.com/maps?q=Sahay+Ram+Ji+Complex+North+Mahavir+Tola+Ara+Bihar&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    width="100%"
+                    height="280"
+                    className="border-0"
+                    allowFullScreen=""
+                    loading="lazy"
+                  ></iframe>
+                  <div className="!p-5 !space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="inline-block px-2.5 py-1 bg-amber-500/10 text-amber-700 rounded-md text-xs font-bold uppercase tracking-wider">
+                        Ara Branch · OPD &amp; Follow-up
+                      </div>
+                      <a
+                        href="https://maps.google.com/?q=Sahay+Ram+Ji+Complex+North+Mahavir+Tola+Ara+Bihar"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-semibold text-[#3CAEA3] hover:underline"
+                      >
+                        Open in Google Maps →
+                      </a>
+                    </div>
+                    <h3 className="text-xl font-bold text-[#30638E]">
+                      Narayan Heart &amp; Maternity Centre (Ara Branch)
+                    </h3>
+                    <div className="flex items-start gap-2.5 text-sm text-gray-700">
+                      <FaMapMarkerAlt className="text-[#3CAEA3] !mt-1 flex-shrink-0" />
+                      <span>Sahay Ram Ji Complex, In Front of Kedia Hospital, North Mahavir Tola, Ara, Bihar - 802301</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-sm text-gray-700">
+                      <FaPhone className="text-[#3CAEA3] flex-shrink-0" />
+                      <div className="flex flex-wrap gap-x-2">
+                        <a href="tel:+919708441467" className="font-semibold text-[#30638E] hover:underline">+91 97084 41467</a>
+                        <span className="text-gray-400">|</span>
+                        <a href="tel:+917546824226" className="font-semibold text-[#30638E] hover:underline">+91 75468 24226</a>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-600 bg-amber-50/60 p-3 rounded-xl border border-amber-100">
+                      <FaClock className="text-amber-600 !mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p><strong>OPD Schedule:</strong> Regular OPD Consultations &amp; Routine Follow-ups</p>
+                        <p className="text-amber-800 font-semibold !mt-0.5">✦ Consultation fee valid for 15 days.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Both Branches Summary Card */}
+              <div className="bg-white rounded-2xl shadow-sm !p-5 border border-gray-100 !space-y-3">
+                <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400">
+                  Both Locations Summary
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    className={`p-3 rounded-xl border transition-all cursor-pointer ${activeBranch === 'patna' ? 'border-[#30638E] bg-blue-50/40 shadow-xs' : 'border-gray-100 bg-gray-50'}`}
+                    onClick={() => setActiveBranch('patna')}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setActiveBranch('patna'); }}
+                  >
+                    <span className="font-bold text-[#30638E] block mb-1">📍 Patna (Main Clinic)</span>
+                    <p className="text-gray-600 line-clamp-2">Metro Pillar 4, MIG-245, Lohia Nagar, Kankarbagh</p>
+                    <p className="font-semibold text-gray-800 mt-1.5">+91 97084 41467</p>
+                  </div>
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    className={`p-3 rounded-xl border transition-all cursor-pointer ${activeBranch === 'ara' ? 'border-[#30638E] bg-blue-50/40 shadow-xs' : 'border-gray-100 bg-gray-50'}`}
+                    onClick={() => setActiveBranch('ara')}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setActiveBranch('ara'); }}
+                  >
+                    <span className="font-bold text-[#30638E] block mb-1">📍 Ara Branch</span>
+                    <p className="text-gray-600 line-clamp-2">Sahay Ram Ji Complex, North Mahavir Tola, Ara</p>
+                    <p className="font-semibold text-gray-800 mt-1.5">+91 75468 24226</p>
                   </div>
                 </div>
               </div>

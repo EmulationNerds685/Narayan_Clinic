@@ -277,10 +277,30 @@ function Appointment() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 !p-6">
-              <h3 className="font-bold text-gray-800 !mb-3">📍 Location & Amenities</h3>
-              <p className="text-sm text-gray-600 !mb-2">Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh, Patna-800020</p>
-              <p className="text-xs text-[#3CAEA3] font-medium">✓ Ground-level parking & zero-step ramp access</p>
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 !p-6 !space-y-4">
+              <h3 className="font-bold text-gray-800">📍 Our Clinic Branches</h3>
+              
+              <div className="border-b border-gray-100 pb-3">
+                <span className="inline-block px-2 py-0.5 bg-[#30638E]/10 text-[#30638E] rounded text-[11px] font-bold uppercase tracking-wider mb-1.5">
+                  Patna Branch (Main Clinic)
+                </span>
+                <p className="text-sm text-gray-600 mb-1">
+                  Metro Pillar No. 4, Final Diagnostics, MIG-245, Lohia Nagar, Kankarbagh, Patna-800020
+                </p>
+                <p className="text-xs text-[#3CAEA3] font-medium">✓ Ground-level parking &amp; zero-step ramp access</p>
+                <p className="text-xs text-gray-500 mt-1">Ph: +91 97084 41467 | +91 98361 97624</p>
+              </div>
+
+              <div>
+                <span className="inline-block px-2 py-0.5 bg-amber-500/10 text-amber-700 rounded text-[11px] font-bold uppercase tracking-wider mb-1.5">
+                  Ara Branch
+                </span>
+                <p className="text-sm text-gray-600 mb-1">
+                  Sahay Ram Ji Complex, In Front of Kedia Hospital, North Mahavir Tola, Ara-802301
+                </p>
+                <p className="text-xs text-amber-700 font-medium">✓ Consultation fee valid for 15 days</p>
+                <p className="text-xs text-gray-500 mt-1">Ph: +91 97084 41467 | +91 75468 24226</p>
+              </div>
             </div>
           </aside>
 

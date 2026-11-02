@@ -37,7 +37,7 @@ const AboutUs = () => {
           className="relative max-w-4xl !mx-auto text-center"
         >
           <div className="inline-block bg-[#3CAEA3]/20 border border-[#3CAEA3]/40 text-[#3CAEA3] px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-3">
-            Narayan Heart & Maternity Centre · Kankarbagh, Patna
+            Narayan Heart &amp; Maternity Centre · Patna &amp; Ara Branches
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold !mb-4 leading-tight">
             Excellence in Heart & Women's Healthcare
@@ -93,7 +93,7 @@ const AboutUs = () => {
               <h2 className="text-2xl sm:text-3xl font-bold text-[#30638E]">Who We Are</h2>
               <div className="w-16 h-1 bg-[#3CAEA3] rounded-full mx-auto lg:mx-0"></div>
               <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
-                Narayan Heart & Maternity Centre (NHMC) is a state-of-the-art super-speciality outpatient and diagnostic clinic conveniently located at Metro Pillar No. 4, Lohia Nagar, Kankarbagh, Patna.
+                Narayan Heart &amp; Maternity Centre (NHMC) is a state-of-the-art super-speciality healthcare facility operating two dedicated clinic branches: our flagship diagnostic and consultation clinic at Metro Pillar No. 4, Lohia Nagar, Kankarbagh, Patna, and our outpatient branch at Sahay Ram Ji Complex, North Mahavir Tola, Ara.
               </p>
               <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
                 Led by <strong>Dr. Sushant Kumar Pathak</strong> (Assistant Director at IGIC, Senior Consultant at Ford Hospital, and Institutional Gold Medalist) and <strong>Dr. Jagriti Bhardwaj</strong> (MS, DNB, FMAS, FOGSI-certified Infertility Specialist from Sir Ganga Ram Hospital), our centre bridges the gap between everyday outpatient consultations and premier tertiary hospital care.
